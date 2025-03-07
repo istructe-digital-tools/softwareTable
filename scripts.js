@@ -41,6 +41,14 @@ function sortTable(n) {
     filterTable();
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    randomizeTableRows();
+    var form = document.getElementById("filterForm");
+    if (form) {
+        form.addEventListener("change", filterTable);
+    }
+});
+
 function randomizeTableRows() {
     var table = document.getElementById("softwareTable");
     if (!table) return;
@@ -53,7 +61,6 @@ function randomizeTableRows() {
         let j = Math.floor(Math.random() * (i + 1));
         tbody.appendChild(rows[j]); // Move row to new position
     }
-    sortTable(6);
     sortTable(6);
 }
 
@@ -194,26 +201,3 @@ function enforceSingleSelection(category, clickedCheckbox) {
     // Call your filtering function
     filterTable();
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-    const rowFiles = [
-        "softwarePanel.html",
-	"softwareTrimble.html",
-    ];
-
-    const tableBody = document.getElementById("softwareTableBody");
-
-    rowFiles.forEach(file => {
-        fetch(file)
-            .then(response => response.text())
-            .then(data => {
-                tableBody.innerHTML += data;
-            })
-            .catch(error => console.error("Error loading row:", file, error));
-    });
-    randomizeTableRows();
-    var form = document.getElementById("filterForm");
-    if (form) {
-        form.addEventListener("change", filterTable);
-    }
-});
