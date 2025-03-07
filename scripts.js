@@ -55,6 +55,9 @@ function randomizeTableRows() {
         tbody.appendChild(rows[j]); // Move row to new position
     }
 
+    sortTable(6);
+    sortTable(6);
+
     const event = new Event('tableRandomized');
     document.dispatchEvent(event);
 }

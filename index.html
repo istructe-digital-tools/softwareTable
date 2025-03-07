@@ -11,21 +11,9 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     addSoftware(); // Ensure rows are added before randomizing
-});
-
-document.addEventListener("softwareAdded", function () {
     randomizeTableRows(); // Randomize the table rows
-});  
-
-document.addEventListener("tableRandomized", function () {
-    // Now that the table is randomized, run other functions
-    sortTable(6);
-    sortTable(6);
-    var form = document.getElementById("filterForm");
-    if (form) {
-         form.addEventListener("change", filterTable);
-    }
 });
+
 </script>
 </head>
 
