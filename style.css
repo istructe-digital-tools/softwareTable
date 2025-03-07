@@ -1,0 +1,136 @@
+ body{
+	font-family: helvetica;
+	font-size: 14px;
+	width: 5000px;
+	margin: 0px;
+  }
+
+  table{
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 12px;
+ 	table-layout: fixed;
+  	width: 5000px;
+	margin-bottom: 25px;
+     }
+  th {
+	padding: 0.1vw;
+	border: 0px;
+	cursor: n-resize;
+     }
+  th.product {
+	background: #DBDCDD;
+     }
+  th.material {
+	background: #CCF2E4;
+     }
+  th.section {
+	background: #99E6C9;
+     }
+  th.designCodes {
+	background: #EDC9DC;
+     }
+  th.apiCodes {
+	background: #DAD8E4;
+     }
+  th.systemReq {
+	background: #C1EAEE;
+     }
+  th.cost {
+	background: #C8E6DC;
+     }
+  tr{
+  	border: 1px solid darkgrey;
+        padding-bottom: 2px;
+	cursor: default;
+  }
+  tr:nth-child(even) {
+	background-color: #389c711a;
+  }
+svg {
+    background: #279C6F;
+    width: 10vw;
+    padding: 1vw;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: -1;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: 1250px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin: 0px;
+
+
+  position: sticky;
+  left: 0;
+}
+
+h1, h4 {
+  margin: 0px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+div.intro{
+  padding-left: 1vw;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-right: 0px;
+  margin: 0px;
+  position: sticky;
+  left: 0;
+  width: 1250px;
+  color: white;
+}
+div.banner{
+  padding: 0px;
+  margin: 0px;
+  position: sticky;
+  left: 0;
+  width: 100%;
+  height: max-content;
+  background: #279C6F;
+  z-index: -2;
+}
+
+.headers{
+  font-size: 16px;
+}
+
+  .tooltip {
+    position: relative;
+    cursor: pointer;
+  }
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: max-content;
+    max-width: 300px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 8px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+    left: 25%;
+    top: calc(100% + 2px);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    font-size: 14px;
+    cursor: text;
+}
+
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+.hiddenMessage{
+    cursor: help;
+}
