@@ -19,4 +19,7 @@ function addSoftware() {
             })
             .catch(error => console.error("Error loading row:", file, error));
     });
+
+    const event = new Event('softwareAdded');
+    document.dispatchEvent(event);
 }
