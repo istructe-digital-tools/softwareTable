@@ -9,22 +9,26 @@
 <script src="software.js"></script>
 <script src="scripts.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        addSoftware(); // Ensure rows are added before randomizing
-        setTimeout(randomizeTableRows, 500); // Delay to allow loading
-        
+document.addEventListener("DOMContentLoaded", function () {
+    addSoftware(); // Ensure rows are added before randomizing
+
+    randomizeTableRows(); // Randomize the table rows
+
+    document.addEventListener("tableRandomized", function () {
+        // Now that the table is randomized, run other functions
+        sortTable(6);
+        sortTable(6);
+
         var form = document.getElementById("filterForm");
         if (form) {
             form.addEventListener("change", filterTable);
         }
-
-        sortTable(6);
-        sortTable(6);
     });
+});
 </script>
 </head>
 
-<body class="Table" onload="filterTable()">
+<body class="Table">
 <div class="banner">
 <div class="intro">
 	<H1>IStructE - Software Selection Tool</H1>

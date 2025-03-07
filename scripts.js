@@ -54,6 +54,9 @@ function randomizeTableRows() {
         let j = Math.floor(Math.random() * (i + 1));
         tbody.appendChild(rows[j]); // Move row to new position
     }
+
+    const event = new Event('tableRandomized');
+    document.dispatchEvent(event);
 }
 
 function filterTable() {
