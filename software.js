@@ -15,4 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error("Error loading row:", file, error));
     });
+
+    randomizeTableRows();
+
+    var form = document.getElementById("filterForm");
+    if (form) {
+        form.addEventListener("change", filterTable);
+    }
+
+    sortTable(6);
 });
