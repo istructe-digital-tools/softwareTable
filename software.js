@@ -1,8 +1,8 @@
-function addSoftware() {
+function addSoftware() { 
     const rowFiles = [
         "softwarePanel.html",
-	"softwareTrimble.html",
-	"softwareFoundaxisLLC.html",
+        "softwareTrimble.html",
+        "softwareFoundaxisLLC.html"
     ];
 
     const tableBody = document.getElementById("softwareTableBody");
@@ -15,4 +15,4 @@ function addSoftware() {
             })
             .catch(error => console.error("Error loading row:", file, error));
     });
-});
+}
