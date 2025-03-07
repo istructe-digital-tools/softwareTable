@@ -41,13 +41,6 @@ function sortTable(n) {
     filterTable();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    randomizeTableRows();
-    var form = document.getElementById("filterForm");
-    if (form) {
-        form.addEventListener("change", filterTable);
-    }
-});
 
 function randomizeTableRows() {
     var table = document.getElementById("softwareTable");
@@ -61,7 +54,6 @@ function randomizeTableRows() {
         let j = Math.floor(Math.random() * (i + 1));
         tbody.appendChild(rows[j]); // Move row to new position
     }
-    sortTable(6);
 }
 
 function filterTable() {

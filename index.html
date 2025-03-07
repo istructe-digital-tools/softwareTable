@@ -8,6 +8,19 @@
 <link rel="stylesheet" href="style.css">
 <script src="scripts.js"></script>
 <script src="software.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    addSoftware();
+    randomizeTableRows();
+
+    var form = document.getElementById("filterForm");
+    if (form) {
+        form.addEventListener("change", filterTable);
+    }
+
+    sortTable(6);
+    sortTable(6);
+}
 </head>
 
 <body class="Table" onload="filterTable()">
