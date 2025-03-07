@@ -6,21 +6,21 @@
 <html id="htmlContent">
 <head>
 <link rel="stylesheet" href="style.css">
-<script src="scripts.js"></script>
 <script src="software.js"></script>
+<script src="scripts.js"></script>
 <script>
-	document.addEventListener("DOMContentLoaded", function () {
-    		addSoftware();
-    		randomizeTableRows();
+    document.addEventListener("DOMContentLoaded", function () {
+        addSoftware(); // Ensure rows are added before randomizing
+        setTimeout(randomizeTableRows, 500); // Delay to allow loading
+        
+        var form = document.getElementById("filterForm");
+        if (form) {
+            form.addEventListener("change", filterTable);
+        }
 
-    		var form = document.getElementById("filterForm");
-    		if (form) {
-        		form.addEventListener("change", filterTable);
-   		}
-
-    		sortTable(6);
-    		sortTable(6);
-	});
+        sortTable(6);
+        sortTable(6);
+    });
 </script>
 </head>
 

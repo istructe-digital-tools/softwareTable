@@ -6,12 +6,16 @@ function addSoftware() {
     ];
 
     const tableBody = document.getElementById("softwareTableBody");
+    if (!tableBody) {
+        console.error("Table body not found!");
+        return;
+    }
 
     rowFiles.forEach(file => {
         fetch(file)
             .then(response => response.text())
             .then(data => {
-                tableBody.innerHTML += data;
+                tableBody.insertAdjacentHTML("beforeend", data);
             })
             .catch(error => console.error("Error loading row:", file, error));
     });
