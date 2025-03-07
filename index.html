@@ -10,8 +10,10 @@
 <script src="scripts.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
-    await addSoftware(); // Wait for addSoftware to finish before randomizing
-    randomizeTableRows(); // Randomize the table rows after rows are added
+    console.log("DOMContentLoaded fired, calling addSoftware...");
+    await addSoftware(); // Wait for rows to be added
+    console.log("addSoftware completed, calling randomizeTableRows...");
+    randomizeTableRows(); // Randomize the table rows after they are added
 });
 
 </script>
