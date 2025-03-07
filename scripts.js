@@ -41,14 +41,6 @@ function sortTable(n) {
     filterTable();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    randomizeTableRows();
-    var form = document.getElementById("filterForm");
-    if (form) {
-        form.addEventListener("change", filterTable);
-    }
-});
-
 function randomizeTableRows() {
     var table = document.getElementById("softwareTable");
     if (!table) return;
@@ -219,4 +211,9 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error("Error loading row:", file, error));
     });
+    randomizeTableRows();
+    var form = document.getElementById("filterForm");
+    if (form) {
+        form.addEventListener("change", filterTable);
+    }
 });
