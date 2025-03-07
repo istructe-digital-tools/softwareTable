@@ -9,9 +9,9 @@
 <script src="software.js"></script>
 <script src="scripts.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    addSoftware(); // Ensure rows are added before randomizing
-    randomizeTableRows(); // Randomize the table rows
+document.addEventListener("DOMContentLoaded", async function () {
+    await addSoftware(); // Wait for addSoftware to finish before randomizing
+    randomizeTableRows(); // Randomize the table rows after rows are added
 });
 
 </script>
