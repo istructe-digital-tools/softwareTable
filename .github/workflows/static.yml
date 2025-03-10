@@ -22,9 +22,22 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Job for updating the software list
+  update-software-list:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Generate software list in JavaScript
+        run: node .github/scripts/updateSoftwareList.js  # Ensure the path is correct for the script
+
   # Single deploy job since we're just deploying
   deploy:
-    needs: update-software-list
+    needs: update-software-list  # Ensures deploy runs after the software list is updated
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
