@@ -1,14 +1,17 @@
-NEW SOFTWARE SHOULD BE ADDED IN THE SOFTWARE FOLDER AS HTMLS IN THE FOLLOWING FORMAT.
-<textarea disabled>
+## New Software Submission
+
+NEW SOFTWARE SHOULD BE ADDED IN THE SOFTWARE FOLDER AS HTML FILES IN THE FOLLOWING FORMAT:
+
+```html
 <tr>
 	<td>DEVELOPER NAME</td> <!--Developer-->
 	<td>PRODUCT NAME</td> <!--Product-->
 	<td>PRODUCT TYPE (SEE LIST)</td> <!--Product Type-->
-	<td>ANALYSIS AND DESIGN COMPONENTS LIST<!--Components-->
+	<td>ANALYSIS AND DESIGN COMPONENTS LIST</td> <!--Components-->
 	<td>FEATURES (SEE LIST)</td> <!--Design Type-->
 	<td>YES OR NO ONLY</td> <!--Certified by Qualified Engineer-->
 	<td>YES OR NO ONLY</td> <!--ISO 9001 Compliant-->
-	<td><a target="_blank" href="https://www.WEBSITE HERE">link</a></td> <!--Link to Guidance-->
+	<td><a target="_blank" href="https://www.WEBSITE-HERE">link</a></td> <!--Link to Guidance-->
 	<td>YES OR NO ONLY</td> <!--Concrete-->	
 	<td>YES OR NO ONLY</td> <!--Masonry-->
 	<td>YES OR NO ONLY</td> <!--Steel-->
@@ -32,8 +35,7 @@ NEW SOFTWARE SHOULD BE ADDED IN THE SOFTWARE FOLDER AS HTMLS IN THE FOLLOWING FO
 	<td>(RECOMMENDED)</td> <!--Memory (RAM)-->
 	<td>(RECOMMENDED)</td> <!--Storage Requirements-->
 	<td>No</td> <!--Internet Access Required-->
-	<td><a target="_blank" href="https://www.WEBSITE HERE">link</a></td><!--Link to Full Specs-->
+	<td><a target="_blank" href="https://www.WEBSITE-HERE">link</a></td> <!--Link to Full Specs-->
 	<td>(SEE LIST)</td> <!--Primary Software-->
 	<td>ANY SOFTWARE REQUIRED FOR PLUGINS, SPREADSHEETS, OR WEBSITES</td> <!--Secondary Software-->
-</tr>	
-</textarea>
+</tr>
