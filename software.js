@@ -14,6 +14,7 @@ async function addSoftware() {
 
 
 
+
     const tableBody = document.getElementById("softwareTableBody");
     if (!tableBody) {
         console.error("Table body not found!");
