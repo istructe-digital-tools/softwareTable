@@ -1,16 +1,17 @@
 async function addSoftware() { 
     const rowFiles = [
-    "BHoM.html",
-    "CLTToolBox.html",
-    "ENJITechnologies.html",
-    "ElliottWood.html",
-    "FoundaxisLLC.html",
-    "Karamba.html",
-    "ProektsoftEOOD.html",
-    "Structx.html",
-    "Trimble.html",
-    "WhitbyWood.html"
+    "software/BHoM.html",
+    "software/CLTToolBox.html",
+    "software/ENJITechnologies.html",
+    "software/ElliottWood.html",
+    "software/FoundaxisLLC.html",
+    "software/Karamba.html",
+    "software/ProektsoftEOOD.html",
+    "software/Structx.html",
+    "software/Trimble.html",
+    "software/WhitbyWood.html"
 ];
+
 
 
     const tableBody = document.getElementById("softwareTableBody");
