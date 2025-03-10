@@ -1,60 +1,76 @@
- body{
+body{
 	font-family: helvetica;
 	font-size: 14px;
-	width: 5000px;
+	width: 100%;
 	margin: 0px;
-  }
+	overflow-x: clip;
+}
 
-  table{
+div.table{
+  	width: 98vw;
+	padding-left: 0.5vw;
+	overflow-x: scroll;
+}
+
+div.column{
+	padding-right: calc(min(1.5vw, 5px));
+}
+
+table{
 	border-collapse: collapse;
 	text-align: center;
 	font-size: 12px;
  	table-layout: fixed;
-  	width: 5000px;
 	margin-bottom: 25px;
+        width: 5000px;
      }
-  th {
+
+th {
 	padding: 0.1vw;
 	border: 0px;
 	cursor: n-resize;
+	color: white;
      }
-  th.product {
-	background: #DBDCDD;
+
+th.product {
+	background: #4D4F53;
      }
-  th.material {
-	background: #CCF2E4;
+th.material {
+	background: #134D37;
      }
-  th.section {
-	background: #99E6C9;
+th.section {
+	background: #73264E;
      }
-  th.designCodes {
-	background: #EDC9DC;
+th.designCodes {
+	background: #19575D;
      }
-  th.apiCodes {
-	background: #DAD8E4;
+th.apiCodes {
+	background: #544D6F;
      }
-  th.systemReq {
-	background: #C1EAEE;
+th.systemReq {
+	background: #4D4F53;
      }
-  th.cost {
-	background: #C8E6DC;
+th.cost {
+	background: #73264E;
      }
-  tr{
+tr{
   	border: 1px solid darkgrey;
         padding-bottom: 2px;
 	cursor: default;
   }
-  tr:nth-child(even) {
+tr:nth-child(even) {
 	background-color: #389c711a;
   }
-svg {
-    background: #279C6F;
+
+.logo {
     width: 10vw;
     padding: 1vw;
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: -1;
+    z-index: 1;
+    background: #19575D;
+    border-radius: calc(min(1vw, 5px));
 }
 
 form {
@@ -64,8 +80,7 @@ form {
   padding-left: 10px;
   padding-bottom: 10px;
   margin: 0px;
-
-
+  max-width: 95vw;
   position: sticky;
   left: 0;
 }
@@ -85,8 +100,10 @@ div.intro{
   position: sticky;
   left: 0;
   width: 1250px;
+  max-width: 90vw;
   color: white;
 }
+
 div.banner{
   padding: 0px;
   margin: 0px;
@@ -102,10 +119,10 @@ div.banner{
   font-size: 16px;
 }
 
-  .tooltip {
+.tooltip {
     position: relative;
-    cursor: pointer;
-  }
+    cursor: help;
+}
 
 .tooltip .tooltip-text {
     visibility: hidden;
@@ -126,11 +143,11 @@ div.banner{
     cursor: text;
 }
 
-  .tooltip:hover .tooltip-text {
+.tooltip:hover .tooltip-text {
     visibility: visible;
     opacity: 1;
-  }
+}
 
-.hiddenMessage{
-    cursor: help;
+label{
+    cursor: inherit;
 }
