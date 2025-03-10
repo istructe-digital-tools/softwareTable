@@ -1,5 +1,5 @@
 NEW SOFTWARE SHOULD BE ADDED IN THE SOFTWARE FOLDER AS HTMLS IN THE FOLLOWING FORMAT.
-
+<textarea disabled>
 <tr>
 	<td>DEVELOPER NAME</td> <!--Developer-->
 	<td>PRODUCT NAME</td> <!--Product-->
@@ -36,3 +36,4 @@ NEW SOFTWARE SHOULD BE ADDED IN THE SOFTWARE FOLDER AS HTMLS IN THE FOLLOWING FO
 	<td>(SEE LIST)</td> <!--Primary Software-->
 	<td>ANY SOFTWARE REQUIRED FOR PLUGINS, SPREADSHEETS, OR WEBSITES</td> <!--Secondary Software-->
 </tr>	
+</textarea>
