@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Allow commit changes
+  contents: write
   pages: write
   id-token: write
 
@@ -27,7 +27,7 @@ jobs:
           node-version: 18
 
       - name: Generate software list in JavaScript
-        run: node .github/scripts/updateSoftwareList.js  # Ensure correct script path
+        run: node .github/scripts/updateSoftwareList.js
 
       - name: Commit and push updated software list
         run: |
@@ -50,6 +50,25 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Upload artifact (required for GitHub Pages)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'  # Upload everything
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Delete old artifacts
+        run: |
+          GH_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          RUN_ID=${{ github.run_id }}
+          REPO=${{ github.repository }}
+          echo "Deleting artifacts for run $RUN_ID in $REPO..."
+          ARTIFACTS=$(gh api repos/$REPO/actions/runs/$RUN_ID/artifacts --jq '.artifacts[].id')
+          for ARTIFACT_ID in $ARTIFACTS; do
+            gh api --method DELETE repos/$REPO/actions/artifacts/$ARTIFACT_ID
+            echo "Deleted artifact $ARTIFACT_ID"
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
