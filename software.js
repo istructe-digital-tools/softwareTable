@@ -7,10 +7,12 @@ async function addSoftware() {
     "software/FoundaxisLLC.html",
     "software/Karamba.html",
     "software/ProektsoftEOOD.html",
+    "software/Rhino.html",
     "software/Structx.html",
     "software/Trimble.html",
     "software/WhitbyWood.html"
 ];
+
 
 
 
