@@ -151,3 +151,16 @@ div.banner{
 label{
     cursor: inherit;
 }
+
+@media (prefers-color-scheme: dark) {
+    body{
+	background: #333;
+	color: white;
+    }
+    a {
+  	color: hotpink;
+    }
+    div.banner{
+	background: #113b3f;
+    }
+}
