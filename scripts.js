@@ -130,11 +130,11 @@ function getMaterialColumnIndex(filter) {
         "subscription": 32,
 
         // Design Type
-        "fea": 4,
-        "codified": 4,
+        "analysis": 4,
+        "design": 4,
         "parametric": 4,
 	"bim": 4,
-	"eca": 4,
+	"carbon": 4,
 
 
         // Materials
