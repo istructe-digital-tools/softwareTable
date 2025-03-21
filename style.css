@@ -152,6 +152,12 @@ label{
     cursor: inherit;
 }
 
+input[type="number" i] {
+    padding-block: 1px;
+    padding-inline: 2px;
+    width: 25%;
+}
+
 @media (prefers-color-scheme: dark) {
     body{
 	background: #333;

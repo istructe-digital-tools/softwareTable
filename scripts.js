@@ -67,15 +67,37 @@ function filterTable() {
     if (!table) return;
 
     var form = document.getElementById("filterForm");
-    var checkboxes = form.getElementsByTagName("input");
+    var inputs = form.getElementsByTagName("input");
 
     var selectedFilters = [];
-    for (var i = 0; i < checkboxes.length; i++) {
-        var cb = checkboxes[i];
-        if (cb.type === "checkbox" && cb.checked) {
+    
+    for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i];
+
+        // Handle checkboxes
+        if (input.type === "checkbox" && input.checked) {
             selectedFilters.push({
-                columnIndex: getMaterialColumnIndex(cb.id),
-                expectedValue: (cb.dataset.filter || "").toLowerCase().trim()
+                columnIndex: getMaterialColumnIndex(input.id),
+                expectedValue: (input.dataset.filter || "").toLowerCase().trim(),
+                type: "text"
+            });
+        }
+
+        // Handle text search for "Features"
+        if (input.id === "Features" && input.value.trim() !== "") {
+            selectedFilters.push({
+                columnIndex: getMaterialColumnIndex(input.id),
+                searchText: input.value.toLowerCase().trim(),
+                type: "search"
+            });
+        }
+
+        // Handle numeric filtering for RAM and Storage
+        if ((input.id === "RAM" || input.id === "Storage") && input.value.trim() !== "") {
+            selectedFilters.push({
+                columnIndex: getMaterialColumnIndex(input.id),
+                maxValue: parseFloat(input.value),
+                type: "number"
             });
         }
     }
@@ -92,8 +114,26 @@ function filterTable() {
             if (!cell) return true;
 
             var cellText = cell.textContent.toLowerCase().trim();
-	    if (cellText === "-" || cellText === "any") return true;
-            return cellText.includes(filter.expectedValue);
+
+            if (cellText === "-" || cellText === "any") return true;
+
+            // Text filters (checkboxes)
+            if (filter.type === "text") {
+                return cellText.includes(filter.expectedValue);
+            }
+
+            // Search filter for Features
+            else if (filter.type === "search") {
+                return cellText.includes(filter.searchText);
+            }
+
+            // Number filters (RAM, Storage)
+            else if (filter.type === "number") {
+                var cellValue = extractNumericValue(cellText);
+                return !isNaN(cellValue) && cellValue <= filter.maxValue;
+            }
+
+            return true;
         });
 
         row.style.display = showRow ? "" : "none";
@@ -109,6 +149,13 @@ function filterTable() {
     }
 }
 
+// Helper function to extract numeric values from "10 GB", "512 MB", etc.
+function extractNumericValue(text) {
+    var match = text.match(/[\d\.]+/); // Extracts numbers including decimals
+    return match ? parseFloat(match[0]) : NaN;
+}
+
+
 
 // Helper function to get column index
 function getMaterialColumnIndex(filter) {
@@ -123,11 +170,15 @@ function getMaterialColumnIndex(filter) {
         "plug in": 2,
         "website": 2,
         "spreadsheet": 2,
+        "mobile app": 2,
 
         // Pricing Structure
         "free": 32,
         "paid": 32,
         "subscription": 32,
+
+        // Design Type
+        "features": 3,
 
         // Design Type
         "analysis": 4,
@@ -179,6 +230,8 @@ function getMaterialColumnIndex(filter) {
         "any": 26,
         "windows 10": 26,
         "windows 11": 26,
+        "ram": 28,
+        "storage": 29,
         "no internet access required": 30
     };
 

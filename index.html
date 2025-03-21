@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<label for="Website"> Website</label><br>
 	<input type="checkbox" id="Spreadsheet" name="SoftwareType" data-filter="Spreadsheet" onclick="enforceSingleSelection('SoftwareType', this)">
 	<label for="Spreadsheet"> Spreadsheet</label><br>
+	<input type="checkbox" id="Mobile App" name="SoftwareType" data-filter="Mobile App" onclick="enforceSingleSelection('SoftwareType', this)">
+	<label for="Mobile App"> Mobile App</label><br>
 
 	<h4>Pricing Structure</h4>
 	<input type="checkbox" id="Free" name="Pricing" data-filter="Free" onclick="enforceSingleSelection('Pricing', this)">
@@ -84,11 +86,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     <div class="column">
 
-	<h4>Features</h4>
+	<h4>Components</h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
 	        <label for="Analysis*"> Analysis*</label><br>
-		<span class="tooltip-text">Refers to the use of software and algorithms that can be used to analyse a structure. (Such as static analysis or finite element analysis)
+		<span class="tooltip-text">Refers to the use of software and algorithms that can be used to analyse a structure. (Such as Finite Element Analysis)
   		</span>
 	</div>
 
@@ -104,6 +106,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="parametric"> Parametric Modeling</label><br>
         <input type="checkbox" id="Carbon" name="Carbon" data-filter="Carbon" onclick="filterTable()">
         <label for="Carbon"> Embodied Carbon Assessment (ECA)</label><br>
+
+	<h4>Features</h4>
+	<label for="Features"> Feature search:</label>
+        <input type="text" id="Features" name="Features" data-filter="Features" oninput="filterTable()">
+        <br>
      
 	<h4>Materials</h4>
         <input type="checkbox" id="Concrete" name="Concrete" data-filter="Yes" onclick="filterTable()">
@@ -183,7 +190,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<h4>Internet Access</h4>
         <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
         <label for="No Internet Access Required"> No Internet Access Required</label><br>
-        <br>
+        
+	<h4>Hardware Requirements</h4>
+        <label for="RAM"> Maximum RAM</label>
+        <input type="number" id="RAM" name="RAM" data-filter="RAM" value="64" oninput="filterTable()"><label for="RAM"> GB</label><br>
+	<label for="Storage"> Maximum Storage</label>
+        <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
+	<br>
     </div>
 
 </form>
@@ -256,7 +269,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             <th class="product" onclick="sortTable(0)">Developer</th>
             <th class="product" onclick="sortTable(1)">Product</th>
             <th class="product" onclick="sortTable(2)">Product Type</th>
-            <th class="product" onclick="sortTable(3)">Analysis and Design Components</th>
+            <th class="product" onclick="sortTable(3)">Components</th>
             <th class="product" onclick="sortTable(4)">Features</th>
             <th class="product" onclick="sortTable(5)">Codified Design Checks Certified by Qualified Engineer</th>
             <th class="product" onclick="sortTable(6)">ISO 9001 Compliant</th>
@@ -295,8 +308,742 @@ document.addEventListener("DOMContentLoaded", async function () {
             <th class="cost" onclick="sortTable(33)">Secondary Software Requirements</th>
         </tr>
     </thead>
-    <tbody id="softwareTableBody">
-    </tbody>
+<tbody id="softwareTableBody"><tr style="background-color: rgba(255, 255, 255, 0.1);">
+  <td>Thornton Tomasetti</td> <!--Developer-->
+  <td>Beacon</td> <!--Product-->
+  <td>Plug In</td> <!--Product Type-->
+  <td>Embodied Carbon Assessment</td> <!--Components-->
+  <td>Carbon</td> <!--Design Type-->
+  <td>-</td> <!--Certified by Qualified Engineer-->
+  <td>Yes</td> <!--ISO 9001 Compliant-->
+  <td><a target="_blank" href="https://www.thorntontomasetti.com/capability/beacon">link</a></td> <!--Link to Guidance-->
+  <td>Yes</td> <!--Concrete-->
+  <td>Yes</td> <!--Masonry-->
+  <td>Yes</td> <!--Steel-->
+  <td>Yes</td> <!--Timber-->
+  <td>-</td> <!--Polymers-->
+  <td>-</td> <!--Composites-->
+  <td>-</td> <!--Custom Sections-->
+  <td>-</td> <!--Custom Profiles-->
+  <td>-</td> <!--Eurocodes-->
+  <td>-</td> <!--UK National Annex-->
+  <td>-</td> <!--Other National Annexes-->
+  <td>-</td> <!--British Standards-->
+  <td>-</td> <!--Other Codes-->
+  <td>-</td> <!--Level of Structural Checks-->
+  <td>No</td> <!--Python-->
+  <td>No</td> <!--C#-->
+  <td>No</td> <!--Grasshopper-->
+  <td>-</td> <!--Other-->
+  <td>Windows 10<br>Windows 11</td> <!--Operating System-->
+  <td>-</td> <!--Processors-->
+  <td>-</td> <!--Memory (RAM)-->
+  <td>-</td> <!--Storage Requirements-->
+  <td>No</td> <!--Internet Access Required-->
+  <td><a target="_blank" href="https://www.thorntontomasetti.com/capability/beacon">link</a></td><!--Link to Full Specs-->
+  <td>Free</td> <!--Primary Software-->
+  <td>Revit 2018+</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+	<td>Trimble</td> <!--Developer-->
+	<td>Tekla Structural Designer</td> <!--Product-->
+	<td>Stand Alone</td> <!--Product Type-->
+	<td>Finite Element Analysis<br>Member Design<br>Foundation Design<br>Slab Design<br>Wall Design<br>Footfall Analysis<br>Rigerours Slab Deflection<br>Construction Stage Analysis<br>Response Spectrum Analysis<br>Embodied Carbon Assessment<br>Quantities Exporter<br>Drawings Exporter<br>BIM Link</td> <!--Components-->
+	<td>Analysis<br>Design<br>Carbon</td> <!--Design Type-->
+	<td>Yes</td> <!--Certified by Qualified Engineer-->
+	<td>Yes</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.tekla.com/in/products/tekla-structural-designer">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>No</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>Yes</td> <!--Eurocodes-->
+	<td>Yes</td> <!--UK National Annex-->
+	<td>Ireland<br>Singapore<br>Malaysia<br>Finland<br>Sweden<br>Norway</td> <!--Other National Annexes-->
+	<td>Yes</td> <!--British Standards-->
+	<td>ACI<br>AISC<br>IS<br>AS</td> <!--Other Codes-->
+	<td>Full</td> <!--Level of Structural Checks-->
+	<td>Yes</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>Yes</td> <!--Grasshopper-->
+	<td>-</td> <!--Other-->
+	<td>Windows 10<br>Windows 11</td> <!--Operating System-->
+	<td>Intel i5 +</td> <!--Processors-->
+	<td>32 GB</td> <!--Memory (RAM)-->
+	<td>1 GB</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://support.tekla.com/doc/tekla-structural-designer/2025/ins_tekla_structural_designer_hardware_recommendations">link</a></td><!--Link to Full Specs-->
+	<td>Subscription</td> <!--Primary Software-->
+	<td>-</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);"> 
+<td>One Click LCA</td> <!--Developer--> 
+<td>One Click LCA Planetary</td> <!--Product--> 
+<td>Website</td> <!--Product Type--> 
+<td>Embodied Carbon Assessment</td> <!--Components--> 
+<td>Carbon</td> <!--Design Type--> <td>-</td> <!--Certified by Qualified Engineer--> 
+<td>Yes</td> <!--ISO 9001 Compliant--> 
+<td><a target="_blank" href="https://oneclicklca.com/resources/planetary">link</a></td> <!--Link to Guidance--> 
+<td>Yes</td> <!--Concrete--> 
+<td>Yes</td> <!--Masonry--> 
+<td>Yes</td> <!--Steel--> 
+<td>Yes</td> <!--Timber--> 
+<td>-</td> <!--Polymers--> 
+<td>-</td> <!--Composites--> 
+<td>-</td> <!--Custom Sections--> 
+<td>-</td> <!--Custom Profiles--> 
+<td>-</td> <!--Eurocodes--> 
+<td>-</td> <!--UK National Annex--> 
+<td>-</td> <!--Other National Annexes--> 
+<td>-</td> <!--British Standards--> 
+<td>-</td> <!--Other Codes--> 
+<td>-</td> <!--Level of Structural Checks--> 
+<td>No</td> <!--Python-->
+<td>No</td> <!--C#-->
+<td>No</td> <!--Grasshopper-->
+<td>-</td> <!--Other-->
+<td>Any</td> <!--Operating System--> 
+<td>-</td> <!--Processors--> 
+<td>-</td> <!--Memory (RAM)--> 
+<td>-</td> <!--Storage Requirements--> 
+<td>Yes</td> <!--Internet Access Required--> 
+<td><a target="_blank" href="https://oneclicklca.com/resources/planetary">link</a>
+</td><!--Link to Full Specs--> 
+<td>Free</td> <!--Primary Software--> 
+<td>Internet Browser</td> <!--Secondary Software--> 
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+	<td>Elliott Wood<br>IStructE</td> <!--Developer-->
+	<td>The Structural Carbon Tool</td> <!--Product-->
+	<td>Spreadsheet</td> <!--Product Type-->
+	<td>Embodied Carbon Assessment<!--Components-->
+	</td><td>Carbon</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>Yes</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.istructe.org/resources/guidance/the-structural-carbon-tool/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>-</td> <!--Custom Sections-->
+	<td>-</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>-</td> <!--Python-->
+	<td>-</td> <!--C#-->
+	<td>-</td> <!--Grasshopper-->
+	<td>VBA Macros</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>No</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://www.istructe.org/resources/guidance/the-structural-carbon-tool/">link</a></td><!--Link to Full Specs-->
+	<td>Free</td> <!--Primary Software-->
+	<td>Excel 2016 +</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+	<td>Trimble</td> <!--Developer-->
+	<td>Tekla Tedds</td> <!--Product-->
+	<td>Stand Alone</td> <!--Product Type-->
+	<td>Member Design<!--Components-->
+	</td><td>Design</td> <!--Design Type-->
+	<td>Yes</td> <!--Certified by Qualified Engineer-->
+	<td>Yes</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.tekla.com/in/products/tekla-tedds">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>Yes</td> <!--Eurocodes-->
+	<td>Yes</td> <!--UK National Annex-->
+	<td>Ireland<br>Singapore<br>Malaysia<br>Finland<br>Sweden<br>Norway</td> <!--Other National Annexes-->
+	<td>Yes</td> <!--British Standards-->
+	<td>ACI<br>AISC<br>IS<br>AS<br>Canadian</td> <!--Other Codes-->
+	<td>Full</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>-</td> <!--Other-->
+	<td>Windows 10<br>Windows 11</td> <!--Operating System-->
+	<td>Intel i3 +</td> <!--Processors-->
+	<td>2 GB</td> <!--Memory (RAM)-->
+	<td>1 GB</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://support.tekla.com/doc/tekla-tedds/2025/ins_tekla_tedds_hardware_requirements">link</a></td><!--Link to Full Specs-->
+	<td>Subscription</td> <!--Primary Software-->
+	<td>-</td> <!--Secondary Software-->
+</tr><tr style="display: none;">
+	<td>Whitby Wood</td> <!--Developer-->
+	<td>ACE Column Designer</td> <!--Product-->
+	<td>Stand Alone</td> <!--Product Type-->
+	<td>Column Design<br>Fire Design<!--Components-->
+	</td><td>Design<br>Carbon</td> <!--Design Type-->
+	<td>No</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.whitbywood.com/apps/ace-column-designer/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>No</td> <!--Masonry-->
+	<td>No</td> <!--Steel-->
+	<td>No</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>No</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>No</td> <!--Custom Profiles-->
+	<td>Yes</td> <!--Eurocodes-->
+	<td>No</td> <!--UK National Annex-->
+	<td>None</td> <!--Other National Annexes-->
+	<td>No</td> <!--British Standards-->
+	<td>None</td> <!--Other Codes-->
+	<td>Full</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>No</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>ETABS</td> <!--Other-->
+	<td>Windows 10<br>Windows 11</td> <!--Operating System-->
+	<td>Intel i3 +</td> <!--Processors-->
+	<td>4 GB</td> <!--Memory (RAM)-->
+	<td>14 MB</td> <!--Storage Requirements-->
+	<td>No</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://www.whitbywood.com/apps/ace-column-designer/">link</a></td><!--Link to Full Specs-->
+	<td>Free</td> <!--Primary Software-->
+	<td>-</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+  <td>Building Transparency</td> <!--Developer-->
+  <td>EC3 Tool</td> <!--Product-->
+  <td>Website</td> <!--Product Type-->
+  <td>Embodied Carbon Assessment</td> <!--Components-->
+  <td>Carbon</td> <!--Design Type-->
+  <td>-</td> <!--Certified by Qualified Engineer-->
+  <td>No</td> <!--ISO 9001 Compliant-->
+  <td><a target="_blank" href="https://www.buildingtransparency.org/tools/ec3/">link</a></td> <!--Link to Guidance-->
+  <td>Yes</td> <!--Concrete-->
+  <td>Yes</td> <!--Masonry-->
+  <td>Yes</td> <!--Steel-->
+  <td>Yes</td> <!--Timber-->
+  <td>-</td> <!--Polymers-->
+  <td>-</td> <!--Composites-->
+  <td>-</td> <!--Custom Sections-->
+  <td>-</td> <!--Custom Profiles-->
+  <td>-</td> <!--Eurocodes-->
+  <td>-</td> <!--UK National Annex-->
+  <td>-</td> <!--Other National Annexes-->
+  <td>-</td> <!--British Standards-->
+  <td>-</td> <!--Other Codes-->
+  <td>-</td> <!--Level of Structural Checks-->
+  <td>No</td> <!--Python-->
+  <td>No</td> <!--C#-->
+  <td>No</td> <!--Grasshopper-->
+  <td>-</td> <!--Other-->
+  <td>Any</td> <!--Operating System-->
+  <td>-</td> <!--Processors-->
+  <td>-</td> <!--Memory (RAM)-->
+  <td>-</td> <!--Storage Requirements-->
+  <td>Yes</td> <!--Internet Access Required-->
+  <td><a target="_blank" href="https://www.buildingtransparency.org/tools/ec3/">link</a></td><!--Link to Full Specs-->
+  <td>Free</td> <!--Primary Software-->
+  <td>Internet Browswer</td> <!--Secondary Software-->
+</tr><tr style="display: none;">
+	<td>CLT Toolbox</td> <!--Developer-->
+	<td>CLT Toolbox</td> <!--Product-->
+	<td>Website</td> <!--Product Type-->
+	<td>Member Design<br>Connection Design<!--Components-->
+	</td><td>Design</td> <!--Design Type-->
+	<td>No</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://clttoolbox.com/engineer/">link</a></td> <!--Link to Guidance-->
+	<td>No</td> <!--Concrete-->	
+	<td>No</td> <!--Masonry-->
+	<td>No</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>No</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>Yes</td> <!--Eurocodes-->
+	<td>No</td> <!--UK National Annex-->
+	<td>None</td> <!--Other National Annexes-->
+	<td>No</td> <!--British Standards-->
+	<td>AS</td> <!--Other Codes-->
+	<td>Partial</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>No</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>-</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://clttoolbox.com/features/">link</a></td><!--Link to Full Specs-->
+	<td>Subscription</td> <!--Primary Software-->
+	<td>Internet Browser</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+	<td>Karamba 3D</td> <!--Developer-->
+	<td>Karamba3D</td> <!--Product-->
+	<td>Plug In</td> <!--Product Type-->
+	<td>Parametric Modeling<br>Finite Element Analysis<!--Components-->
+	</td><td>Analysis<br>Parametric</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://manual.karamba3d.com/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>Yes</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>No</td> <!--C#-->
+	<td>Yes</td> <!--Grasshopper-->
+	<td>-</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://karamba3d.com/resources/">link</a></td><!--Link to Full Specs-->
+	<td>Subscription</td> <!--Primary Software-->
+	<td>Rhino &amp; Grasshopper</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+	<td>Structx</td> <!--Developer-->
+	<td>structx.com</td> <!--Product-->
+	<td>Website</td> <!--Product Type-->
+	<td>Static Beam and Frame Calculators<br>Geometric Properties Calculators<!--Components-->
+	</td><td>Analysis</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.structx.com/handy_calculators.html">link</a></td> <!--Link to Guidance-->
+	<td>-</td> <!--Concrete-->	
+	<td>-</td> <!--Masonry-->
+	<td>-</td> <!--Steel-->
+	<td>-</td> <!--Timber-->
+	<td>-</td> <!--Polymers-->
+	<td>-</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>No</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>-</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://www.structx.com/handy_calculators.html">link</a></td><!--Link to Full Specs-->
+	<td>Free</td> <!--Primary Software-->
+	<td>Internet Browswer</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+  <td>KieranTimberlake<br>Building Transparency</td> <!--Developer-->
+  <td>tallyLCA</td> <!--Product-->
+  <td>Plug In</td> <!--Product Type-->
+  <td>Embodied Carbon Assessment</td> <!--Components-->
+  <td>Carbon</td> <!--Design Type-->
+  <td>-</td> <!--Certified by Qualified Engineer-->
+  <td>No</td> <!--ISO 9001 Compliant-->
+  <td><a target="_blank" href="https://kierantimberlake.com/page/tally">link</a></td> <!--Link to Guidance-->
+  <td>Yes</td> <!--Concrete-->
+  <td>Yes</td> <!--Masonry-->
+  <td>Yes</td> <!--Steel-->
+  <td>Yes</td> <!--Timber-->
+  <td>-</td> <!--Polymers-->
+  <td>-</td> <!--Composites-->
+  <td>-</td> <!--Custom Sections-->
+  <td>-</td> <!--Custom Profiles-->
+  <td>-</td> <!--Eurocodes-->
+  <td>-</td> <!--UK National Annex-->
+  <td>-</td> <!--Other National Annexes-->
+  <td>-</td> <!--British Standards-->
+  <td>-</td> <!--Other Codes-->
+  <td>-</td> <!--Level of Structural Checks-->
+  <td>No</td> <!--Python-->
+  <td>No</td> <!--C#-->
+  <td>No</td> <!--Grasshopper-->
+  <td>-</td> <!--Other-->
+  <td>Windows 10<br>Windows 11</td> <!--Operating System-->
+  <td>-</td> <!--Processors-->
+  <td>-</td> <!--Memory (RAM)-->
+  <td>-</td> <!--Storage Requirements-->
+  <td>No</td> <!--Internet Access Required-->
+  <td><a target="_blank" href="https://kierantimberlake.com/page/tally">link</a></td><!--Link to Full Specs-->
+  <td>Subscription</td> <!--Primary Software-->
+  <td>Revit 2018+</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+	<td>Robert McNeel &amp; Associates</td> <!--Developer-->
+	<td>Rhino 8</td> <!--Product-->
+	<td>Stand Alone</td> <!--Product Type-->
+	<td>Building Information Modelling</td> <!--Components-->
+	<td>BIM</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.rhino3d.com/learn/?query=kind:%20jump_start&amp;modal=null">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>Yes</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>Yes</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>Yes</td> <!--Grasshopper-->
+	<td>Javascript<br>C++</td> <!--Other-->
+	<td>Windows 10<br>Windows 11<br>MacOS 12.4<br>MacOS 13<br>MacOS 14<br>MacOS 15</td> <!--Operating System-->
+	<td>64-bit Intel or AMD processor (Not ARM)<br>Apple Mac with Intel or Apple processor</td> <!--Processors-->
+	<td>8 GB</td> <!--Memory (RAM)-->
+	<td>10 GB</td> <!--Storage Requirements-->
+	<td><div class="tooltip">Yes*<span class="tooltip-text">For license validation</span></div></td><!--Internet Access Required-->
+	<td><a target="_blank" href="https://www.rhino3d.com/8/system-requirements/">link</a></td> <!--Link to Full Specs-->
+	<td>Paid</td> <!--Primary Software-->
+	<td>-</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+	<td>Robert McNeel &amp; Associates</td> <!--Developer-->
+	<td>Rhino 7</td> <!--Product-->
+	<td>Stand Alone</td> <!--Product Type-->
+	<td>Building Information Modelling</td> <!--Components-->
+	<td>BIM</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.rhino3d.com/learn/?query=kind:%20jump_start&amp;modal=null">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>Yes</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>Yes</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>Yes</td> <!--Grasshopper-->
+	<td>Javascript<br>C++</td> <!--Other-->
+	<td>Windows 8.1<br>Windows 10<br>Windows 11<br>MacOS 10.14.6<br>MacOS 10.15.7<br>MacOS 11.6<br>MacOS 12.4<br>MacOS 13<br>MacOS 14</td> <!--Operating System-->
+	<td>64-bit Intel or AMD processor (Not ARM)<br>Apple Mac with Intel or Apple processor</td> <!--Processors-->
+	<td>8 GB</td> <!--Memory (RAM)-->
+	<td>5 GB</td> <!--Storage Requirements-->
+	<td><div class="tooltip">Yes*<span class="tooltip-text">For license validation</span></div></td><!--Internet Access Required-->
+	<td><a target="_blank" href="https://www.rhino3d.com/7/system-requirements/">link</a></td> <!--Link to Full Specs-->
+	<td>Paid</td> <!--Primary Software-->
+	<td>-</td> <!--Secondary Software-->
+</tr><tr style="display: none;">
+	<td>ENJI Technologies</td> <!--Developer-->
+	<td>Enji.io</td> <!--Product-->
+	<td>Website</td> <!--Product Type-->
+	<td>Member Design<!--Components-->
+	</td><td>Design</td> <!--Design Type-->
+	<td>No</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.enji.io/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>Yes</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>User Defined</td> <!--Eurocodes-->
+	<td>User Defined</td> <!--UK National Annex-->
+	<td>User Defined</td> <!--Other National Annexes-->
+	<td>User Defined</td> <!--British Standards-->
+	<td>User Defined</td> <!--Other Codes-->
+	<td>User Defined</td> <!--Level of Structural Checks-->
+	<td>Yes</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>Javascript</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://docs.enji.io/intro">link</a></td><!--Link to Full Specs-->
+	<td>Free<br>Paid Features</td> <!--Primary Software-->
+	<td>Internet Browser</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+  <td>One Click LCA</td> <!--Developer-->
+  <td>One Click LCA</td> <!--Product-->
+  <td>Website</td> <!--Product Type-->
+  <td>Embodied Carbon Assessment</td> <!--Components-->
+  <td>Carbon</td> <!--Design Type-->
+  <td>-</td> <!--Certified by Qualified Engineer-->
+  <td>No</td> <!--ISO 9001 Compliant-->
+  <td><a target="_blank" href="https://oneclicklca.com/en/pricing/full-feature-list">link</a></td> <!--Link to Guidance-->
+  <td>Yes</td> <!--Concrete-->
+  <td>Yes</td> <!--Masonry-->
+  <td>Yes</td> <!--Steel-->
+  <td>Yes</td> <!--Timber-->
+  <td>-</td> <!--Polymers-->
+  <td>-</td> <!--Composites-->
+  <td>-</td> <!--Custom Sections-->
+  <td>-</td> <!--Custom Profiles-->
+  <td>-</td> <!--Eurocodes-->
+  <td>-</td> <!--UK National Annex-->
+  <td>-</td> <!--Other National Annexes-->
+  <td>-</td> <!--British Standards-->
+  <td>-</td> <!--Other Codes-->
+  <td>-</td> <!--Level of Structural Checks-->
+  <td>No</td> <!--Python-->
+  <td>No</td> <!--C#-->
+  <td>No</td> <!--Grasshopper-->
+  <td>-</td> <!--Other-->
+  <td>Any</td> <!--Operating System-->
+  <td>-</td> <!--Processors-->
+  <td>-</td> <!--Memory (RAM)-->
+  <td>-</td> <!--Storage Requirements-->
+  <td>Yes</td> <!--Internet Access Required-->
+  <td><a target="_blank" href="https://oneclicklca.com/en/pricing/full-feature-list">link</a></td><!--Link to Full Specs-->
+  <td>Subscription</td> <!--Primary Software-->
+  <td>Internet Browser</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+	<td>Robert McNeel &amp; Associates</td> <!--Developer-->
+	<td>Grasshopper</td> <!--Product-->
+	<td>Plug In</td> <!--Product Type-->
+	<td>Building Information Modelling<br>Parametric Modeling</td> <!--Components-->
+	<td>BIM<br>Parametric</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.rhino3d.com/learn/?query=kind:%20grasshopper&amp;modal=null">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>Yes</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>Yes</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>Yes</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>Yes</td> <!--Grasshopper-->
+	<td>VBScript</td> <!--Other-->
+	<td>Windows 11<br>macOS 14<br>macOS 13<br>macOS 12.4</td> <!--Operating System-->
+	<td>Intel Core i7 or AMD equivalent CPU<br>Apple Mac with Intel or Apple processor</td> <!--Processors-->
+	<td>16 GB</td> <!--Memory (RAM)-->
+	<td>10 GB</td> <!--Storage Requirements-->
+	<td><div class="tooltip">Yes*<span class="tooltip-text">For license validation</span></div></td><!--Internet Access Required-->
+	<td><a target="_blank" href="https://simplyrhino.co.uk/product-grasshopper-technical-details">link</a></td> <!--Link to Full Specs-->
+	<td>Free</td> <!--Primary Software-->
+	<td>Rhino 7<br>or Rhino 8</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);"> 
+<td>Hawkins\Brown</td> <!--Developer--> 
+<td>Hawkins\Brown Emission Reduction Toolkit (H\BERT)</td> <!--Product--> 
+<td>Plug In</td> <!--Product Type--> 
+<td>Embodied Carbon Assessment</td> <!--Components--> 
+<td>Carbon</td> <!--Design Type--> 
+<td>-</td> <!--Certified by Qualified Engineer--> 
+<td>No</td> <!--ISO 9001 Compliant--> 
+<td><a target="_blank" href="https://www.hawkinsbrown.com/sub-services/hbert-emissions-reduction-tool/">link</a></td> <!--Link to Guidance--> 
+<td>Yes</td> <!--Concrete--> 
+<td>Yes</td> <!--Masonry--> 
+<td>Yes</td> <!--Steel--> 
+<td>Yes</td> <!--Timber--> 
+<td>-</td> <!--Polymers--> 
+<td>-</td> <!--Composites--> 
+<td>-</td> <!--Custom Sections--> 
+<td>-</td> <!--Custom Profiles--> 
+<td>-</td> <!--Eurocodes--> 
+<td>-</td> <!--UK National Annex--> 
+<td>-</td> <!--Other National Annexes--> 
+<td>-</td> <!--British Standards--> 
+<td>-</td> <!--Other Codes--> 
+<td>-</td> <!--Level of Structural Checks--> 
+<td>No</td> <!--Python-->
+<td>No</td> <!--C#-->
+<td>No</td> <!--Grasshopper-->
+<td>-</td> <!--Other-->
+<td>Windows 10<br>Windows 11</td> <!--Operating System--> 
+<td>-</td> <!--Processors--> 
+<td>-</td> <!--Memory (RAM)--> 
+<td>-</td> <!--Storage Requirements--> 
+<td>No</td> <!--Internet Access Required--> 
+<td><a target="_blank" href="https://www.hawkinsbrown.com/sub-services/hbert-emissions-reduction-tool/">link</a></td><!--Link to Full Specs--> 
+<td>Free</td> <!--Primary Software--> 
+<td>Revit 2018+</td> <!--Secondary Software--> 
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+	<td>Structx</td> <!--Developer-->
+	<td>structx.com</td> <!--Product-->
+	<td>Spreadsheet</td> <!--Product Type-->
+	<td>Static Beam and Frame Calculators<br>Geometric Properties Calculators<!--Components-->
+	</td><td>Analysis</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://www.structx.com/downloads.html">link</a></td> <!--Link to Guidance-->
+	<td>-</td> <!--Concrete-->	
+	<td>-</td> <!--Masonry-->
+	<td>-</td> <!--Steel-->
+	<td>-</td> <!--Timber-->
+	<td>-</td> <!--Polymers-->
+	<td>-</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>No</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>VBA Macros</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>No</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://www.structx.com/downloads.html">link</a></td><!--Link to Full Specs-->
+	<td>Paid</td> <!--Primary Software-->
+	<td>Excel 2013 +</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(56, 156, 113, 0.1);">
+	<td>Foundaxis LLC</td> <!--Developer-->
+	<td>Foundaxis</td> <!--Product-->
+	<td>Website</td> <!--Product Type-->
+	<td>Foundation Design<br>Geotechnical Analysis</td> <!--Components-->
+	<td>Analysis<br>Design</td> <!--Design Type-->
+	<td>Yes</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://docs.foundaxis.com/home/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>No</td> <!--Masonry-->
+	<td>No</td> <!--Steel-->
+	<td>No</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>No</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>Yes</td> <!--Eurocodes-->
+	<td>No</td> <!--UK National Annex-->
+	<td>None</td> <!--Other National Annexes-->
+	<td>No</td> <!--British Standards-->
+	<td>ACI</td> <!--Other Codes-->
+	<td>Full</td> <!--Level of Structural Checks-->
+	<td>No</td> <!--Python-->
+	<td>No</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>SAP2000<br>ETABS<br>Excel</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td>Yes</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://foundaxis.com/features/">link</a></td><!--Link to Full Specs-->
+	<td>Subscription</td> <!--Primary Software-->
+	<td>Internet Browser</td> <!--Secondary Software-->
+</tr><tr style="background-color: rgba(255, 255, 255, 0.1);">
+	<td>BHoM</td> <!--Developer-->
+	<td>BHoM</td> <!--Product-->
+	<td>Plug In</td> <!--Product Type-->
+	<td>Parametric Modeling<!--Components-->
+	</td><td>Parametric<br>Carbon</td> <!--Design Type-->
+	<td>-</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://bhom.xyz/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>No</td> <!--Masonry-->
+	<td>Yes</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>Yes</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>-</td> <!--Eurocodes-->
+	<td>-</td> <!--UK National Annex-->
+	<td>-</td> <!--Other National Annexes-->
+	<td>-</td> <!--British Standards-->
+	<td>-</td> <!--Other Codes-->
+	<td>-</td> <!--Level of Structural Checks-->
+	<td class="hiddenMessage"><div class="tooltip">No*<span class="tooltip-text">Some parts of the BHoM are written in python.</span></div></td>  <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>Yes</td> <!--Grasshopper-->
+	<td>Robot<br>GSA<br>ETABS<br>Lusas<br>RFEM<br>SAP2000</td> <!--Other-->
+	<td>Windows 10<br>Windows 11</td> <!--Operating System-->
+	<td>-</td> <!--Processors-->
+	<td>-</td> <!--Memory (RAM)-->
+	<td>-</td> <!--Storage Requirements-->
+	<td class="hiddenMessage"><div class="tooltip">Yes*<span class="tooltip-text">Limited functionality is available without internet.</span></div></td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://github.com/BHoM">link</a></td><!--Link to Full Specs-->
+	<td>Free</td> <!--Primary Software-->
+	<td>Rhino &amp; Grasshopper<br>or Excel 2016 +<br>or Revit &amp; Dynamo</td> <!--Secondary Software-->
+</tr><tr style="display: none;">
+	<td>Proektsoft EOOD</td> <!--Developer-->
+	<td>Calcpad VM</td> <!--Product-->
+	<td>Stand Alone<br>Website</td> <!--Product Type-->
+	<td>Member Design<!--Components-->
+	</td><td>Design</td> <!--Design Type-->
+	<td>No</td> <!--Certified by Qualified Engineer-->
+	<td>No</td> <!--ISO 9001 Compliant-->
+	<td><a target="_blank" href="https://calcpad.eu/">link</a></td> <!--Link to Guidance-->
+	<td>Yes</td> <!--Concrete-->	
+	<td>No</td> <!--Masonry-->
+	<td>No</td> <!--Steel-->
+	<td>Yes</td> <!--Timber-->
+	<td>No</td> <!--Polymers-->
+	<td>No</td> <!--Composites-->
+	<td>Yes</td> <!--Custom Sections-->
+	<td>Yes</td> <!--Custom Profiles-->
+	<td>User Defined</td> <!--Eurocodes-->
+	<td>User Defined</td> <!--UK National Annex-->
+	<td>User Defined</td> <!--Other National Annexes-->
+	<td>User Defined</td> <!--British Standards-->
+	<td>User Defined</td> <!--Other Codes-->
+	<td>User Defined</td> <!--Level of Structural Checks-->
+	<td>Yes</td> <!--Python-->
+	<td>Yes</td> <!--C#-->
+	<td>No</td> <!--Grasshopper-->
+	<td>Javascript</td> <!--Other-->
+	<td>Any</td> <!--Operating System-->
+	<td>Intel i3 +</td> <!--Processors-->
+	<td>4 GB</td> <!--Memory (RAM)-->
+	<td>100 MB</td> <!--Storage Requirements-->
+	<td>No</td> <!--Internet Access Required-->
+	<td><a target="_blank" href="https://calcpad.eu/Help/1/about-calcpad">link</a></td><!--Link to Full Specs-->
+	<td>Free</td> <!--Primary Software-->
+	<td>-</td> <!--Secondary Software-->
+</tr></tbody>
 </table>
 </div>
 <p style="font-size: xx-small; padding-left: 0.5vw;">This tool is copyright © [2025] The Institution of Structural Engineers (IStructE). All rights reserved. Unauthorized use, reproduction, or distribution is prohibited.</p>
