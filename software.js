@@ -14,8 +14,10 @@ async function addSoftware() {
     "software/Structx.html",
     "software/Trimble.html",
     "software/WhitbyWood.html",
-    "software/beaconThorntonTomasetti.html"
+    "software/beaconThorntonTomasetti.html",
+    "software/concreteCenter.html"
 ];
+
 
 
 
