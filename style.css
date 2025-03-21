@@ -153,9 +153,24 @@ label{
 }
 
 input[type="number" i] {
-    padding-block: 1px;
-    padding-inline: 2px;
+    border-radius: 10px;
+    border: 0;
     width: 25%;
+    background: #279c6f59;
+    color: inherit;
+    padding-bottom; 1px;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+input[type="text" i] {
+    visibility: visible;
+    border: 0;
+    border-radius: 10px;
+    padding-inline: 5%;
+    width: 60%;
+    background: #279c6f59;
+    color: inherit;
 }
 
 @media (prefers-color-scheme: dark) {

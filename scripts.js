@@ -70,6 +70,7 @@ function filterTable() {
     var inputs = form.getElementsByTagName("input");
 
     var selectedFilters = [];
+    var plugIn = false;
     
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i];
@@ -82,9 +83,18 @@ function filterTable() {
                 type: "text"
             });
         }
+	
+	if (input.id === "Plug In"){
+	    if(input.checked === true){
+		plugIn = true;
+		document.getElementById("Secondary Software").style.visibility = "visible";
+	    }
+	    else {
+		document.getElementById("Secondary Software").style.visibility = "hidden";
+	    }
+	}
 
-        // Handle text search for "Features"
-        if (input.id === "Features" && input.value.trim() !== "") {
+        if ((input.id === "Features" || (input.id === "Secondary Software" && plugIn)) && input.value.trim() !== "") {
             selectedFilters.push({
                 columnIndex: getMaterialColumnIndex(input.id),
                 searchText: input.value.toLowerCase().trim(),
@@ -178,14 +188,14 @@ function getMaterialColumnIndex(filter) {
         "subscription": 32,
 
         // Design Type
-        "analysis": 3,
-        "design": 3,
-        "parametric": 3,
-	"bim": 3,
-	"carbon": 3,
+        "features": 3,
 
         // Design Type
-        "features": 4,
+        "analysis": 4,
+        "design": 4,
+        "parametric": 4,
+	"bim": 4,
+	"carbon": 4,
 
 
         // Materials
@@ -232,7 +242,8 @@ function getMaterialColumnIndex(filter) {
         "windows 11": 26,
         "ram": 28,
         "storage": 29,
-        "no internet access required": 30
+        "no internet access required": 30,
+        "secondary software": 33
     };
 
     return columnMap[filter.toLowerCase()] !== undefined ? columnMap[filter.toLowerCase()] : -1;

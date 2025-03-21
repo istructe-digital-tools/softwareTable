@@ -65,7 +65,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<input type="checkbox" id="Stand Alone" name="SoftwareType" data-filter="Stand Alone" onclick="enforceSingleSelection('SoftwareType', this)">
 	<label for="Stand Alone"> Stand Alone</label><br>
 	<input type="checkbox" id="Plug In" name="SoftwareType" data-filter="Plug In" onclick="enforceSingleSelection('SoftwareType', this)">
-	<label for="Plug In"> Plug In</label><br>
+	<label for="Plug In"> Plug In</label>
+        <input type="text" style="visibility: hidden;" id="Secondary Software" name="Secondary Software" data-filter="Secondary Software" oninput="filterTable()"><br>
 	<input type="checkbox" id="Website" name="SoftwareType" data-filter="Website" onclick="enforceSingleSelection('SoftwareType', this)">
 	<label for="Website"> Website</label><br>
 	<input type="checkbox" id="Spreadsheet" name="SoftwareType" data-filter="Spreadsheet" onclick="enforceSingleSelection('SoftwareType', this)">
@@ -196,6 +197,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="number" id="RAM" name="RAM" data-filter="RAM" value="64" oninput="filterTable()"><label for="RAM"> GB</label><br>
 	<label for="Storage"> Maximum Storage</label>
         <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
+	
+
 	<br>
     </div>
 
@@ -308,8 +311,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             <th class="cost" onclick="sortTable(33)">Secondary Software Requirements</th>
         </tr>
     </thead>
-<tbody id="softwareTableBody">
-</tbody>
+<tbody id="softwareTableBody"></tbody>
 </table>
 </div>
 <p style="font-size: xx-small; padding-left: 0.5vw;">This tool is copyright © [2025] The Institution of Structural Engineers (IStructE). All rights reserved. Unauthorized use, reproduction, or distribution is prohibited.</p>
