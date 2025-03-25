@@ -134,7 +134,14 @@ function filterTable() {
 
             // Search filter for Features
             else if (filter.type === "search") {
-                return cellText.includes(filter.searchText);
+	    	var cleanCellText = cell.innerHTML.replace(/<br\s*\/?>/gi, ' ')
+	                                       .replace(/<\/?[^>]+(>|$)/g, '')
+	                                       .toLowerCase().trim();
+	    
+	    	var searchWords = filter.searchText.toLowerCase().trim().split(/\s+/);
+	    	var cellWords = cleanCellText.split(/\s+/);
+	
+	    	return searchWords.every(word => cellWords.some(cellWord => cellWord.includes(word)));
             }
 
             // Number filters (RAM, Storage)
