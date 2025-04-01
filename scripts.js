@@ -209,9 +209,9 @@ function getMaterialColumnIndex(filter) {
         "mobile app": 2,
 
         // Pricing Structure
-        "free": 32,
-        "paid": 32,
-        "subscription": 32,
+        "free": 30,
+        "paid": 30,
+        "subscription": 30,
 
         // Design Type
         "features": 4,
