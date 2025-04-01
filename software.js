@@ -3,7 +3,6 @@ async function addSoftware() {
     "software/BHoM.html",
     "software/BuildingTransparency.html",
     "software/CLTToolBox.html",
-    "software/ENJITechnologies.html",
     "software/ElliottWood.html",
     "software/FoundaxisLLC.html",
     "software/HBert.html",
@@ -18,6 +17,7 @@ async function addSoftware() {
     "software/beaconThorntonTomasetti.html",
     "software/concreteCenter.html"
 ];
+
 
 
 
