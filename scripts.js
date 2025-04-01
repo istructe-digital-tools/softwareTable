@@ -248,7 +248,7 @@ function getMaterialColumnIndex(filter) {
         "aci": 18,
         "aisc": 18,
         "aashto": 18,
-        "irc": 18,
+        "international": 18,
 
         // Eurocode National Annexes (Countries)
         "united kingdom": 15,
