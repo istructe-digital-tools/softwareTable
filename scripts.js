@@ -19,6 +19,13 @@ function sortTable(n) {
         var cellA = rowA.cells[n].textContent.trim().toLowerCase();
         var cellB = rowB.cells[n].textContent.trim().toLowerCase();
 
+        // If sorting column 27, extract numeric values
+        if (n === 27) {
+            var numA = extractNumericValue(cellA);
+            var numB = extractNumericValue(cellB);
+            return ascending ? numA - numB : numB - numA;
+        }
+
         // Check if the values are numbers
         var numA = parseFloat(cellA);
         var numB = parseFloat(cellB);
@@ -134,14 +141,12 @@ function filterTable() {
 
             // Search filter for Features
             else if (filter.type === "search") {
-	    	var cleanCellText = cell.innerHTML.replace(/<br\s*\/?>/gi, ' ')
-	                                       .replace(/<\/?[^>]+(>|$)/g, '')
-	                                       .toLowerCase().trim();
-	    
-	    	var searchWords = filter.searchText.toLowerCase().trim().split(/\s+/);
-	    	var cellWords = cleanCellText.split(/\s+/);
-	
-	    	return searchWords.every(word => cellWords.some(cellWord => cellWord.includes(word)));
+		// Tokenize search terms and text content
+		var searchWords = filter.searchText.toLowerCase().trim().split(/\s+/);
+		var cellWords = cellText.split(/\s+/);
+
+		// Check if all search words appear somewhere in the cell text
+		return searchWords.every(word => cellWords.some(cellWord => cellWord.includes(word)));
             }
 
             // Number filters (RAM, Storage)
@@ -166,11 +171,25 @@ function filterTable() {
     }
 }
 
-// Helper function to extract numeric values from "10 GB", "512 MB", etc.
+// Helper function to extract numeric values and convert to GB if necessary
 function extractNumericValue(text) {
     var match = text.match(/[\d\.]+/); // Extracts numbers including decimals
-    return match ? parseFloat(match[0]) : NaN;
+    if (!match) return NaN; // Return NaN if no number is found
+
+    var value = parseFloat(match[0]); // Convert extracted number to float
+    text = text.toUpperCase(); // Normalize units to uppercase for consistency
+
+    if (text.includes("GB")) {
+        return value; // No conversion needed
+    } else if (text.includes("MB")) {
+        return value / 1000; // Convert MB to GB
+    } else if (text.includes("KB")) {
+        return value / 1000000; // Convert KB to GB
+    } else {
+        return 0; // If no recognized unit, return 0
+    }
 }
+
 
 
 
@@ -213,44 +232,54 @@ function getMaterialColumnIndex(filter) {
         "polymers": 12,
         "composites": 13,
 
-        // Sections
-        "custom sections": 14,
-        "custom profiles": 15,
 
 	//Check level
-	"full": 21,
+	"full": 19,
 
         // Codes
-        "eurocodes": 16,
-        "british standards": 19,
-        "aci": 20,
-        "aisc": 20,
-        "as": 20,
-        "canadian": 20,
-        "is": 20,
+        "eurocodes": 14,
+        "british standards": 17,
+        "australia": 18,
+        "canada": 18,
+        "india": 18,
+        "hong kong": 18,
+        "new zealand": 18,
+        "south africa": 18,
+        "aci": 18,
+        "aisc": 18,
+        "aashto": 18,
+        "irc": 18,
 
         // Eurocode National Annexes (Countries)
-        "united kingdom": 17,
-        "ireland": 18,
-        "singapore": 18,
-        "malaysia": 18,
-        "finland": 18,
-        "sweden": 18,
-        "norway": 18,
+        "united kingdom": 15,
+        "ireland": 16,
+        "cyprus": 16,
+        "finland": 16,
+        "france": 16,
+        "denmark": 16,
+        "germany": 16,
+        "italy": 16,
+        "malaysia": 16,
+        "netherlands": 16,
+        "norway": 16,
+        "poland": 16,
+        "singapore": 16,
+        "spain": 16,
+        "sweden": 16,
 
         // Application Programming Interfaces
-        "python": 22,
-        "c#": 23,
-        "grasshopper": 24,
+        "python": 20,
+        "c#": 21,
+        "grasshopper": 22,
 
         // Requirements
-        "any": 26,
-        "windows 10": 26,
-        "windows 11": 26,
-        "ram": 28,
-        "storage": 29,
-        "no internet access required": 30,
-        "secondary software": 33
+        "any": 24,
+        "windows 10": 24,
+        "windows 11": 24,
+        "ram": 26,
+        "storage": 27,
+        "no internet access required": 28,
+        "secondary software": 31
     };
 
     return columnMap[filter.toLowerCase()] !== undefined ? columnMap[filter.toLowerCase()] : -1;

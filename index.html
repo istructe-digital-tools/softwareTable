@@ -126,12 +126,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="Polymers"> Polymers</label><br>
         <input type="checkbox" id="Composites" name="Composites" data-filter="Yes" onclick="filterTable()">
         <label for="Composites"> Composites</label><br>
-
-	<h4>Sections</h4>
-        <input type="checkbox" id="Custom Sections" name="Custom Sections" data-filter="Yes" onclick="filterTable()">
-        <label for="Custom Sections"> Custom Sections</label><br>
-        <input type="checkbox" id="Custom Profiles" name="Custom Profiles" data-filter="Yes" onclick="filterTable()">
-        <label for="Custom Profiles"> Custom Profiles</label><br>
         <br>
     </div>
 
@@ -141,33 +135,62 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="Eurocodes"> Eurocodes</label><br>
         <input type="checkbox" id="British Standards" name="British Standards" data-filter="Yes" onclick="filterTable()">
         <label for="British Standards"> British Standards</label><br>
+        <input type="checkbox" id="Austalia" name="Australia" data-filter="Australia" onclick="filterTable()">
+        <label for="Australia"> Australia (AS)</label><br>
+        <input type="checkbox" id="Canada" name="Canada" data-filter="Canada" onclick="filterTable()">
+        <label for="Canada">Canada (CSA)</label><br>
+        <input type="checkbox" id="India" name="India" data-filter="India" onclick="filterTable()">
+        <label for="India"> India (IS)</label><br>
+        <input type="checkbox" id="Hong Kong" name="Hong Kong" data-filter="Hong Kong" onclick="filterTable()">
+        <label for="Hong Kong"> Hong Kong</label><br>
+        <input type="checkbox" id="New Zealand" name="New Zealand" data-filter="New Zealand" onclick="filterTable()">
+        <label for="New Zealand"> New Zealand</label><br>
+        <input type="checkbox" id="South Africa" name="South Africa" data-filter="South Africa" onclick="filterTable()">
+        <label for="South Africa"> South Africa (SANS)</label><br>
         <input type="checkbox" id="ACI" name="ACI" data-filter="ACI" onclick="filterTable()">
         <label for="ACI"> ACI (American Concrete Institute)</label><br>
         <input type="checkbox" id="AISC" name="AISC" data-filter="AISC" onclick="filterTable()">
         <label for="AISC"> AISC (American Institute of Steel Construction)</label><br>
-        <input type="checkbox" id="AS" name="AS" data-filter="AS" onclick="filterTable()">
-        <label for="AS"> AS (Australian Standards)</label><br>
-        <input type="checkbox" id="Canadian" name="Canadian" data-filter="Canadian" onclick="filterTable()">
-        <label for="Canadian"> Canadian Standards</label><br>
-        <input type="checkbox" id="IS" name="IS" data-filter="IS" onclick="filterTable()">
-        <label for="IS"> IS (Indian Standards)</label><br>
+        <input type="checkbox" id="AASHTO" name="AASHTO" data-filter="AASHTO" onclick="filterTable()">
+        <label for="AASHTO"> AASHTO (American Highways and Transport)</label><br>
+        <input type="checkbox" id="International" name="International" data-filter="International" onclick="filterTable()">
+        <label for="International"> International Codes</label><br>
+	<br>
+    </div>
 
-
+    <div class="column">
         <h4>Eurocode National Annexes</h4>
         <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
         <label for="United Kingdom"> United Kingdom</label><br>
         <input type="checkbox" id="Ireland" name="Ireland" data-filter="Ireland" onclick="filterTable()">
         <label for="Ireland"> Ireland</label><br>
+        <input type="checkbox" id="Cyprus" name="Cyprus" data-filter="Cyprus" onclick="filterTable()">
+        <label for="Cyprus"> Cyprus</label><br>
         <input type="checkbox" id="Finland" name="Finland" data-filter="Finland" onclick="filterTable()">
         <label for="Finland"> Finland</label><br>
+        <input type="checkbox" id="France" name="France" data-filter="France" onclick="filterTable()">
+        <label for="France"> France</label><br>
+        <input type="checkbox" id="Denmark" name="Denmark" data-filter="France" onclick="filterTable()">
+        <label for="Denmark"> Denmark</label><br>
+        <input type="checkbox" id="Germany" name="Germany" data-filter="Germany" onclick="filterTable()">
+        <label for="Germany"> Germany</label><br>
+        <input type="checkbox" id="Italy" name="Italy" data-filter="Italy" onclick="filterTable()">
+        <label for="Italy"> Italy</label><br>
         <input type="checkbox" id="Malaysia" name="Malaysia" data-filter="Malaysia" onclick="filterTable()">
         <label for="Malaysia"> Malaysia</label><br>
+        <input type="checkbox" id="Netherlands" name="Netherlands" data-filter="Netherlands" onclick="filterTable()">
+        <label for="Netherlands"> Netherlands</label><br>
         <input type="checkbox" id="Norway" name="Norway" data-filter="Norway" onclick="filterTable()">
         <label for="Norway"> Norway</label><br>
+        <input type="checkbox" id="Poland" name="Poland" data-filter="Poland" onclick="filterTable()">
+        <label for="Poland"> Poland</label><br>
         <input type="checkbox" id="Singapore" name="Singapore" data-filter="Singapore" onclick="filterTable()">
         <label for="Singapore"> Singapore</label><br>
+        <input type="checkbox" id="Spain" name="Spain" data-filter="Spain" onclick="filterTable()">
+        <label for="Spain"> Spain</label><br>
         <input type="checkbox" id="Sweden" name="Sweden" data-filter="Sweden" onclick="filterTable()">
         <label for="Sweden"> Sweden</label><br>
+
         <br>
     </div>
 
@@ -227,16 +250,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         <col style="width:1%">
         <col style="width:1%">
 
-        <!-- Sections (2 columns) -->
-        <col style="width:1.5%">
-        <col style="width:1.5%">
 
         <!-- Design Codes (6 columns) -->
         <col style="width:1%">
         <col style="width:2%">
         <col style="width:2%">
         <col style="width:2%">
-        <col style="width:1%">
+        <col style="width:2%">
         <col style="width:3%">
 
         <!-- APIs (4 columns) -->
@@ -262,7 +282,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         <tr class="headers">
             <th class="product" colspan="8">General Information</th>
             <th class="material" colspan="6">Materials</th>
-            <th class="section" colspan="2">Sections</th>
             <th class="designCodes" colspan="6">Design Codes</th>
             <th class="apiCodes" colspan="4">Application Programming Interfaces</th>
             <th class="systemReq" colspan="6">System Requirements</th>
@@ -285,33 +304,32 @@ document.addEventListener("DOMContentLoaded", async function () {
             <th class="material" onclick="sortTable(12)">Polymers</th>
             <th class="material" onclick="sortTable(13)">Composites</th>
 
-            <th class="section" onclick="sortTable(14)">Custom Sections</th>
-            <th class="section" onclick="sortTable(15)">Custom Profiles</th>
 
-            <th class="designCodes" onclick="sortTable(16)">Eurocodes</th>
-            <th class="designCodes" onclick="sortTable(17)">UK National Annex</th>
-            <th class="designCodes" onclick="sortTable(18)">Other National Annexes</th>
-            <th class="designCodes" onclick="sortTable(19)">British Standards</th>
-            <th class="designCodes" onclick="sortTable(20)">Other Codes</th>
-            <th class="designCodes" onclick="sortTable(21)">Level of Structural Checks</th>
+            <th class="designCodes" onclick="sortTable(14)">Eurocodes</th>
+            <th class="designCodes" onclick="sortTable(15)">UK National Annex</th>
+            <th class="designCodes" onclick="sortTable(16)">Other National Annexes</th>
+            <th class="designCodes" onclick="sortTable(17)">British Standards</th>
+            <th class="designCodes" onclick="sortTable(18)">Other Codes</th>
+            <th class="designCodes" onclick="sortTable(19)">Level of Structural Checks</th>
 
-            <th class="apiCodes" onclick="sortTable(22)">Python</th>
-            <th class="apiCodes" onclick="sortTable(23)">C#</th>
-            <th class="apiCodes" onclick="sortTable(24)">Grasshopper</th>
-            <th class="apiCodes" onclick="sortTable(25)">Other</th>
+            <th class="apiCodes" onclick="sortTable(20)">Python</th>
+            <th class="apiCodes" onclick="sortTable(21)">C#</th>
+            <th class="apiCodes" onclick="sortTable(22)">Grasshopper</th>
+            <th class="apiCodes" onclick="sortTable(23)">Other</th>
 
-            <th class="systemReq" onclick="sortTable(26)">Operating System</th>
-            <th class="systemReq" onclick="sortTable(27)">Processors</th>
-            <th class="systemReq" onclick="sortTable(28)">Memory (RAM)</th>
-            <th class="systemReq" onclick="sortTable(29)">Storage Requirements</th>
-            <th class="systemReq" onclick="sortTable(30)">Internet Access Required</th>
-            <th class="systemReq" onclick="sortTable(31)">Link to Full Specs</th>
+            <th class="systemReq" onclick="sortTable(24)">Operating System</th>
+            <th class="systemReq" onclick="sortTable(25)">Processors</th>
+            <th class="systemReq" onclick="sortTable(26)">Memory (RAM)</th>
+            <th class="systemReq" onclick="sortTable(27)">Storage Requirements</th>
+            <th class="systemReq" onclick="sortTable(28)">Internet Access Required</th>
+            <th class="systemReq" onclick="sortTable(29)">Link to Full Specs</th>
 
-            <th class="cost" onclick="sortTable(32)">Pricing Structure</th>
-            <th class="cost" onclick="sortTable(33)">Secondary Software Requirements</th>
+            <th class="cost" onclick="sortTable(30)">Pricing Structure</th>
+            <th class="cost" onclick="sortTable(31)">Secondary Software Requirements</th>
         </tr>
     </thead>
-<tbody id="softwareTableBody"></tbody>
+<tbody id="softwareTableBody">
+</tbody>
 </table>
 </div>
 <p style="font-size: xx-small; padding-left: 0.5vw;">This tool is copyright © [2025] The Institution of Structural Engineers (IStructE). All rights reserved. Unauthorized use, reproduction, or distribution is prohibited.</p>
