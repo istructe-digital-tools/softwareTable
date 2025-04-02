@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 <body><p style="position: fixed;top: 50%; left: 50%;transform: translate(-50%, -50%); font-size: 9vw; color: rgba(0, 0, 0, 0.1); font-weight: bold; pointer-events: none; user-select: none; white-space: nowrap; text-align: center;">DRAFT<br/>WORK IN PROGRESS</p>
 <div class="banner">
 <div class="intro">
-	<H1>IStructE - Software Selection Tool</H1>
+	<H1>IStructE - Software Database</H1>
 	<p>This tool is designed to be used in accordance with the Institution of Structural Engineers' guidance on 
 	<strong>Quality Assurance and Quality Checking</strong>.</p>
 
@@ -90,14 +90,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<h4>Components</h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
-	        <label for="Analysis"> Structural Analysis*</label><br>
+	        <label for="Analysis*"> Analysis*</label><br>
 		<span class="tooltip-text">Refers to the use of software and algorithms that can be used to analyse a structure. (Such as Finite Element Analysis)
   		</span>
 	</div>
 
 	<div class="tooltip">
         	<input type="checkbox" id="Design" name="Design" data-filter="Design" onclick="filterTable()">
-        	<label for="Design"> Codified Design Calculations*</label><br>
+        	<label for="Design*"> Design*</label><br>
   		<span class="tooltip-text">Refers to the use of software and algorithms that automate design processes based on established codes and standards.
   		</span>
 	</div>
