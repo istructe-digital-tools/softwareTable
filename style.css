@@ -23,6 +23,9 @@ table{
  	table-layout: fixed;
 	margin-bottom: 25px;
         width: 5000px;
+	overflow-y: hidden;
+	height:	max-content;
+	
      }
 
 th {
