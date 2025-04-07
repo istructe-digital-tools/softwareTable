@@ -7,6 +7,7 @@ async function addSoftware() {
     "software/FoundaxisLLC.html",
     "software/HBert.html",
     "software/Karamba.html",
+    "software/MasterSeries.html",
     "software/Oasys.html",
     "software/OneClickLCA.html",
     "software/ProektsoftEOOD.html",
@@ -17,6 +18,7 @@ async function addSoftware() {
     "software/beaconThorntonTomasetti.html",
     "software/concreteCenter.html"
 ];
+
 
 
 
