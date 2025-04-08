@@ -253,6 +253,7 @@ function getMaterialColumnIndex(filter) {
         // Eurocode National Annexes (Countries)
         "united kingdom": 15,
         "ireland": 16,
+        "belgium": 16,
         "cyprus": 16,
         "finland": 16,
         "france": 16,
@@ -266,6 +267,7 @@ function getMaterialColumnIndex(filter) {
         "singapore": 16,
         "spain": 16,
         "sweden": 16,
+        "user defined": 16,
 
         // Application Programming Interfaces
         "python": 20,
