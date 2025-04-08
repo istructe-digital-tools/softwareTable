@@ -11,7 +11,6 @@ async function addSoftware() {
     "software/MasterSeries.html",
     "software/Oasys.html",
     "software/OneClickLCA.html",
-    "software/ProektsoftEOOD.html",
     "software/Rhino.html",
     "software/Structx.html",
     "software/Trimble.html",
@@ -19,6 +18,7 @@ async function addSoftware() {
     "software/beaconThorntonTomasetti.html",
     "software/concreteCenter.html"
 ];
+
 
 
 
