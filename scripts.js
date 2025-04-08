@@ -5,28 +5,31 @@ function sortTable(n) {
         return;
     }
 
-    var tbody = table.getElementsByTagName("tbody")[0]; // Get the table body
+    var tbody = table.getElementsByTagName("tbody")[0];
     if (!tbody) {
         console.error("Table body not found!");
         return;
     }
 
-    var rows = Array.from(tbody.rows); // Convert rows to an array
-    var ascending = table.dataset.sortOrder !== "asc"; // Toggle sort order
+    var rows = Array.from(tbody.rows);
+    var ascending = table.dataset.sortOrder !== "asc";
 
-    // Sort rows based on the column index (n)
     rows.sort(function (rowA, rowB) {
         var cellA = rowA.cells[n].textContent.trim().toLowerCase();
         var cellB = rowB.cells[n].textContent.trim().toLowerCase();
 
-        // If sorting column 27, extract numeric values
+        // Push "-" to the bottom
+        if (cellA === "-") return 1;
+        if (cellB === "-") return -1;
+
+        // If sorting column 27, use unit-aware extraction
         if (n === 27) {
             var numA = extractNumericValue(cellA);
             var numB = extractNumericValue(cellB);
             return ascending ? numA - numB : numB - numA;
         }
 
-        // Check if the values are numbers
+        // Regular numeric sort
         var numA = parseFloat(cellA);
         var numB = parseFloat(cellB);
         var isNumeric = !isNaN(numA) && !isNaN(numB);
@@ -38,15 +41,13 @@ function sortTable(n) {
         }
     });
 
-    // Append sorted rows back to tbody
     tbody.innerHTML = "";
     rows.forEach(row => tbody.appendChild(row));
-
-    // Store the sorting order
     table.dataset.sortOrder = ascending ? "asc" : "desc";
 
     filterTable();
 }
+
 
 
 function randomizeTableRows() {
@@ -64,6 +65,8 @@ function randomizeTableRows() {
 
     sortTable(6);
     sortTable(6);
+    sortTable(19);
+    sortTable(5);
 
     const event = new Event('tableRandomized');
     document.dispatchEvent(event);
