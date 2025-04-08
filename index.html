@@ -136,60 +136,81 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="British Standards" name="British Standards" data-filter="Yes" onclick="filterTable()">
         <label for="British Standards"> British Standards</label><br>
         <input type="checkbox" id="Austalia" name="Australia" data-filter="Australia" onclick="filterTable()">
-        <label for="Australia"> Australia (AS)</label><br>
+        <label for="Australia"> Australian Standards</label><br>
         <input type="checkbox" id="Canada" name="Canada" data-filter="Canada" onclick="filterTable()">
-        <label for="Canada">Canada (CSA)</label><br>
-        <input type="checkbox" id="India" name="India" data-filter="India" onclick="filterTable()">
-        <label for="India"> India (IS)</label><br>
+        <label for="Canada">Canadian Standards</label><br>
         <input type="checkbox" id="Hong Kong" name="Hong Kong" data-filter="Hong Kong" onclick="filterTable()">
-        <label for="Hong Kong"> Hong Kong</label><br>
+        <label for="Hong Kong"> Hong Kong Standards</label><br>
+        <input type="checkbox" id="India" name="India" data-filter="India" onclick="filterTable()">
+        <label for="India"> Indian Standards</label><br>
         <input type="checkbox" id="New Zealand" name="New Zealand" data-filter="New Zealand" onclick="filterTable()">
-        <label for="New Zealand"> New Zealand</label><br>
+        <label for="New Zealand"> New Zealand Standards</label><br>
         <input type="checkbox" id="South Africa" name="South Africa" data-filter="South Africa" onclick="filterTable()">
-        <label for="South Africa"> South Africa (SANS)</label><br>
-        <input type="checkbox" id="ACI" name="ACI" data-filter="ACI" onclick="filterTable()">
-        <label for="ACI"> ACI (American Concrete Institute)</label><br>
-        <input type="checkbox" id="AISC" name="AISC" data-filter="AISC" onclick="filterTable()">
-        <label for="AISC"> AISC (American Institute of Steel Construction)</label><br>
+        <label for="South Africa"> South African Standards</label><br>
         <input type="checkbox" id="AASHTO" name="AASHTO" data-filter="AASHTO" onclick="filterTable()">
-        <label for="AASHTO"> AASHTO (American Highways and Transport)</label><br>
+        <label for="AASHTO"> USA - AASHTO</label><br>
+        <input type="checkbox" id="ACI" name="ACI" data-filter="ACI" onclick="filterTable()">
+        <label for="ACI"> USA - ACI</label><br>
+        <input type="checkbox" id="AISC" name="AISC" data-filter="AISC" onclick="filterTable()">
+        <label for="AISC"> USA - AISC</label><br>
         <input type="checkbox" id="International" name="International" data-filter="International" onclick="filterTable()">
-        <label for="International"> International Codes</label><br>
+        <label for="International"> USA - ICC/IBC</label><br>
 	<br>
     </div>
 
     <div class="column">
         <h4>Eurocode National Annexes</h4>
+
         <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
         <label for="United Kingdom"> United Kingdom</label><br>
+
         <input type="checkbox" id="Ireland" name="Ireland" data-filter="Ireland" onclick="filterTable()">
         <label for="Ireland"> Ireland</label><br>
+
+        <input type="checkbox" id="Belgium" name="Belgium" data-filter="Belgium" onclick="filterTable()">
+        <label for="Belgium"> Belgium</label><br>
+
         <input type="checkbox" id="Cyprus" name="Cyprus" data-filter="Cyprus" onclick="filterTable()">
         <label for="Cyprus"> Cyprus</label><br>
+
+        <input type="checkbox" id="Denmark" name="Denmark" data-filter="Denmark" onclick="filterTable()">
+        <label for="Denmark"> Denmark</label><br>
+
         <input type="checkbox" id="Finland" name="Finland" data-filter="Finland" onclick="filterTable()">
         <label for="Finland"> Finland</label><br>
+
         <input type="checkbox" id="France" name="France" data-filter="France" onclick="filterTable()">
         <label for="France"> France</label><br>
-        <input type="checkbox" id="Denmark" name="Denmark" data-filter="France" onclick="filterTable()">
-        <label for="Denmark"> Denmark</label><br>
+
         <input type="checkbox" id="Germany" name="Germany" data-filter="Germany" onclick="filterTable()">
         <label for="Germany"> Germany</label><br>
+
         <input type="checkbox" id="Italy" name="Italy" data-filter="Italy" onclick="filterTable()">
         <label for="Italy"> Italy</label><br>
+
         <input type="checkbox" id="Malaysia" name="Malaysia" data-filter="Malaysia" onclick="filterTable()">
         <label for="Malaysia"> Malaysia</label><br>
+
         <input type="checkbox" id="Netherlands" name="Netherlands" data-filter="Netherlands" onclick="filterTable()">
         <label for="Netherlands"> Netherlands</label><br>
+
         <input type="checkbox" id="Norway" name="Norway" data-filter="Norway" onclick="filterTable()">
         <label for="Norway"> Norway</label><br>
+
         <input type="checkbox" id="Poland" name="Poland" data-filter="Poland" onclick="filterTable()">
         <label for="Poland"> Poland</label><br>
+
         <input type="checkbox" id="Singapore" name="Singapore" data-filter="Singapore" onclick="filterTable()">
         <label for="Singapore"> Singapore</label><br>
+
         <input type="checkbox" id="Spain" name="Spain" data-filter="Spain" onclick="filterTable()">
         <label for="Spain"> Spain</label><br>
+
         <input type="checkbox" id="Sweden" name="Sweden" data-filter="Sweden" onclick="filterTable()">
         <label for="Sweden"> Sweden</label><br>
+
+        <input type="checkbox" id="User Defined" name="User Defined" data-filter="User Defined" onclick="filterTable()">
+        <label for="User Defined"> User Defined Inputs</label><br>
 
         <br>
     </div>
@@ -329,6 +350,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         </tr>
     </thead>
 <tbody id="softwareTableBody">
+
 </tbody>
 </table>
 </div>

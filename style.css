@@ -10,6 +10,7 @@ div.table{
   	width: 98vw;
 	padding-left: 0.5vw;
 	overflow-x: scroll;
+	overflow-y: hidden;
 }
 
 div.column{
@@ -23,8 +24,6 @@ table{
  	table-layout: fixed;
 	margin-bottom: 25px;
         width: 5000px;
-	overflow-y: hidden;
-	height:	max-content;
      }
 
 th {
