@@ -137,18 +137,21 @@ function filterTable() {
         var showRow = true;
 
         for (let filter of selectedFilters) {
-            if (filter.type === "multisearch") {
-                const match = filter.columnIndices.some(index => {
-                    const cell = row.cells[index];
-                    if (!cell) return false;
-                    const text = cell.textContent.toLowerCase().trim();
-                    return text !== "-" && text !== "any" && text.includes(filter.searchText);
-                });
-                if (!match) {
-                    showRow = false;
-                    break;
-                }
-            } else {
+	   if (filter.type === "multisearch") {
+			    const values = filter.columnIndices.map(index => {
+			        const cell = row.cells[index];
+			        return cell ? cell.textContent.toLowerCase().trim() : "";
+			    });
+			
+			    const allDashes = values.every(text => text === "-");
+			    const hasMatch = values.some(text => text !== "-" && text !== "any" && text.includes(filter.searchText));
+			
+			    if (!hasMatch && !allDashes) {
+			        showRow = false;
+			        break;
+			    }
+	    }
+            else {
                 var cell = row.cells[filter.columnIndex];
                 if (!cell) continue;
 
