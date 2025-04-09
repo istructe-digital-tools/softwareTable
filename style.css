@@ -17,6 +17,9 @@ div.column{
 	padding-right: calc(min(1.5vw, 5px));
 }
 
+.toggle:checked{
+	accent-color: grey;
+}
 table{
 	border-collapse: collapse;
 	text-align: center;
@@ -49,7 +52,7 @@ th.apiCodes {
 	background: #544D6F;
      }
 th.systemReq {
-	background: #4D4F53;
+	background: #7E7E74;
      }
 th.cost {
 	background: #73264E;

@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="style.css">
 <script src="software.js"></script>
 <script src="scripts.js"></script>
+<script src="hideColumns.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
     console.log("DOMContentLoaded fired, calling addSoftware...");
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 <body><p style="position: fixed;top: 50%; left: 50%;transform: translate(-50%, -50%); font-size: 9vw; color: rgba(0, 0, 0, 0.1); font-weight: bold; pointer-events: none; user-select: none; white-space: nowrap; text-align: center;">DRAFT<br/>WORK IN PROGRESS</p>
 <div class="banner">
 <div class="intro">
-	<H1>IStructE - Software Database</H1>
+	<H1>IStructE - Digital Tools Database</H1>
 	<p>This tool is designed to be used in accordance with the Institution of Structural Engineers' guidance on 
 	<strong>Quality Assurance and Quality Checking</strong>.</p>
 
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-	<h4>Software Type</h4>
+	<h4>Type of Tool   <input id="typeButton" onclick="hideType()" type="checkbox" checked="true" class="toggle"></h4>
 	<input type="checkbox" id="Stand Alone" name="SoftwareType" data-filter="Stand Alone" onclick="enforceSingleSelection('SoftwareType', this)">
 	<label for="Stand Alone"> Stand Alone</label><br>
 	<input type="checkbox" id="Plug In" name="SoftwareType" data-filter="Plug In" onclick="enforceSingleSelection('SoftwareType', this)">
@@ -73,21 +74,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<label for="Spreadsheet"> Spreadsheet</label><br>
 	<input type="checkbox" id="Mobile App" name="SoftwareType" data-filter="Mobile App" onclick="enforceSingleSelection('SoftwareType', this)">
 	<label for="Mobile App"> Mobile App</label><br>
-
-	<h4>Pricing Structure</h4>
-	<input type="checkbox" id="Free" name="Pricing" data-filter="Free" onclick="enforceSingleSelection('Pricing', this)">
-	<label for="Free"> Free</label><br>
-	<input type="checkbox" id="Paid" name="Pricing" data-filter="Paid" onclick="enforceSingleSelection('Pricing', this)">
-	<label for="Paid"> One Off Payment</label><br>
-	<input type="checkbox" id="Subscription" name="Pricing" data-filter="Subscription" onclick="enforceSingleSelection('Pricing', this)">
-	<label for="Subscription"> Subscription</label><br>
-        <br>
         <br>
     </div>
 
     <div class="column">
 
-	<h4>Components</h4>
+	<h4>Components   <input id="componentsButton" onclick="hideComponents()" type="checkbox" checked="true" class="toggle"></h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
 	        <label for="Analysis*"> Structural Analysis*</label><br>
@@ -107,13 +99,24 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="parametric"> Parametric Modeling</label><br>
         <input type="checkbox" id="Carbon" name="Carbon" data-filter="Carbon" onclick="filterTable()">
         <label for="Carbon"> Embodied Carbon Assessment (ECA)</label><br>
-
-	<h4>Features</h4>
+	<br>
 	<label for="Features"> Feature search:</label>
         <input type="text" id="Features" name="Features" data-filter="Features" oninput="filterTable()">
         <br>
-     
-	<h4>Materials</h4>
+
+	<h4>Pricing Structure   <input id="priceButton" onclick="hidePrice()" type="checkbox" checked="true" class="toggle"></h4>
+	<input type="checkbox" id="Free" name="Pricing" data-filter="Free" onclick="enforceSingleSelection('Pricing', this)">
+	<label for="Free"> Free</label><br>
+	<input type="checkbox" id="Paid" name="Pricing" data-filter="Paid" onclick="enforceSingleSelection('Pricing', this)">
+	<label for="Paid"> One Off Payment</label><br>
+	<input type="checkbox" id="Subscription" name="Pricing" data-filter="Subscription" onclick="enforceSingleSelection('Pricing', this)">
+	<label for="Subscription"> Subscription</label><br>
+
+	<br>
+    </div>
+
+    <div class="column">     
+	<h4>Materials   <input id="materialButton" onclick="hideMaterials()" type="checkbox" checked="true" class="toggle"></h4>
         <input type="checkbox" id="Concrete" name="Concrete" data-filter="Yes" onclick="filterTable()">
         <label for="Concrete"> Concrete</label><br>
         <input type="checkbox" id="Masonry" name="Masonry" data-filter="Yes" onclick="filterTable()">
@@ -126,97 +129,23 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="Polymers"> Polymers</label><br>
         <input type="checkbox" id="Composites" name="Composites" data-filter="Yes" onclick="filterTable()">
         <label for="Composites"> Composites</label><br>
-        <br>
-    </div>
 
-    <div class="column">
-        <h4>Design Codes</h4>
+        <h4>Design Codes   <input id="codesButton" onclick="hideCodes()" type="checkbox" checked="true" class="toggle"></h4>
         <input type="checkbox" id="Eurocodes" name="Eurocodes" data-filter="Yes" onclick="filterTable()">
         <label for="Eurocodes"> Eurocodes</label><br>
+        <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
+        <label for="United Kingdom"> UK National Annex</label><br>
         <input type="checkbox" id="British Standards" name="British Standards" data-filter="Yes" onclick="filterTable()">
         <label for="British Standards"> British Standards</label><br>
-        <input type="checkbox" id="Austalia" name="Australia" data-filter="Australia" onclick="filterTable()">
-        <label for="Australia"> Australian Standards</label><br>
-        <input type="checkbox" id="Canada" name="Canada" data-filter="Canada" onclick="filterTable()">
-        <label for="Canada">Canadian Standards</label><br>
-        <input type="checkbox" id="Hong Kong" name="Hong Kong" data-filter="Hong Kong" onclick="filterTable()">
-        <label for="Hong Kong"> Hong Kong Standards</label><br>
-        <input type="checkbox" id="India" name="India" data-filter="India" onclick="filterTable()">
-        <label for="India"> Indian Standards</label><br>
-        <input type="checkbox" id="New Zealand" name="New Zealand" data-filter="New Zealand" onclick="filterTable()">
-        <label for="New Zealand"> New Zealand Standards</label><br>
-        <input type="checkbox" id="South Africa" name="South Africa" data-filter="South Africa" onclick="filterTable()">
-        <label for="South Africa"> South African Standards</label><br>
-        <input type="checkbox" id="AASHTO" name="AASHTO" data-filter="AASHTO" onclick="filterTable()">
-        <label for="AASHTO"> USA - AASHTO</label><br>
-        <input type="checkbox" id="ACI" name="ACI" data-filter="ACI" onclick="filterTable()">
-        <label for="ACI"> USA - ACI</label><br>
-        <input type="checkbox" id="AISC" name="AISC" data-filter="AISC" onclick="filterTable()">
-        <label for="AISC"> USA - AISC</label><br>
-        <input type="checkbox" id="International" name="International" data-filter="International" onclick="filterTable()">
-        <label for="International"> USA - ICC/IBC</label><br>
-	<br>
-    </div>
-
-    <div class="column">
-        <h4>Eurocode National Annexes</h4>
-
-        <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
-        <label for="United Kingdom"> United Kingdom</label><br>
-
-        <input type="checkbox" id="Ireland" name="Ireland" data-filter="Ireland" onclick="filterTable()">
-        <label for="Ireland"> Ireland</label><br>
-
-        <input type="checkbox" id="Belgium" name="Belgium" data-filter="Belgium" onclick="filterTable()">
-        <label for="Belgium"> Belgium</label><br>
-
-        <input type="checkbox" id="Cyprus" name="Cyprus" data-filter="Cyprus" onclick="filterTable()">
-        <label for="Cyprus"> Cyprus</label><br>
-
-        <input type="checkbox" id="Denmark" name="Denmark" data-filter="Denmark" onclick="filterTable()">
-        <label for="Denmark"> Denmark</label><br>
-
-        <input type="checkbox" id="Finland" name="Finland" data-filter="Finland" onclick="filterTable()">
-        <label for="Finland"> Finland</label><br>
-
-        <input type="checkbox" id="France" name="France" data-filter="France" onclick="filterTable()">
-        <label for="France"> France</label><br>
-
-        <input type="checkbox" id="Germany" name="Germany" data-filter="Germany" onclick="filterTable()">
-        <label for="Germany"> Germany</label><br>
-
-        <input type="checkbox" id="Italy" name="Italy" data-filter="Italy" onclick="filterTable()">
-        <label for="Italy"> Italy</label><br>
-
-        <input type="checkbox" id="Malaysia" name="Malaysia" data-filter="Malaysia" onclick="filterTable()">
-        <label for="Malaysia"> Malaysia</label><br>
-
-        <input type="checkbox" id="Netherlands" name="Netherlands" data-filter="Netherlands" onclick="filterTable()">
-        <label for="Netherlands"> Netherlands</label><br>
-
-        <input type="checkbox" id="Norway" name="Norway" data-filter="Norway" onclick="filterTable()">
-        <label for="Norway"> Norway</label><br>
-
-        <input type="checkbox" id="Poland" name="Poland" data-filter="Poland" onclick="filterTable()">
-        <label for="Poland"> Poland</label><br>
-
-        <input type="checkbox" id="Singapore" name="Singapore" data-filter="Singapore" onclick="filterTable()">
-        <label for="Singapore"> Singapore</label><br>
-
-        <input type="checkbox" id="Spain" name="Spain" data-filter="Spain" onclick="filterTable()">
-        <label for="Spain"> Spain</label><br>
-
-        <input type="checkbox" id="Sweden" name="Sweden" data-filter="Sweden" onclick="filterTable()">
-        <label for="Sweden"> Sweden</label><br>
-
-        <input type="checkbox" id="User Defined" name="User Defined" data-filter="User Defined" onclick="filterTable()">
-        <label for="User Defined"> User Defined Inputs</label><br>
+	<br/>
+	<label for="Country"> Country:</label>
+        <input type="text" id="Country" name="Country" data-filter="Country" oninput="filterTable()">
 
         <br>
     </div>
 
     <div class="column">
-        <h4>Application Programming Interfaces</h4>
+        <h4>Application Interfaces  <input id="interfacesButton" onclick="hideInterfaces()" type="checkbox" checked="true" class="toggle"></h4>
         <input type="checkbox" id="Python" name="Python" data-filter="Yes" onclick="filterTable()">
         <label for="Python"> Python</label><br>
         <input type="checkbox" id="C#" name="C#" data-filter="Yes" onclick="filterTable()">
@@ -224,7 +153,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Grasshopper" name="Grasshopper" data-filter="Yes" onclick="filterTable()">
         <label for="Grasshopper"> Grasshopper</label><br>
 
-        <h4>Operating System Requirements</h4>
+        <h4>Operating System Requirements   <input id="systemButton" onclick="hideSystem()" type="checkbox" checked="true" class="toggle"></h4>
         <input type="checkbox" id="Any" name="Any" data-filter="Any" onclick="filterTable()">
         <label for="Any"> Any</label><br>
         <input type="checkbox" id="Windows 10" name="Windows 10" data-filter="Windows 10" onclick="filterTable()">
@@ -232,18 +161,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Windows 11" name="Windows 11" data-filter="Windows 11" onclick="filterTable()">
         <label for="Windows 11"> Windows 11</label><br>
 	
-	<h4>Internet Access</h4>
+	<h4>Internet Access   <input id="webButton" onclick="hideWeb()" type="checkbox" checked="true" class="toggle"></h4>
         <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
         <label for="No Internet Access Required"> No Internet Access Required</label><br>
         
-	<h4>Hardware Requirements</h4>
+	<h4>Hardware Requirements   <input id="requiresButton" onclick="hideRequires()" type="checkbox" checked="true" class="toggle"></h4>
         <label for="RAM"> Maximum RAM</label>
         <input type="number" id="RAM" name="RAM" data-filter="RAM" value="64" oninput="filterTable()"><label for="RAM"> GB</label><br>
 	<label for="Storage"> Maximum Storage</label>
         <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
-	
 
-	<br>
     </div>
 
 </form>
@@ -301,17 +228,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     
     <thead>
         <tr class="headers">
-            <th class="product" colspan="8">General Information</th>
-            <th class="material" colspan="6">Materials</th>
-            <th class="designCodes" colspan="6">Design Codes</th>
-            <th class="apiCodes" colspan="4">Application Programming Interfaces</th>
-            <th class="systemReq" colspan="6">System Requirements</th>
-            <th class="cost" colspan="2">Licenses</th>
+            <th class="product" colspan="8" value="8">General Information</th>
+            <th class="material" colspan="6" value="6">Materials</th>
+            <th class="designCodes" colspan="6"  value="6">Design Codes</th>
+            <th class="apiCodes" colspan="4" value="4">Application Programming Interfaces</th>
+            <th class="systemReq" colspan="6" value="6">System Requirements</th>
+            <th class="cost" colspan="2"  value="2">Licenses</th>
         </tr>
         <tr>
             <th class="product" onclick="sortTable(0)">Developer</th>
             <th class="product" onclick="sortTable(1)">Product</th>
-            <th class="product" onclick="sortTable(2)">Product Type</th>
+            <th class="product" onclick="sortTable(2)">Type of Tool</th>
             <th class="product" onclick="sortTable(3)">Components</th>
             <th class="product" onclick="sortTable(4)">Features</th>
             <th class="product" onclick="sortTable(5)">Codified Design Checks Certified by Qualified Engineer</th>
