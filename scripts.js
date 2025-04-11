@@ -137,20 +137,29 @@ function filterTable() {
         var showRow = true;
 
         for (let filter of selectedFilters) {
-	   if (filter.type === "multisearch") {
-			    const values = filter.columnIndices.map(index => {
-			        const cell = row.cells[index];
-			        return cell ? cell.textContent.toLowerCase().trim() : "";
-			    });
-			
-			    const allDashes = values.every(text => text === "-");
-			    const hasMatch = values.some(text => text !== "-" && text !== "any" && text.includes(filter.searchText));
-			
-			    if (!hasMatch && !allDashes) {
-			        showRow = false;
-			        break;
-			    }
-	    }
+if (filter.type === "multisearch") {
+    const searchWords = filter.searchText.toLowerCase().split(/\s+/).filter(Boolean);
+
+    const values = filter.columnIndices.map(index => {
+        const cell = row.cells[index];
+        return cell ? cell.textContent.toLowerCase().trim() : "";
+    });
+
+    const allDashes = values.every(text => text === "-" || text === "");
+
+    // Match if EVERY word is found in SOME value
+    const hasMatch = searchWords.every(word =>
+        values.some(value =>
+            value !== "-" && value !== "any" && value.includes(word)
+        )
+    );
+
+    if (!hasMatch && !allDashes) {
+        showRow = false;
+        break;
+    }
+}
+
             else {
                 var cell = row.cells[filter.columnIndex];
                 if (!cell) continue;
@@ -276,6 +285,8 @@ function getMaterialColumnIndex(filter) {
 
         // Requirements
         "any": 24,
+        "windows 7": 24,
+        "windows 8.1": 24,
         "windows 10": 24,
         "windows 11": 24,
         "ram": 26,

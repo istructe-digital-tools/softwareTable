@@ -20,6 +20,12 @@ div.column{
 .toggle:checked{
 	accent-color: grey;
 }
+
+.toggle:not(:checked) { 
+  accent-color: red;
+}
+
+
 table{
 	border-collapse: collapse;
 	text-align: center;
@@ -156,6 +162,11 @@ label{
     cursor: inherit;
 }
 
+input[type="checkbox"]
+{
+    cursor: pointer;
+}
+
 input[type="number" i] {
     border-radius: 10px;
     border: 0;
@@ -175,6 +186,14 @@ input[type="text" i] {
     width: 60%;
     background: #279c6f59;
     color: inherit;
+}
+
+button {
+    background: transparent;
+    border: 0;
+    font-size: small;
+    color: blue;
+    cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {

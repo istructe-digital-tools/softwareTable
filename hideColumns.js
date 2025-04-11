@@ -103,105 +103,93 @@ function showColumn(number) {
 }
 
 function hideType() {
-    if (document.getElementById("typeButton").checked === false) {
+    var btn = document.getElementById("typeButton")
+    if (btn.innerText === "◀") {
         hideColumn(2);
+	btn.innerText = "▶";
     } else {
         showColumn(2);
+	btn.innerText = "◀";
     }
 }
 
 function hideComponents() {
-    if (document.getElementById("componentsButton").checked === false) {
+    var btn = document.getElementById("componentsButton");
+    if (btn.innerText === "◀") {
         hideColumn(4);
         hideColumn(3);
+        btn.innerText = "▶";
     } else {
         showColumn(4);
         showColumn(3);
+        btn.innerText = "◀";
     }
 }
 
+
 function hidePrice() {
-    if (document.getElementById("priceButton").checked === false) {
+    var btn = document.getElementById("priceButton");
+    if (btn.innerText === "◀") {
         hideColumn(30);
+        btn.innerText = "▶";
     } else {
         showColumn(30);
+        btn.innerText = "◀";
     }
 }
 
 function hideMaterials() {
-    if (document.getElementById("materialButton").checked === false) {
-        hideColumn(13);
-        hideColumn(12);
-        hideColumn(11);
-        hideColumn(10);
-        hideColumn(9);
-        hideColumn(8);
+    var btn = document.getElementById("materialButton");
+    if (btn.innerText === "◀") {
+        [13, 12, 11, 10, 9, 8].forEach(hideColumn);
+        btn.innerText = "▶";
     } else {
-        showColumn(13);
-        showColumn(12);
-        showColumn(11);
-        showColumn(10);
-        showColumn(9);
-        showColumn(8);
+        [13, 12, 11, 10, 9, 8].forEach(showColumn);
+        btn.innerText = "◀";
     }
 }
 
 function hideCodes() {
-    if (document.getElementById("codesButton").checked === false) {
-        hideColumn(19);
-        hideColumn(18);
-        hideColumn(17);
-        hideColumn(16);
-        hideColumn(15);
-        hideColumn(14);
+    var btn = document.getElementById("codesButton");
+    if (btn.innerText === "◀") {
+        [19, 18, 17, 16, 15, 14].forEach(hideColumn);
+        btn.innerText = "▶";
     } else {
-        showColumn(19);
-        showColumn(18);
-        showColumn(17);
-        showColumn(16);
-        showColumn(15);
-        showColumn(14);
+        [19, 18, 17, 16, 15, 14].forEach(showColumn);
+        btn.innerText = "◀";
     }
 }
 
 function hideInterfaces() {
-    if (document.getElementById("interfacesButton").checked === false) {
-        hideColumn(23);
-        hideColumn(22);
-        hideColumn(21);
-        hideColumn(20);
+    var btn = document.getElementById("interfacesButton");
+    if (btn.innerText === "◀") {
+        [23, 22, 21, 20].forEach(hideColumn);
+        btn.innerText = "▶";
     } else {
-        showColumn(23);
-        showColumn(22);
-        showColumn(21);
-        showColumn(20);
+        [23, 22, 21, 20].forEach(showColumn);
+        btn.innerText = "◀";
     }
 }
 
 function hideSystem() {
-    if (document.getElementById("systemButton").checked === false) {
-        hideColumn(24);
-        hideColumn(25);
+    var btn = document.getElementById("systemButton");
+    if (btn.innerText === "◀") {
+        [24, 25].forEach(hideColumn);
+        btn.innerText = "▶";
     } else {
-        showColumn(24);
-        showColumn(25);
-    }
-}
-
-function hideWeb() {
-    if (document.getElementById("webButton").checked === false) {
-        hideColumn(28);
-    } else {
-        showColumn(28);
+        [24, 25].forEach(showColumn);
+        btn.innerText = "◀";
     }
 }
 
 function hideRequires() {
-    if (document.getElementById("requiresButton").checked === false) {
-        hideColumn(26);
-        hideColumn(27);
+    var btn = document.getElementById("requiresButton");
+    if (btn.innerText === "◀") {
+        [26, 27, 28].forEach(hideColumn);
+        btn.innerText = "▶";
     } else {
-        showColumn(26);
-        showColumn(27);
+        [26, 27, 28].forEach(showColumn);
+        btn.innerText = "◀";
     }
 }
+

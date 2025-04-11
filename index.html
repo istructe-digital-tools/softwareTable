@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-	<h4>Type of Tool   <input id="typeButton" onclick="hideType()" type="checkbox" checked="true" class="toggle"></h4>
+	<h4>Type of Tool   <button id="typeButton" onclick="hideType()" type="checkbox" checked="true" class="button">◀</button></h4>
 	<input type="checkbox" id="Stand Alone" name="SoftwareType" data-filter="Stand Alone" onclick="enforceSingleSelection('SoftwareType', this)">
 	<label for="Stand Alone"> Stand Alone</label><br>
 	<input type="checkbox" id="Plug In" name="SoftwareType" data-filter="Plug In" onclick="enforceSingleSelection('SoftwareType', this)">
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     <div class="column">
 
-	<h4>Components   <input id="componentsButton" onclick="hideComponents()" type="checkbox" checked="true" class="toggle"></h4>
+	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" checked="true" class="button">◀</button></h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
 	        <label for="Analysis*"> Structural Analysis*</label><br>
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="text" id="Features" name="Features" data-filter="Features" oninput="filterTable()">
         <br>
 
-	<h4>Pricing Structure   <input id="priceButton" onclick="hidePrice()" type="checkbox" checked="true" class="toggle"></h4>
+	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" checked="true" class="button">◀</button></h4>
 	<input type="checkbox" id="Free" name="Pricing" data-filter="Free" onclick="enforceSingleSelection('Pricing', this)">
 	<label for="Free"> Free</label><br>
 	<input type="checkbox" id="Paid" name="Pricing" data-filter="Paid" onclick="enforceSingleSelection('Pricing', this)">
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     </div>
 
     <div class="column">     
-	<h4>Materials   <input id="materialButton" onclick="hideMaterials()" type="checkbox" checked="true" class="toggle"></h4>
+	<h4>Materials   <button id="materialButton" onclick="hideMaterials()" type="checkbox" checked="true" class="button">◀</button></h4>
         <input type="checkbox" id="Concrete" name="Concrete" data-filter="Yes" onclick="filterTable()">
         <label for="Concrete"> Concrete</label><br>
         <input type="checkbox" id="Masonry" name="Masonry" data-filter="Yes" onclick="filterTable()">
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Composites" name="Composites" data-filter="Yes" onclick="filterTable()">
         <label for="Composites"> Composites</label><br>
 
-        <h4>Design Codes   <input id="codesButton" onclick="hideCodes()" type="checkbox" checked="true" class="toggle"></h4>
+        <h4>Design Codes   <button id="codesButton" onclick="hideCodes()" type="checkbox" checked="true" class="button">◀</button></h4>
         <input type="checkbox" id="Eurocodes" name="Eurocodes" data-filter="Yes" onclick="filterTable()">
         <label for="Eurocodes"> Eurocodes</label><br>
         <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     </div>
 
     <div class="column">
-        <h4>Application Interfaces  <input id="interfacesButton" onclick="hideInterfaces()" type="checkbox" checked="true" class="toggle"></h4>
+        <h4>Application Interfaces  <button id="interfacesButton" onclick="hideInterfaces()" type="checkbox" checked="true" class="button">◀</button></h4>
         <input type="checkbox" id="Python" name="Python" data-filter="Yes" onclick="filterTable()">
         <label for="Python"> Python</label><br>
         <input type="checkbox" id="C#" name="C#" data-filter="Yes" onclick="filterTable()">
@@ -153,27 +153,26 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Grasshopper" name="Grasshopper" data-filter="Yes" onclick="filterTable()">
         <label for="Grasshopper"> Grasshopper</label><br>
 
-        <h4>Operating System Requirements   <input id="systemButton" onclick="hideSystem()" type="checkbox" checked="true" class="toggle"></h4>
+        <h4>Operating System Requirements   <button id="systemButton" onclick="hideSystem()" type="checkbox" checked="true" class="button">◀</button></h4>
         <input type="checkbox" id="Any" name="Any" data-filter="Any" onclick="filterTable()">
         <label for="Any"> Any</label><br>
         <input type="checkbox" id="Windows 10" name="Windows 10" data-filter="Windows 10" onclick="filterTable()">
         <label for="Windows 10"> Windows 10</label><br>
         <input type="checkbox" id="Windows 11" name="Windows 11" data-filter="Windows 11" onclick="filterTable()">
         <label for="Windows 11"> Windows 11</label><br>
-	
-	<h4>Internet Access   <input id="webButton" onclick="hideWeb()" type="checkbox" checked="true" class="toggle"></h4>
+	        
+	<h4>Hardware Requirements   <button id="requiresButton" onclick="hideRequires()" type="checkbox" checked="true" class="button">◀</button></h4>
         <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
         <label for="No Internet Access Required"> No Internet Access Required</label><br>
-        
-	<h4>Hardware Requirements   <input id="requiresButton" onclick="hideRequires()" type="checkbox" checked="true" class="toggle"></h4>
+	<br>
         <label for="RAM"> Maximum RAM</label>
         <input type="number" id="RAM" name="RAM" data-filter="RAM" value="64" oninput="filterTable()"><label for="RAM"> GB</label><br>
 	<label for="Storage"> Maximum Storage</label>
         <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
-
+	<br>
     </div>
-
 </form>
+
 
 </div>
 
@@ -277,7 +276,890 @@ document.addEventListener("DOMContentLoaded", async function () {
         </tr>
     </thead>
 <tbody id="softwareTableBody">
-
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Building Design Suite</td>
+   <td>Stand Alone</td>
+   <td>Analysis</td>
+   <td>2D & 3D Space Frame Analysis</td>
+   <td>-</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Finite Element Analysis for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>Analysis</td>
+   <td class='hiddenMessage'><div class='tooltip'>Finite Element Analysis *<span class='tooltip-text'>FEA</span></div></td>
+   <td>-</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Dynamic Analysis & Vibration Desgin for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>Analysis</br>Design</td>
+   <td>Dynamic Analysis & Vibration Desgin</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Member Designer for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>Design</td>
+   <td class='hiddenMessage'><div class='tooltip'>Member Designer *<span class='tooltip-text'>concrete, steel, timber and composite</span></div></td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Concrete Slab & Wall Designer for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>Analysis</br>Design</td>
+   <td>Concrete Slab & Wall Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Connection Designer for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>Design</td>
+   <td>Connection Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Pile Cap Designer for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>Design</td>
+   <td>Pile Cap Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>BIM Modelling for</br>Building Design Suite</td>
+   <td>Plug In</td>
+   <td>BIM</td>
+   <td>BIM Modelling</td>
+   <td>-</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterseries-building-design-suite'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>Building Design Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>PowerPad - MasterSeries Lite Suite</td>
+   <td>Stand Alone</td>
+   <td>Analysis</td>
+   <td>2D</br>3D Space Frame Analysis</td>
+   <td>-</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Finite Element Analysis for</br>PowerPad MasterSeries Lite Suite</td>
+   <td>Plug In</td>
+   <td>Analysis</td>
+   <td>Finite Element Analysis</td>
+   <td>-</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>PowerPad - MasterSeries Lite Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Member Designer for</br>PowerPad MasterSeries Lite Suite</td>
+   <td>Plug In</td>
+   <td>Analysis</br>Design</td>
+   <td class='hiddenMessage'><div class='tooltip'>Member Designer *<span class='tooltip-text'>concrete, steel, timber and composite</span></div></td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>-</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>-</td>
+   <td>-</td>
+   <td>-</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>PowerPad - MasterSeries Lite Suite</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - MasterPort</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>MasterPort</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>-</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Connection Designer</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Connection Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Masonry Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Masonry Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>Ireland</br>Belgium</br>Netherlands</br>Germany</br>France</br>Italy</br>Spain</br>Sweden</br>Denmark</br>User Defined</td>
+   <td>Yes</td>
+   <td>Ireland (IS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Retaining Walls Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Retaining Walls Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Steel Beam Designer</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Steel Beam Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Concrete Beam Designer</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Concrete Beam Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Composite Beam Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Composite Beam Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Timber Beam Designer</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Timber Beam Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>Power Pad - Pile Cap Desginer</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Pile Cap Desginer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/powerpad'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>MasterPort Plus</td>
+   <td>Stand Alone</td>
+   <td>Analysis</br>Design</td>
+   <td>2D</br>3D Frame analysis & Codified</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masterport-plus'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>MasterKey: Connections Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Connection Designer</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/moment-simple-connections'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>MasterKey: Masonry Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Masonry Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/masonry-design'>link</a></td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>Ireland</br>Belgium</br>Netherlands</br>Germany</br>France</br>Italy</br>Spain</br>Sweden</br>Denmark</br>User Defined</td>
+   <td>Yes</td>
+   <td>Ireland (IS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>MasterKey: Retaining Walls Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Retaining Walls Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/retaining-walls'>link</a></td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>MasterBeam: Composite Beam Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Composite Beam Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/composite-design'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>-</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
+<tr>
+   <td>Civil & Structural Computer Services [C&SCS] Ltd</td>
+   <td>MasterKey: Pile Cap Design</td>
+   <td>Stand Alone</td>
+   <td>Design</td>
+   <td>Pile Cap Design</td>
+   <td>No</td>
+   <td>No</td>
+   <td><a target='_blank' href='https://www.masterseries.com/products/pile-cap'>link</a></td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>Yes</td>
+   <td>User Defined</td>
+   <td>Yes</td>
+   <td>South Africa (SABS</br>SANS)</td>
+   <td>Full</td>
+   <td>No</td>
+   <td>No</td>
+   <td>No</td>
+   <td>-</td>
+   <td>Windows 10</br>Windows 11</td>
+   <td>Intel Core i5+ or equivalent AMD</td>
+   <td>8 GB</td>
+   <td>5 GB</td>
+   <td class='hiddenMessage'><div class='tooltip'>Yes*<span class='tooltip-text'>Cloud licence needs constant internet access</br>Softlock licence: the license server must have internet access at least once every 14 days</span></div></td>
+   <td><a target='_blank' href='https://files.masterseries.com/documents/MasterSeriesHardware.pdf'>link</a></td>
+   <td>Paid</br>or Subscription</td>
+   <td>-</td>
+</tr>
 </tbody>
 </table>
 </div>
