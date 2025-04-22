@@ -11,10 +11,13 @@
 <script src="hideColumns.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
+    hideMaterials();
+    hideInterfaces();
     console.log("DOMContentLoaded fired, calling addSoftware...");
     await addSoftware(); // Wait for rows to be added
     console.log("addSoftware completed, calling randomizeTableRows...");
     randomizeTableRows(); // Randomize the table rows after they are added
+    replaceAsterisksWithIcons();
 });
 </script>
 </head>
@@ -33,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	</ul>
 
 	<p>As a best practice, any software used should be <strong>ISO 9001 compliant</strong>.</p>
-	<p>Hovering over text that includes an asterisk (*) symbol will display additional informative descriptions.</p> 
+	<p>Hovering over text that includes an * symbol will display additional informative descriptions.</p> 
 	
 </div>
 </div>
@@ -59,37 +62,41 @@ document.addEventListener("DOMContentLoaded", async function () {
   		<span class="tooltip-text">ISO 9001 is an international standard for quality management systems (QMS) that helps organizations ensure they consistently meet customer and regulatory requirements. It is based on principles like customer focus, leadership, process approach, and continuous improvement. Certification demonstrates a commitment to quality, efficiency, and risk management across various industries.
   		</span>
 	</div>
+	<br>
+	<button style="display: none;"></button>
 
+	<h4>Type of Tool   <button id="typeButton" onclick="hideType()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+<select id="softwareTypeDropdown" name="SoftwareType" data-filter-column="2" onchange="filterTable(); clearPlugIn();">
+  <option value="">Any</option>
+  <option value="Stand Alone">Stand Alone</option>
+  <option value="Plug In">Plug In</option>
+  <option value="Website">Website</option>
+  <option value="Spreadsheet">Spreadsheet</option>
+  <option value="Mobile App">Mobile App</option>
+</select>
+	<br/>
+	<br/>
+	<div id="pluginFor">
+		<label for="Secondary Software"> Show Plugs In For:</label><br>
+        	<input type="text" placeholder="Search.." id="Secondary Software" name="Secondary Software" data-filter="Secondary Software" oninput="filterTable()">
+	</div>
 
-
-	<h4>Type of Tool   <button id="typeButton" onclick="hideType()" type="checkbox" checked="true" class="button">◀</button></h4>
-	<input type="checkbox" id="Stand Alone" name="SoftwareType" data-filter="Stand Alone" onclick="enforceSingleSelection('SoftwareType', this)">
-	<label for="Stand Alone"> Stand Alone</label><br>
-	<input type="checkbox" id="Plug In" name="SoftwareType" data-filter="Plug In" onclick="enforceSingleSelection('SoftwareType', this)">
-	<label for="Plug In"> Plug In</label>
-        <input type="text" style="visibility: hidden;" id="Secondary Software" name="Secondary Software" data-filter="Secondary Software" oninput="filterTable()"><br>
-	<input type="checkbox" id="Website" name="SoftwareType" data-filter="Website" onclick="enforceSingleSelection('SoftwareType', this)">
-	<label for="Website"> Website</label><br>
-	<input type="checkbox" id="Spreadsheet" name="SoftwareType" data-filter="Spreadsheet" onclick="enforceSingleSelection('SoftwareType', this)">
-	<label for="Spreadsheet"> Spreadsheet</label><br>
-	<input type="checkbox" id="Mobile App" name="SoftwareType" data-filter="Mobile App" onclick="enforceSingleSelection('SoftwareType', this)">
-	<label for="Mobile App"> Mobile App</label><br>
         <br>
     </div>
 
     <div class="column">
 
-	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" checked="true" class="button">◀</button></h4>
+	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
-	        <label for="Analysis*"> Structural Analysis*</label><br>
+	        <label for="Analysis"> Structural Analysis*</label><br>
 		<span class="tooltip-text">Refers to the use of software and algorithms that can be used to analyse a structure. (Such as Finite Element Analysis)
   		</span>
 	</div>
 
 	<div class="tooltip">
         	<input type="checkbox" id="Design" name="Design" data-filter="Design" onclick="filterTable()">
-        	<label for="Design*"> Design Calculations*</label><br>
+        	<label for="Design"> Design Calculations*</label><br>
   		<span class="tooltip-text">Refers to the use of software and algorithms that automate design processes based on established codes and standards.
   		</span>
 	</div>
@@ -101,10 +108,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="Carbon"> Embodied Carbon Assessment (ECA)</label><br>
 	<br>
 	<label for="Features"> Feature search:</label>
-        <input type="text" id="Features" name="Features" data-filter="Features" oninput="filterTable()">
+        <input type="text" placeholder="Search.." id="Features" name="Features" data-filter="Features" oninput="filterTable()">
         <br>
 
-	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" checked="true" class="button">◀</button></h4>
+	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
 	<input type="checkbox" id="Free" name="Pricing" data-filter="Free" onclick="enforceSingleSelection('Pricing', this)">
 	<label for="Free"> Free</label><br>
 	<input type="checkbox" id="Paid" name="Pricing" data-filter="Paid" onclick="enforceSingleSelection('Pricing', this)">
@@ -116,7 +123,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     </div>
 
     <div class="column">     
-	<h4>Materials   <button id="materialButton" onclick="hideMaterials()" type="checkbox" checked="true" class="button">◀</button></h4>
+	<h4>Materials   <button id="materialButton" onclick="hideMaterials()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
         <input type="checkbox" id="Concrete" name="Concrete" data-filter="Yes" onclick="filterTable()">
         <label for="Concrete"> Concrete</label><br>
         <input type="checkbox" id="Masonry" name="Masonry" data-filter="Yes" onclick="filterTable()">
@@ -130,7 +137,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Composites" name="Composites" data-filter="Yes" onclick="filterTable()">
         <label for="Composites"> Composites</label><br>
 
-        <h4>Design Codes   <button id="codesButton" onclick="hideCodes()" type="checkbox" checked="true" class="button">◀</button></h4>
+        <h4>Design Codes   <button id="codesButton" onclick="hideCodes()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
         <input type="checkbox" id="Eurocodes" name="Eurocodes" data-filter="Yes" onclick="filterTable()">
         <label for="Eurocodes"> Eurocodes</label><br>
         <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
@@ -139,13 +146,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="British Standards"> British Standards</label><br>
 	<br/>
 	<label for="Country"> Country:</label>
-        <input type="text" id="Country" name="Country" data-filter="Country" oninput="filterTable()">
+        <input type="text" placeholder="Search.." id="Country" name="Country" data-filter="Country" oninput="filterTable()">
 
         <br>
     </div>
 
     <div class="column">
-        <h4>Application Interfaces  <button id="interfacesButton" onclick="hideInterfaces()" type="checkbox" checked="true" class="button">◀</button></h4>
+        <h4>Application Interfaces  <button id="interfacesButton" onclick="hideInterfaces()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
         <input type="checkbox" id="Python" name="Python" data-filter="Yes" onclick="filterTable()">
         <label for="Python"> Python</label><br>
         <input type="checkbox" id="C#" name="C#" data-filter="Yes" onclick="filterTable()">
@@ -153,15 +160,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Grasshopper" name="Grasshopper" data-filter="Yes" onclick="filterTable()">
         <label for="Grasshopper"> Grasshopper</label><br>
 
-        <h4>Operating System Requirements   <button id="systemButton" onclick="hideSystem()" type="checkbox" checked="true" class="button">◀</button></h4>
-        <input type="checkbox" id="Any" name="Any" data-filter="Any" onclick="filterTable()">
-        <label for="Any"> Any</label><br>
-        <input type="checkbox" id="Windows 10" name="Windows 10" data-filter="Windows 10" onclick="filterTable()">
-        <label for="Windows 10"> Windows 10</label><br>
-        <input type="checkbox" id="Windows 11" name="Windows 11" data-filter="Windows 11" onclick="filterTable()">
-        <label for="Windows 11"> Windows 11</label><br>
+        <h4>Operating System   <button id="systemButton" onclick="hideSystem()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+	<select id="osDropdown" data-filter-column="24" onchange="filterTable()">
+  		<option value="">Any</option>
+  		<option value="Windows 7">Windows 7</option>
+  		<option value="Windows 8.1">Windows 8.1</option>
+  		<option value="Windows 10">Windows 10</option>
+  		<option value="Windows 11">Windows 11</option>
+	</select>
+	<br>
 	        
-	<h4>Hardware Requirements   <button id="requiresButton" onclick="hideRequires()" type="checkbox" checked="true" class="button">◀</button></h4>
+	<h4>Hardware   <button id="requiresButton" onclick="hideRequires()" type="checkbox" value="true" class="button"><img src='./icons/./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
         <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
         <label for="No Internet Access Required"> No Internet Access Required</label><br>
 	<br>
@@ -282,6 +291,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 </div>
 <p style="font-size: xx-small; padding-left: 0.5vw;">This tool is copyright © [2025] The Institution of Structural Engineers (IStructE). All rights reserved. Unauthorized use, reproduction, or distribution is prohibited.</p>
 <a href="https://www.istructe.org">
-    <img class="logo" src="logo.svg" alt="IStructE Logo">
+    <img class="logo" src="./icons/logo.svg" alt="IStructE Logo">
 </a>
 </body></html>

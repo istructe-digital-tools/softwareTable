@@ -78,9 +78,25 @@ function filterTable() {
 
     var form = document.getElementById("filterForm");
     var inputs = form.getElementsByTagName("input");
+    var selects = form.getElementsByTagName("select");
+
 
     var selectedFilters = [];
-    var plugIn = false;
+    var plugIn = true;
+
+    for (var i = 0; i < selects.length; i++) {
+        var select = selects[i];
+        var selectedValue = select.value.trim().toLowerCase();
+
+        // Check for dropdown with a data-filter-column attribute
+        if (select.hasAttribute("data-filter-column") && selectedValue !== "") {
+            selectedFilters.push({
+                columnIndex: parseInt(select.getAttribute("data-filter-column")),
+                expectedValue: selectedValue,
+                type: "text"
+            });
+        }
+    }
 
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i];
@@ -137,30 +153,27 @@ function filterTable() {
         var showRow = true;
 
         for (let filter of selectedFilters) {
-if (filter.type === "multisearch") {
-    const searchWords = filter.searchText.toLowerCase().split(/\s+/).filter(Boolean);
+            if (filter.type === "multisearch") {
+                const searchWords = filter.searchText.toLowerCase().split(/\s+/).filter(Boolean);
 
-    const values = filter.columnIndices.map(index => {
-        const cell = row.cells[index];
-        return cell ? cell.textContent.toLowerCase().trim() : "";
-    });
+                const values = filter.columnIndices.map(index => {
+                    const cell = row.cells[index];
+                    return cell ? cell.textContent.toLowerCase().trim() : "";
+                });
 
-    const allDashes = values.every(text => text === "-" || text === "");
+                const allDashes = values.every(text => text === "-" || text === "");
 
-    // Match if EVERY word is found in SOME value
-    const hasMatch = searchWords.every(word =>
-        values.some(value =>
-            value !== "-" && value !== "any" && value.includes(word)
-        )
-    );
+                const hasMatch = searchWords.every(word =>
+                    values.some(value =>
+                        value !== "-" && value !== "any" && value.includes(word)
+                    )
+                );
 
-    if (!hasMatch && !allDashes) {
-        showRow = false;
-        break;
-    }
-}
-
-            else {
+                if (!hasMatch && !allDashes) {
+                    showRow = false;
+                    break;
+                }
+            } else {
                 var cell = row.cells[filter.columnIndex];
                 if (!cell) continue;
 
@@ -199,6 +212,7 @@ if (filter.type === "multisearch") {
     for (var i = 0; i < visibleRows.length; i++) {
         visibleRows[i].style.backgroundColor = i % 2 === 0 ? "#ffffff1a" : "#389c711a";
     }
+
 }
 
 
@@ -311,4 +325,28 @@ function enforceSingleSelection(category, clickedCheckbox) {
 
     // Call your filtering function
     filterTable();
+}
+
+function clearPlugIn() {
+    const inputArea = document.getElementById("pluginFor");
+    const inputbar = document.getElementById("Secondary Software");
+    const selectedType = document.getElementById("softwareTypeDropdown").value;
+
+    if (inputbar) {
+        // Always clear value
+
+        // Show or hide based on selection
+        if (selectedType === "Plug In" || selectedType === "") {
+            inputArea.style.display = "inline";
+        } else {
+            inputArea.style.display = "none";
+            inputbar.value = "";
+        }
+    }
+}
+
+function replaceAsterisksWithIcons() {
+    if (!document.body) return;
+
+    document.body.innerHTML = document.body.innerHTML.replace(/\*/g, ' <img src="./icons/info.svg" alt="info" class="info">');
 }

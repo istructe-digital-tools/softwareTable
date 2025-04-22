@@ -102,94 +102,56 @@ function showColumn(number) {
     }
 }
 
+function changeButton(btn, array) {
+	if (btn.value === "true") {
+		array.forEach(hideColumn);
+		btn.innerHTML = "<img src='./icons/expand.svg' alt='Expand' class='icon'>";
+		btn.value = "false";
+	} else {
+		array.forEach(showColumn);
+		btn.innerHTML = "<img src='./icons/collapse.svg' alt='Collapse' class='icon'>";
+		btn.value = "true";
+	}
+}
+
 function hideType() {
     var btn = document.getElementById("typeButton")
-    if (btn.innerText === "◀") {
-        hideColumn(2);
-	btn.innerText = "▶";
-    } else {
-        showColumn(2);
-	btn.innerText = "◀";
-    }
+    changeButton(btn, [2]);
 }
 
 function hideComponents() {
     var btn = document.getElementById("componentsButton");
-    if (btn.innerText === "◀") {
-        hideColumn(4);
-        hideColumn(3);
-        btn.innerText = "▶";
-    } else {
-        showColumn(4);
-        showColumn(3);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [3, 4]);
 }
 
 
 function hidePrice() {
     var btn = document.getElementById("priceButton");
-    if (btn.innerText === "◀") {
-        hideColumn(30);
-        btn.innerText = "▶";
-    } else {
-        showColumn(30);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [30]);
 }
 
 function hideMaterials() {
     var btn = document.getElementById("materialButton");
-    if (btn.innerText === "◀") {
-        [13, 12, 11, 10, 9, 8].forEach(hideColumn);
-        btn.innerText = "▶";
-    } else {
-        [13, 12, 11, 10, 9, 8].forEach(showColumn);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [13, 12, 11, 10, 9, 8]);
 }
 
 function hideCodes() {
     var btn = document.getElementById("codesButton");
-    if (btn.innerText === "◀") {
-        [19, 18, 17, 16, 15, 14].forEach(hideColumn);
-        btn.innerText = "▶";
-    } else {
-        [19, 18, 17, 16, 15, 14].forEach(showColumn);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [19, 18, 17, 16, 15, 14]);
 }
 
 function hideInterfaces() {
     var btn = document.getElementById("interfacesButton");
-    if (btn.innerText === "◀") {
-        [23, 22, 21, 20].forEach(hideColumn);
-        btn.innerText = "▶";
-    } else {
-        [23, 22, 21, 20].forEach(showColumn);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [23, 22, 21, 20]);
 }
 
 function hideSystem() {
     var btn = document.getElementById("systemButton");
-    if (btn.innerText === "◀") {
-        [24, 25].forEach(hideColumn);
-        btn.innerText = "▶";
-    } else {
-        [24, 25].forEach(showColumn);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [24, 25]);
 }
 
 function hideRequires() {
     var btn = document.getElementById("requiresButton");
-    if (btn.innerText === "◀") {
-        [26, 27, 28].forEach(hideColumn);
-        btn.innerText = "▶";
-    } else {
-        [26, 27, 28].forEach(showColumn);
-        btn.innerText = "◀";
-    }
+    changeButton(btn, [26, 27, 28]);
 }
 

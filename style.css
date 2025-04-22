@@ -159,7 +159,7 @@ div.banner{
 }
 
 label{
-    cursor: inherit;
+    cursor: pointer;
 }
 
 input[type="checkbox"]
@@ -178,7 +178,7 @@ input[type="number" i] {
     margin-bottom: 2px;
 }
 
-input[type="text" i] {
+input[type="text" i], select {
     visibility: visible;
     border: 0;
     border-radius: 10px;
@@ -189,11 +189,15 @@ input[type="text" i] {
 }
 
 button {
-    background: transparent;
-    border: 0;
     font-size: small;
-    color: blue;
     cursor: pointer;
+}
+
+.icon {
+    height: 1em;
+}
+.info {
+    height: 0.7em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -201,10 +205,12 @@ button {
 	background: #333;
 	color: white;
     }
-    a {
+    a, button {
   	color: hotpink;
     }
     div.banner{
 	background: #113b3f;
     }
+    button {background: black;}
+    .icon, .info {filter: invert(1);}
 }
