@@ -11,13 +11,13 @@
 <script src="hideColumns.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
-    hideMaterials();
-    hideInterfaces();
     console.log("DOMContentLoaded fired, calling addSoftware...");
     await addSoftware(); // Wait for rows to be added
     console.log("addSoftware completed, calling randomizeTableRows...");
     randomizeTableRows(); // Randomize the table rows after they are added
     replaceAsterisksWithIcons();
+    hideMaterials();
+    hideInterfaces();
 });
 </script>
 </head>
