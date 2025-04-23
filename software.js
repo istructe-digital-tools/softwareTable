@@ -1,23 +1,12 @@
 async function addSoftware() { 
     const rowFiles = [
-    "software/BHoM.html",
-    "software/BuildingTransparency.html",
-    "software/CLTToolBox.html",
     "software/CYPE.html",
-    "software/ElliottWood.html",
-    "software/FoundaxisLLC.html",
-    "software/HBert.html",
-    "software/Karamba.html",
     "software/MasterSeries.html",
+    "software/Misc.html",
     "software/Oasys.html",
-    "software/OneClickLCA.html",
-    "software/Rhino.html",
-    "software/Structx.html",
-    "software/Trimble.html",
-    "software/WhitbyWood.html",
-    "software/beaconThorntonTomasetti.html",
-    "software/concreteCenter.html"
+    "software/Trimble.html"
 ];
+
 
 
 
