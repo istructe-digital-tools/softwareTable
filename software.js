@@ -5,8 +5,10 @@ async function addSoftware() {
     "software/Misc.html",
     "software/Oasys.html",
     "software/SkyCiv.html",
+    "software/Sofistik.html",
     "software/Trimble.html"
 ];
+
 
 
 
