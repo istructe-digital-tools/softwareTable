@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	</ul>
 
 	<p>As a best practice, any software used should be <strong>ISO 9001 compliant</strong>.</p>
-	<p>Hovering over text that includes an * symbol will display additional informative descriptions.</p> 
+	<p>Hovering over text that includes an <span style="display: inline; filter: invert(1) brightness()">*</span> symbol will display additional informative descriptions.</p> 
 	
 </div>
 </div>
@@ -107,19 +107,117 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Carbon" name="Carbon" data-filter="Carbon" onclick="filterTable()">
         <label for="Carbon"> Embodied Carbon Assessment (ECA)</label><br>
 	<br>
-	<label for="Features"> Feature search:</label>
-        <input type="text" placeholder="Search.." id="Features" name="Features" data-filter="Features" oninput="filterTable()">
+	<h4> Features  <button style="display: inline;" onclick="addFeature()">+</button></h4>
+<div id="featureSearch">
+<select data-filter-column="4" onchange="filterTable()">
+<option value="">All Features</option>
+<option value="Analysis; Tension / Compression Elements; Vibration Design; Pile Sinking; Pile Lateral; Slip Circles; Soil Structure Interaction">Analysis</option>
+<option value='2D Analysis'> - 2D Analysis</option>
+<option value='3D Analysis'> - 3D Analysis</option>
+<option value='Timber Analysis'> - Timber Analysis</option>
+<option value='Global Buckling Analysis'> - Global Buckling Analysis</option>
+<option value='Local Buckling Analysis'> - Local Buckling Analysis</option>
+<option value='Composite Beam Analysis'> - Composite Beam Analysis</option>
+<option value='Composite Section Analysis'> - Composite Section Analysis</option>
+<option value='Finite Element Analysis'> - Finite Element Analysis</option>
+<option value='Section Analysis'> - Section Analysis</option>
+<option value='Construction Stage Analysis'> - Construction Stage Analysis</option>
+<option value='Dynamic Analysis'> - Dynamic Analysis</option>
+<option value='Footfall Analysis'> - Footfall Analysis</option>
+<option value='Static Analysis'> - Static Analysis</option>
+<option value='Lateral Stability Analysis'> - Lateral Stability Analysis</option>
+<option value='Non-linear Analysis'> - Non-linear Analysis</option>
+<option value='Strut and Tie Analysis'> - Strut and Tie Analysis</option>
+<option value='Response Spectrum Analysis'> - Response Spectrum Analysis</option>
+<option value='Rigorous Analysis '> - Rigorous Analysis </option>
+<option value='Tension / Compression Elements'> - Tension / Compression Elements</option>
+<option value='Vibration Design'> - Vibration Design</option>
+<option value='Geotechnical Analysis; Pile Sinking; Pile Lateral; Slip Circles; Soil Structure Interaction'>Geotechnical Analysis</option>
+<option value='Pile Sinking'> - Pile Sinking</option>
+<option value='Pile Lateral Stability'> - Pile Lateral Stability</option>
+<option value='Slip Circles'> - Slip Circles</option>
+<option value='Soil Structure Interaction'> - Soil Structure Interaction</option>
+<option value=''>Design</option>
+<option value='Elements'> - Elements</option>
+<option value='Beams'> - Beams</option>
+<option value='Columns'> - Columns</option>
+<option value='Walls'> - Walls</option>
+<option value='Retaining Walls'> - Retaining Walls</option>
+<option value='Slabs'> - Slabs</option>
+<option value='Joist Floors'> - Joist Floors</option>
+<option value='Loads'> - Loads</option>
+<option value='Composite'>Design of Composite Elements</option>
+<option value='Composite Beams'> - Composite Beams</option>
+<option value='Composite Decks and Slabs'> - Composite Decks and Slabs</option>
+<option value='Composite Columns'> - Composite Columns</option>
+<option value='Concrete'>Design of Concrete Elements</option>
+<option value='Concrete Retaining Walls'> - Concrete Retaining Walls</option>
+<option value='Concrete Beams'> - Concrete Beams</option>
+<option value='Concrete Columns'> - Concrete Columns</option>
+<option value='Concrete Cracking'> - Concrete Cracking</option>
+<option value='Concrete Walls'> - Concrete Walls</option>
+<option value='Concrete Flat Slabs (1 Way)'> - Concrete Flat Slabs (1 Way)</option>
+<option value='Concrete Flat Slabs (2 Way)'> - Concrete Flat Slabs (2 Way)</option>
+<option value='Concrete Core / Shear Walls'> - Concrete Core / Shear Walls</option>
+<option value='Concrete Coupling Beams'> - Concrete Coupling Beams</option>
+<option value='Concrete Hollowcore Slabs'> - Concrete Hollowcore Slabs</option>
+<option value='Concrete Joist Floors'> - Concrete Joist Floors</option>
+<option value='Concrete Post Tensioning'> - Concrete Post Tensioning</option>
+<option value='Concrete Waffle Slabs'> - Concrete Waffle Slabs</option>
+<option value='Concrete Reinforced Block Walls'> - Concrete Reinforced Block Walls</option>
+<option value='Concrete Ribbed Slabs'> - Concrete Ribbed Slabs</option>
+<option value='Steel'>Design of Steel Elements</option>
+<option value='Steel Columns'> - Steel Columns</option>
+<option value='Steel Beams'> - Steel Beams</option>
+<option value='Steel Joist Floors'> - Steel Joist Floors</option>
+<option value='Timber'>Design of Timber Elements</option>
+<option value='Timber Joist Floors'> - Timber Joist Floors</option>
+<option value='Timber Beams'> - Timber Beams</option>
+<option value='Timber Columns'> - Timber Columns</option>
+<option value='Timber Joist Walls'> - Timber Joist Walls</option>
+<option value='Timber Panel Walls'> - Timber Panel Walls</option>
+<option value='Masonry'>Design of Masonry Elements</option>
+<option value='Masonry Walls'> - Masonry Walls</option>
+<option value='Masonry Retaining Walls'> - Masonry Retaining Walls</option>
+<option value='Connections; Concrete Anchors; Baseplates; Corbels'>Design of Connections</option>
+<option value='Concrete Anchors'> - Concrete Anchors</option>
+<option value='Baseplates'> - Baseplates</option>
+<option value='Corbels'> - Corbels</option>
+<option value='Concrete Punching Shear'> - Concrete Punching Shear</option>
+<option value='Steel to Steel Connections'> - Steel to Steel Connections</option>
+<option value='Timber to Timber Connections'> - Timber to Timber Connections</option>
+<option value='Timber to Steel Connections'> - Timber to Steel Connections</option>
+<option value='Steel to Concrete Connections'> - Steel to Concrete Connections</option>
+<option value='Foundations; Pile; Footings'>Design of Foundations</option>
+<option value='Piles'> - Piles</option>
+<option value='Footings'> - Footings</option>
+<option value='Mat Foundations'> - Mat Foundations</option>
+<option value='Pile Caps'> - Pile Caps</option>
+<option value='Sheet Piles'> - Sheet Piles</option>
+<option value=''>Misc</option>
+<option value='Access Ramps'> - Access Ramps</option>
+<option value='Aluminium Bars'> - Aluminium Bars</option>
+<option value='Box Culverts'> - Box Culverts</option>
+<option value='Staircases'> - Staircases</option>
+<option value='Embodied Carbon Assessment'> - Embodied Carbon Assessment</option>
+<option value='Design for Fire'> - Design for Fire</option>
+<option value='Portal Frames'> - Portal Frames</option>
+<option value='Parametric Modelling'> - Parametric Modelling</option>
+<option value='Building Information Modelling'> - Building Information Modelling</option>
+<option value='IFC Import'> - IFC Import</option>
+<option value='IFC Export'> - IFC Export</option>
+<option value='DXF Export'> - DXF Export</option>
+<option value='Detailed Plan / Section Drawings'> - Detailed Plan / Section Drawings</option>
+<option value='PDF Export'> - PDF Export</option>
+<option value='Export Material Quantities'> - Export Material Quantities</option>
+<option value='CIS/2 Export'> - CIS/2 Export</option>
+<option value='Wind Loads'> - Wind Loads</option>
+<option value='Seismic Loads'> - Seismic Loads</option>
+<option value='Snow Loads'> - Snow Loads</option>
+</select>
+</div>
         <br>
 
-	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-	<input type="checkbox" id="Free" name="Pricing" data-filter="Free" onclick="enforceSingleSelection('Pricing', this)">
-	<label for="Free"> Free</label><br>
-	<input type="checkbox" id="Paid" name="Pricing" data-filter="Paid" onclick="enforceSingleSelection('Pricing', this)">
-	<label for="Paid"> One Off Payment</label><br>
-	<input type="checkbox" id="Subscription" name="Pricing" data-filter="Subscription" onclick="enforceSingleSelection('Pricing', this)">
-	<label for="Subscription"> Subscription</label><br>
-
-	<br>
     </div>
 
     <div class="column">     
@@ -144,7 +242,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         <label for="United Kingdom"> UK National Annex</label><br>
         <input type="checkbox" id="British Standards" name="British Standards" data-filter="Yes" onclick="filterTable()">
         <label for="British Standards"> British Standards</label><br>
-	<br/>
 	<label for="Country"> Country:</label>
         <input type="text" placeholder="Search.." id="Country" name="Country" data-filter="Country" oninput="filterTable()">
 
@@ -160,7 +257,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Grasshopper" name="Grasshopper" data-filter="Yes" onclick="filterTable()">
         <label for="Grasshopper"> Grasshopper</label><br>
 
-        <h4>Operating System   <button id="systemButton" onclick="hideSystem()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+        <h4>System Requirements   <button id="systemButton" onclick="hideSystem()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+        <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
+        <label for="No Internet Access Required"> No Internet Access Required</label><br><br>
+<label> Operating System:</label><br>
 	<select id="osDropdown" data-filter-column="24" onchange="filterTable()">
   		<option value="">Any</option>
   		<option value="Windows 7">Windows 7</option>
@@ -169,15 +269,20 @@ document.addEventListener("DOMContentLoaded", async function () {
   		<option value="Windows 11">Windows 11</option>
 	</select>
 	<br>
-	        
-	<h4>Hardware   <button id="requiresButton" onclick="hideRequires()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-        <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
-        <label for="No Internet Access Required"> No Internet Access Required</label><br>
+
 	<br>
         <label for="RAM"> Maximum RAM</label>
         <input type="number" id="RAM" name="RAM" data-filter="RAM" value="64" oninput="filterTable()"><label for="RAM"> GB</label><br>
 	<label for="Storage"> Maximum Storage</label>
         <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
+
+	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+	<select id="priceDropdown" data-filter-column="30" onchange="filterTable()">
+  		<option value="">Any</option>
+  		<option value="Free">Free</option>
+  		<option value="Paid">One of Payment</option>
+  		<option value="Subscription">Subscription License</option>
+	</select>
 	<br>
     </div>
 </form>
@@ -285,7 +390,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         </tr>
     </thead>
 <tbody id="softwareTableBody">
-
 </tbody>
 </table>
 </div>

@@ -137,7 +137,7 @@ function hideMaterials() {
 
 function hideCodes() {
     var btn = document.getElementById("codesButton");
-    changeButton(btn, [19, 18, 17, 16, 15, 14]);
+    changeButton(btn, [18, 17, 16, 15, 14]);
 }
 
 function hideInterfaces() {
@@ -147,11 +147,6 @@ function hideInterfaces() {
 
 function hideSystem() {
     var btn = document.getElementById("systemButton");
-    changeButton(btn, [24, 25]);
-}
-
-function hideRequires() {
-    var btn = document.getElementById("requiresButton");
-    changeButton(btn, [26, 27, 28]);
+    changeButton(btn, [24, 25, 26, 27, 28]);
 }
 

@@ -84,19 +84,33 @@ function filterTable() {
     var selectedFilters = [];
     var plugIn = true;
 
-    for (var i = 0; i < selects.length; i++) {
-        var select = selects[i];
-        var selectedValue = select.value.trim().toLowerCase();
+for (var i = 0; i < selects.length; i++) {
+    var select = selects[i];
+    var selectedValue = select.value.trim().toLowerCase();
 
-        // Check for dropdown with a data-filter-column attribute
-        if (select.hasAttribute("data-filter-column") && selectedValue !== "") {
+    if (select.hasAttribute("data-filter-column") && selectedValue !== "") {
+        var columnIndex = parseInt(select.getAttribute("data-filter-column"));
+
+        if (selectedValue.includes(";")) {
+            // Multi-keyword match (any of the terms)
+            var keywords = selectedValue.split(";").map(s => s.trim());
             selectedFilters.push({
-                columnIndex: parseInt(select.getAttribute("data-filter-column")),
+                columnIndex: columnIndex,
+                keywords: keywords,
+                type: "anymatch"
+            });
+        } else {
+            // Single keyword match
+            selectedFilters.push({
+                columnIndex: columnIndex,
                 expectedValue: selectedValue,
                 type: "text"
             });
         }
     }
+}
+
+
 
     for (var i = 0; i < inputs.length; i++) {
         var input = inputs[i];
@@ -179,6 +193,17 @@ function filterTable() {
 
                 var cellText = cell.textContent.toLowerCase().trim();
                 if (cellText === "-" || cellText === "any") continue;
+
+if (filter.type === "anymatch") {
+    const cell = row.cells[filter.columnIndex];
+    const cellText = cell ? cell.textContent.toLowerCase().trim() : "";
+
+    const matches = filter.keywords.some(keyword => cellText.includes(keyword));
+    if (!matches) {
+        showRow = false;
+        break;
+    }
+}
 
                 if (filter.type === "text") {
                     if (!cellText.includes(filter.expectedValue)) {
@@ -350,3 +375,15 @@ function replaceAsterisksWithIcons() {
 
     document.body.innerHTML = document.body.innerHTML.replace(/\*/g, ' <img src="./icons/info.svg" alt="info" class="info">');
 }
+
+function addFeature() {
+    var original = document.getElementById("featureSearch");
+    if (!original) return;
+
+    var clone = original.cloneNode(true); // true to deep clone (includes children)
+    original.id = ""; // Clear the ID to avoid duplicates
+
+    // Insert after the original
+    original.parentNode.insertBefore(clone, original.nextSibling);
+}
+
