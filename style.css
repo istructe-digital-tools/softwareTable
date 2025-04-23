@@ -132,6 +132,7 @@ div.banner{
 .tooltip {
     position: relative;
     cursor: help;
+    display: inline;
 }
 
 .tooltip .tooltip-text {
@@ -146,7 +147,7 @@ div.banner{
     position: absolute;
     z-index: 1;
     left: 25%;
-    top: calc(100% + 2px);
+    bottom: calc(100% + 2px);
     opacity: 0.5;
     transition: opacity 0.3s;
     font-size: 14px;
