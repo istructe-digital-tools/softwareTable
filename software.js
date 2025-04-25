@@ -1,12 +1,6 @@
 async function addSoftware() { 
     const rowFiles = [
-    "software/CYPE.html",
-    "software/MasterSeries.html",
-    "software/Misc.html",
-    "software/Oasys.html",
-    "software/SkyCiv.html",
-    "software/Sofistik.html",
-    "software/Trimble.html"
+    "software/Database.html",
 ];
 
 
