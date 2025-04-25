@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Allow commit changes
+  contents: write  # Needed if pushing to repo (not used here anymore)
   pages: write
   id-token: write
 
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update-software-list:
+  generate-html:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -26,34 +26,28 @@ jobs:
         with:
           node-version: 18
 
-      - name: Generate software list in JavaScript
-        run: node .github/scripts/updateSoftwareList.js
-
-      - name: Commit and push updated software list
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Auto-update software list" || echo "No changes to commit"
-          git push
+      - name: Generate HTML from CSV files
+        run: node .github/scripts/generateHtmlFromCsv.js
 
   deploy:
-    needs: update-software-list
+    needs: generate-html
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout latest code
+      - name: Checkout latest code (with generated HTML)
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures latest commit is pulled in
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload latest files (forces fresh files)
+      - name: Upload site content
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Upload the entire repository
+          path: '.'  # Adjust if your HTML goes in a subfolder
 
       - name: Deploy to GitHub Pages
         id: deployment
