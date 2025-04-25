@@ -1,26 +1,71 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const softwareDir = path.join(__dirname, "../../software");
-const jsFilePath = path.join(__dirname, "../../software.js");
+const folder = './software';
 
-// Ensure the JavaScript file exists
-if (!fs.existsSync(jsFilePath)) {
-    console.error(`Error: JavaScript file not found at ${jsFilePath}`);
-    process.exit(1);
+fs.readdirSync(folder).forEach(file => {
+    if (file.endsWith('.csv')) {
+        const filePath = path.join(folder, file);
+        const csvContent = fs.readFileSync(filePath, 'utf8');
+        const htmlContent = csvToHtmlTable(csvContent);
+
+        const outputFile = path.join(folder, file.replace('.csv', '.html'));
+        fs.writeFileSync(outputFile, htmlContent, 'utf8');
+        console.log(`Converted ${file} -> ${path.basename(outputFile)}`);
+    }
+});
+
+function csvToHtmlTable(csvString) {
+    const rows = csvString.trim().split('\n');
+    let tableHtml = '';
+
+    rows.forEach((row, rowIndex) => {
+        const cells = parseCsvRow(row);
+        tableHtml += '  <tr>\n';
+
+        cells.forEach((cell, i) => {
+            let htmlCell;
+            if (i === 7 || i === 29) {
+                htmlCell = `<td><a target='_blank' href='${cell}'>link</a></td>`;
+            } else {
+                let content = cell
+                    .replace(/\/#/g, '<br/>')
+                    .replace(/\[/g, "<div class='tooltip'>")
+                    .replace(/\]/g, "*</div>")
+                    .replace(/{/g, "<span class='tooltip-text'>")
+                    .replace(/}/g, "</span>");
+                htmlCell = `<td>${content}</td>`;
+            }
+            tableHtml += `    ${htmlCell}\n`;
+        });
+
+        tableHtml += '  </tr>\n';
+    });
+
+    return tableHtml;
 }
 
-// Read all .html files from the "software" folder
-const files = fs.readdirSync(softwareDir).filter(file => file.endsWith(".html"));
+function parseCsvRow(row) {
+    const result = [];
+    let current = '';
+    let inQuotes = false;
 
-// Generate the `rowFiles` array with the correct folder path
-const newArrayContent = `const rowFiles = [\n    "${files.map(file => `software/${file}`).join('",\n    "')}"\n];\n`;
+    for (let i = 0; i < row.length; i++) {
+        const char = row[i];
+        const next = row[i + 1];
 
-// Read `software.js` and replace the `rowFiles` array
-let jsContent = fs.readFileSync(jsFilePath, "utf8");
-jsContent = jsContent.replace(/const rowFiles = \[[^\]]*\];/, newArrayContent);
-
-// Write the updated file back
-fs.writeFileSync(jsFilePath, jsContent, "utf8");
-
-console.log("✅ Updated software.js with correct software folder paths.");
+        if (char === '"' && inQuotes && next === '"') {
+            current += '"';
+            i++;
+        } else if (char === '"') {
+            inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+            result.push(current);
+            current = '';
+        } else {
+            current += char;
+        }
+    }
+    result.push(current);
+    return result;
+}
