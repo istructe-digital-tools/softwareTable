@@ -4,8 +4,7 @@ const path = require('path');
 // Function to handle the conversion of the row
 const convertRow = (row) => {
     return row.map((cell, index) => {
-        if (index === 7 || index === 29) {
-            // For URLs in 8th (index 7) and 30th (index 29) columns
+        if (index === 7 || index === 30) {
             return `<td><a target='_blank' href='${cell}'>link</a></td>`;
         } else {
             // Handle other columns
