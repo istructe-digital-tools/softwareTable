@@ -8,21 +8,26 @@ const convertRow = (row) => {
             // Handle URLs in the 8th and 30th columns
             return `<td><a target='_blank' href='${cell}'>link</a></td>`;
         } else {
-            // Handle tooltips and other conversions in all columns
+            // Handle all other conversions in all columns
             return `<td>${convertTooltips(cell)}</td>`;
         }
     }).join('');
 };
 
+// Function to replace the specified characters in the cell
+const replaceSpecialChars = (cell) => {
+    // First, replace all occurrences of the specified characters
+    return cell.replace(/\/#/g, "<br/>")          // Replace "/#" with <br/>
+               .replace(/\[/g, "<div class='tooltip'>")   // Replace "[" with tooltip start
+               .replace(/\]/g, "*</div>")       // Replace "]" with tooltip end
+               .replace(/\{/g, "<span class='tooltip-text'>") // Replace "{" with tooltip text start
+               .replace(/\}/g, "</span>");      // Replace "}" with tooltip text end
+};
+
 // Function to handle tooltip and line break conversions
 const convertTooltips = (cell) => {
-    // Replace all tooltip patterns
-    let modifiedCell = cell.replace(/\[([^\]]+)\]/g, "<div class='tooltip'>$1</div>");
-    modifiedCell = modifiedCell.replace(/\{([^\}]+)\}/g, "<span class='tooltip-text'>$1</span>");
-    
-    // Replace "/#" with <br/> (multiple occurrences)
-    modifiedCell = modifiedCell.replace(/\/#/g, "<br/>");
-
+    // Replace the special characters first
+    let modifiedCell = replaceSpecialChars(cell);
     return modifiedCell;
 };
 
@@ -38,7 +43,7 @@ const parseCSV = (data) => {
     let insideQuotes = false;
     let currentCell = '';
 
-    for (let i = 1; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         const char = data[i];
 
         if (char === '"') {
