@@ -42,11 +42,10 @@ fs.readFile(inputCsvFile, 'utf8', (err, data) => {
         htmlContent += `<tr>${convertRow(cells)}</tr>\n`;
     });
 
-    const htmlHeader = `<table>\n`;
-    const htmlFooter = `</table>\n`;
+
 
     // Combine the header, rows, and footer to generate final HTML
-    const finalHtml = htmlHeader + htmlContent + htmlFooter;
+    const finalHtml = htmlContent;
 
     // Write to the HTML file
     fs.writeFileSync(outputHtmlFile, finalHtml, 'utf8');
