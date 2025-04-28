@@ -5,16 +5,25 @@ const path = require('path');
 const convertRow = (row) => {
     return row.map((cell, index) => {
         if (index === 7 || index === 29) {
+            // Handle URLs in the 8th and 30th columns
             return `<td><a target='_blank' href='${cell}'>link</a></td>`;
         } else {
-            // Handle other columns
-            return `<td>${cell.replace('[', "<div class='tooltip'>")
-                                .replace(']', "*</div>")
-                                .replace('{', "<span class='tooltip-text'>")
-                                .replace('}', "</span>")
-                                .replace('/#', "<br/>")}</td>`;
+            // Handle tooltips and other conversions in all columns
+            return `<td>${convertTooltips(cell)}</td>`;
         }
     }).join('');
+};
+
+// Function to handle tooltip and line break conversions
+const convertTooltips = (cell) => {
+    // Replace all tooltip patterns
+    let modifiedCell = cell.replace(/\[([^\]]+)\]/g, "<div class='tooltip'>$1</div>");
+    modifiedCell = modifiedCell.replace(/\{([^\}]+)\}/g, "<span class='tooltip-text'>$1</span>");
+    
+    // Replace "/#" with <br/> (multiple occurrences)
+    modifiedCell = modifiedCell.replace(/\/#/g, "<br/>");
+
+    return modifiedCell;
 };
 
 // Adjusted path: if the script and CSV are in the same "software" directory
