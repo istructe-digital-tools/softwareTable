@@ -15,19 +15,27 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  generate-html:
+  convert_csv_to_html:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: 18
+          node-version: '16'
 
-      - name: Generate HTML from CSV files
-        run: node .github/scripts/updateSoftwareList.js
+      - name: Run CSV to HTML script
+        run: node software/convertCsvToHtml.js
+
+      - name: Commit the generated HTML file
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: 'github-actions[bot]'
+          author_email: 'github-actions[bot]@users.noreply.github.com'
+          message: 'Generate Database.html from Database.csv'
+          add: 'software/Database.html'
 
   deploy:
     needs: generate-html

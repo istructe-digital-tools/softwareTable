@@ -1,0 +1,53 @@
+const fs = require('fs');
+const path = require('path');
+
+// Function to handle the conversion of the row
+const convertRow = (row) => {
+    return row.map((cell, index) => {
+        if (index === 7 || index === 29) {
+            // For URLs in 8th (index 7) and 30th (index 29) columns
+            return `<td><a target='_blank' href='${cell}'>link</a></td>`;
+        } else {
+            // Handle other columns
+            return `<td>${cell.replace('[', "<div class='tooltip'>")
+                                .replace(']', "*</div>")
+                                .replace('{', "<span class='tooltip-text'>")
+                                .replace('}', "</span>")
+                                .replace('/#', "<br/>")}</td>`;
+        }
+    }).join('');
+};
+
+const inputCsvFile = path.join(__dirname, 'software', 'Database.csv');
+const outputHtmlFile = path.join(__dirname, 'software', 'Database.html');
+let htmlContent = '';
+
+// Read the CSV file
+fs.readFile(inputCsvFile, 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading the CSV file:', err);
+        return;
+    }
+
+    // Split the CSV into lines
+    const rows = data.split('\n');
+
+    // Loop through each row in the CSV
+    rows.forEach(row => {
+        // Split the row by commas to get each cell
+        const cells = row.split(',');
+
+        // Convert the row to HTML and append to the HTML content
+        htmlContent += `<tr>${convertRow(cells)}</tr>\n`;
+    });
+
+    const htmlHeader = `<table>\n`;
+    const htmlFooter = `</table>\n`;
+
+    // Combine the header, rows, and footer to generate final HTML
+    const finalHtml = htmlHeader + htmlContent + htmlFooter;
+
+    // Write to the HTML file
+    fs.writeFileSync(outputHtmlFile, finalHtml, 'utf8');
+    console.log('Database.html has been generated');
+});
