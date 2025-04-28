@@ -22,22 +22,39 @@ const inputCsvFile = path.join(__dirname, 'Database.csv');
 const outputHtmlFile = path.join(__dirname, 'Database.html');
 let htmlContent = '';
 
-// Function to parse CSV correctly, handling commas inside quotes
+// Function to parse CSV, handling commas inside quotes
 const parseCSV = (data) => {
     const rows = [];
-    const regex = /(?:,|\r?\n|^)(?:"([^"]*)"|([^",\r\n]*))/g;
-    let match;
     let row = [];
-    
-    let i = 0;
-    while ((match = regex.exec(data)) !== null) {
-        const cell = match[1] || match[2];  // Capture value inside quotes or regular cell
-        row.push(cell);
-        
-        if (data.charAt(match.index + match[0].length) === '\n' || regex.lastIndex === data.length) {
+    let insideQuotes = false;
+    let currentCell = '';
+
+    for (let i = 0; i < data.length; i++) {
+        const char = data[i];
+
+        if (char === '"') {
+            // Toggle the insideQuotes flag when encountering a quote mark
+            insideQuotes = !insideQuotes;
+        } else if (char === ',' && !insideQuotes) {
+            // If not inside quotes, treat comma as a separator
+            row.push(currentCell.trim());
+            currentCell = '';
+        } else if (char === '\n' && !insideQuotes) {
+            // If not inside quotes, treat newline as row separator
+            row.push(currentCell.trim());
             rows.push(row);
             row = [];
+            currentCell = '';
+        } else {
+            // Add the character to the current cell
+            currentCell += char;
         }
+    }
+
+    // Push the last cell and row after the loop ends
+    if (currentCell.length > 0 || row.length > 0) {
+        row.push(currentCell.trim());
+        rows.push(row);
     }
 
     return rows;
