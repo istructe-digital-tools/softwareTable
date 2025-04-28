@@ -1,9 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
+// Path to the folder containing CSV files
 const folder = './software';
 let allRows = [];
 
+// Check if the folder exists
+if (!fs.existsSync(folder)) {
+    console.error(`Error: Folder ${folder} does not exist.`);
+    process.exit(1);
+}
+
+// Read the CSV files and process them
 fs.readdirSync(folder).forEach(file => {
     if (file.endsWith('.csv')) {
         const filePath = path.join(folder, file);
@@ -14,10 +22,23 @@ fs.readdirSync(folder).forEach(file => {
     }
 });
 
-const htmlContent = csvToHtmlRows(allRows);
-fs.writeFileSync(path.join(folder, 'Database.html'), htmlContent, 'utf8');
-console.log('Generated software.html');
+// If no rows were added, log an error and exit
+if (allRows.length === 0) {
+    console.error('No CSV data found. Exiting.');
+    process.exit(1);
+}
 
+// Convert CSV rows to HTML table rows
+const htmlContent = csvToHtmlRows(allRows);
+
+// Output file name (updated to be written in the root directory)
+const outputFilePath = path.join(__dirname, 'Database.html');
+
+// Write the HTML content to the file
+fs.writeFileSync(outputFilePath, htmlContent, 'utf8');
+console.log(`Generated ${outputFilePath}`);
+
+// Function to convert CSV rows to HTML table rows
 function csvToHtmlRows(rows) {
     let html = '';
 
@@ -47,6 +68,7 @@ function csvToHtmlRows(rows) {
     return html;
 }
 
+// Function to parse each CSV row into individual cells
 function parseCsvRow(row) {
     const result = [];
     let current = '';
