@@ -18,8 +18,9 @@ const convertRow = (row) => {
     }).join('');
 };
 
-const inputCsvFile = path.join(__dirname, 'software', 'Database.csv');
-const outputHtmlFile = path.join(__dirname, 'software', 'Database.html');
+// Adjusted path: if the script and CSV are in the same "software" directory
+const inputCsvFile = path.join(__dirname, 'Database.csv');
+const outputHtmlFile = path.join(__dirname, 'Database.html');
 let htmlContent = '';
 
 // Read the CSV file
