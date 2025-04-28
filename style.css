@@ -1,15 +1,14 @@
 body{
 	font-family: helvetica;
 	font-size: 14px;
-	width: 100%;
+	width: max-content;
 	margin: 0px;
-	overflow-x: clip;
 }
 
 div.table{
-  	width: 98vw;
+  	padding-right: 0.7vw;
 	padding-left: 0.5vw;
-	overflow-x: scroll;
+	overflow-x: visible;
 	overflow-y: hidden;
 }
 
@@ -201,18 +200,4 @@ button {
 .info {
     height: 0.7em;
 }
-
-@media (prefers-color-scheme: dark) {
-    body{
-	background: #333;
-	color: white;
-    }
-    a, button {
-  	color: hotpink;
-    }
-    div.banner{
-	background: #113b3f;
-    }
-    button {background: black;}
-    .icon, .info {filter: invert(1);}
 }
