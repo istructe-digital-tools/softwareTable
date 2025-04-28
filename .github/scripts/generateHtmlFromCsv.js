@@ -31,8 +31,16 @@ if (allRows.length === 0) {
 // Convert CSV rows to HTML table rows
 const htmlContent = csvToHtmlRows(allRows);
 
-// Output file name (updated to be written in the root directory)
-const outputFilePath = path.join(__dirname, 'Database.html');
+// Ensure the 'software' subfolder exists, create it if necessary
+const outputDir = path.join(__dirname, '..', 'software');
+
+// Create the 'software' folder if it does not exist
+if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir);
+}
+
+// Output file path (within the 'software' subfolder)
+const outputFilePath = path.join(outputDir, 'Database.html');
 
 // Write the HTML content to the file
 fs.writeFileSync(outputFilePath, htmlContent, 'utf8');
