@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # Needed if pushing to repo (not used here anymore)
+  contents: write
   pages: write
   id-token: write
 
@@ -27,7 +27,7 @@ jobs:
           node-version: 18
 
       - name: Generate HTML from CSV files
-        run: node .github/scripts/generateHtmlFromCsv.js
+        run: node .github/scripts/updateSoftwareList.js
 
   deploy:
     needs: generate-html
