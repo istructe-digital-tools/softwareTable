@@ -38,7 +38,7 @@ jobs:
           add: 'software/Database.html'
 
   deploy:
-    needs: generate-html
+    needs: convert_csv_to_html
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
