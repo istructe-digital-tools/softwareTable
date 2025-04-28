@@ -29,7 +29,7 @@ const parseCSV = (data) => {
     let insideQuotes = false;
     let currentCell = '';
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 1; i < data.length; i++) {
         const char = data[i];
 
         if (char === '"') {
