@@ -19,8 +19,8 @@ const replaceSpecialChars = (cell) => {
     // First, replace all occurrences of the specified characters
     return cell.replace(/\/#/g, "<br/>")          // Replace "/#" with <br/>
                .replace(/\[/g, "<div class='tooltip'>")   // Replace "[" with tooltip start
-               .replace(/\]/g, "*</div>")       // Replace "]" with tooltip end
-               .replace(/\{/g, "<span class='tooltip-text'>") // Replace "{" with tooltip text start
+               .replace(/\]/g, "</div>")       // Replace "]" with tooltip end
+               .replace(/\{/g, "*<span class='tooltip-text'>") // Replace "{" with tooltip text start
                .replace(/\}/g, "</span>");      // Replace "}" with tooltip text end
 };
 
