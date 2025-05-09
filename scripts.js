@@ -370,10 +370,10 @@ function clearPlugIn() {
     }
 }
 
-function replaceAsterisksWithIcons() {
+function replaceQuestionWithIcons() {
     if (!document.body) return;
 
-    document.body.innerHTML = document.body.innerHTML.replace(/\*/g, ' <img src="./icons/info.svg" alt="info" class="info">');
+    document.body.innerHTML = document.body.innerHTML.replace(/\(\?\)/g, ' <img src="./icons/info.svg" alt="info" class="info">');
 }
 
 function addFeature() {
@@ -387,3 +387,7 @@ function addFeature() {
     original.parentNode.insertBefore(clone, original.nextSibling);
 }
 
+function showWebPage() {
+    document.getElementById("disclaimer").remove();
+    document.getElementById("blur-overlay").remove();
+}

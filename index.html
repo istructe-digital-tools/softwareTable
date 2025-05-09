@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     await addSoftware(); // Wait for rows to be added
     console.log("addSoftware completed, calling randomizeTableRows...");
     randomizeTableRows(); // Randomize the table rows after they are added
-    replaceAsterisksWithIcons();
+    replaceQuestionWithIcons();
     hideMaterials();
     hideInterfaces();
 });
@@ -23,6 +23,22 @@ document.addEventListener("DOMContentLoaded", async function () {
 </head>
 
 <body>
+<div id="blur-overlay" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(6px);
+    z-index: 1;
+"></div>
+<div id="disclaimer" class="disclaimer">
+  <p>
+    The information provided in this table has been compiled by the IStructE with support from our panels and software companies as a resource to help structural engineers find digital tools. Inclusion in this table does not constitute an endorsement of any product by the IStructE. Structural engineers should carry out their own due diligence to ensure any digital tools used are appropriate for their intended purpose and should verify that any outputs are accurate. Engineers should check the capabilities and features of any digital tools before using them.
+  </p>
+  <button onclick="showWebPage()">I Understand</button>
+</div>
+
 <div class="banner">
 <div class="intro">
 	<H1>IStructE - Digital Tools Database</H1>
@@ -36,7 +52,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 	</ul>
 
 	<p>As a best practice, any software used should be <strong>ISO 9001 compliant</strong>.</p>
-	<p>Hovering over text that includes an <span style="display: inline; filter: invert(1) brightness()">*</span> symbol will display additional informative descriptions.</p> 
+	<p>Hovering over text that includes an <span style="display: inline; filter: invert(1) brightness(2)">(?)</span> symbol will display additional informative descriptions.</p> 
+
+	<p><a style="color: white;" target="_blank" href="https://forms.office.com/e/4qEdrBD1ht" title="click here to update the digital tools database">Do you wish to submit a new tool, or update/remove an existing one?</a></p>
 	
 </div>
 </div>
@@ -46,19 +64,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         <h4>Compliance and Certification <br>for Codified Design Checks</h4>
 	<div class="tooltip">
   		<input type="checkbox" id="Certified by Qualified Engineer" name="Certified by Qualified Engineer" data-filter="Yes" onclick="filterTable()">
-  		<label for="Certified by Qualified Engineer"> Certified by Qualified Engineer*</label><br>
+  		<label for="Certified by Qualified Engineer"> Certified by Qualified Engineer (?)</label><br>
   		<span class="tooltip-text">This includes chartered members of the IStructE, as well as professionals who are chartered or licensed with similar bodies and are well-versed in the relevant standards. Additionally, it encompasses academics who have contributed to the development of these codes and standards.<br/>Software in this table has been self-certified by the software developers. Structural engineers should review any software themselves before using it.
   		</span>
 	</div>
 	<div class="tooltip">
         <input type="checkbox" id="Full" name="Full" data-filter="Full" onclick="filterTable()">
-        <label for="Full"> Full Design Checks*</label><br>
+        <label for="Full"> Full Design Checks (?)</label><br>
   		<span class="tooltip-text">Software in this table has been self-certified by the software developers. Structural engineers should review any software themselves to ensure that it does the full set of checks required for the purpose of the check they are doing.
   		</span>
 	</div>
 	<div class="tooltip">
         	<input type="checkbox" id="ISO 9001 Compliant" name="ISO 9001 Compliant" data-filter="Yes" onclick="filterTable()">
-        	<label for="ISO 9001 Compliant"> ISO 9001 Compliant*</label><br>
+        	<label for="ISO 9001 Compliant"> ISO 9001 Compliant (?)</label><br>
   		<span class="tooltip-text">ISO 9001 is an international standard for quality management systems (QMS) that helps organizations ensure they consistently meet customer and regulatory requirements. It is based on principles like customer focus, leadership, process approach, and continuous improvement. Certification demonstrates a commitment to quality, efficiency, and risk management across various industries.
   		</span>
 	</div>
@@ -70,7 +88,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   <option value="">Any</option>
   <option value="Stand Alone">Stand Alone</option>
   <option value="Plug In">Plug In</option>
-  <option value="Website">Website</option>
+  <option value="Web App">Web App</option>
   <option value="Spreadsheet">Spreadsheet</option>
   <option value="Mobile App">Mobile App</option>
 </select>
@@ -89,14 +107,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
-	        <label for="Analysis"> Structural Analysis*</label><br>
+	        <label for="Analysis"> Structural Analysis (?)</label><br>
 		<span class="tooltip-text">Refers to the use of software and algorithms that can be used to analyse a structure. (Such as Finite Element Analysis)
   		</span>
 	</div>
 
 	<div class="tooltip">
         	<input type="checkbox" id="Design" name="Design" data-filter="Design" onclick="filterTable()">
-        	<label for="Design"> Design Calculations*</label><br>
+        	<label for="Design"> Design Calculations (?)</label><br>
   		<span class="tooltip-text">Refers to the use of software and algorithms that automate design processes based on established codes and standards.
   		</span>
 	</div>

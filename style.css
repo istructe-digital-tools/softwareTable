@@ -121,7 +121,6 @@ div.banner{
   width: 100%;
   height: max-content;
   background: #279C6F;
-  z-index: -2;
 }
 
 .headers{
@@ -200,4 +199,18 @@ button {
 .info {
     height: 0.7em;
 }
+
+
+.disclaimer {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  max-width: 500px;
+  text-align: center;
 }
