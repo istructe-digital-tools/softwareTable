@@ -1,41 +1,7 @@
-async function addSoftware() { 
+async function addSoftware() {
     const rowFiles = [
-    "software/Database.html",
-];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        "software/Database.html",
+    ];
 
     const tableBody = document.getElementById("softwareTableBody");
     if (!tableBody) {
@@ -44,35 +10,34 @@ async function addSoftware() {
     }
 
     try {
-        // Log to verify when the process starts
         console.log("Starting to load software rows...");
 
-        // Create an array of promises for each fetch request
-        const fetchPromises = rowFiles.map(file => 
-            fetch(file)
-                .then(response => response.text())
+        const fetchPromises = rowFiles.map(file => {
+            // Add cache-busting query string
+            const url = `${file}?v=${Date.now()}`;
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch ${file}: ${response.status}`);
+                    }
+                    return response.text();
+                })
                 .then(data => {
                     console.log(`Inserting row from ${file}`);
                     tableBody.insertAdjacentHTML("beforeend", data);
                 })
-                .catch(error => console.error("Error loading row:", file, error))
-        );
+                .catch(error => console.error("Error loading row:", file, error));
+        });
 
-        // Wait for all the fetch promises to resolve
         await Promise.all(fetchPromises);
 
-        // Log after rows are added
         console.log("All rows added!");
+        document.dispatchEvent(new Event('softwareAdded'));
 
-        // Dispatch the event after all rows are added
-        const event = new Event('softwareAdded');
-        document.dispatchEvent(event);
-
-        // Ensure the DOM is updated by deferring the randomization to the next event loop
         setTimeout(() => {
             console.log("Randomizing table rows...");
-            randomizeTableRows(); // Randomize the table rows after all rows are added
-        }, 0); 
+            randomizeTableRows();
+        }, 0);
 
     } catch (error) {
         console.error("Error during software addition:", error);
