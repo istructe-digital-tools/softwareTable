@@ -29,13 +29,13 @@ jobs:
       - name: Run CSV to HTML script
         run: node software/convertCsvToHtml.js
 
-      - name: Commit the generated HTML file
+      - name: Commit the generated TXT file
         uses: EndBug/add-and-commit@v7
         with:
           author_name: 'github-actions[bot]'
           author_email: 'github-actions[bot]@users.noreply.github.com'
-          message: 'Generate Database.html from Database.csv'
-          add: 'software/Database.html'
+          message: 'Generate Database.txt from Database.csv'
+          add: 'software/Database.txt'
 
   deploy:
     needs: convert_csv_to_html
@@ -44,10 +44,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout latest code (with generated HTML)
+      - name: Checkout latest code (with generated TXT)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures latest commit is pulled in
+          fetch-depth: 0
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -55,7 +55,7 @@ jobs:
       - name: Upload site content
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Adjust if your HTML goes in a subfolder
+          path: '.'  # Root of the repository
 
       - name: Deploy to GitHub Pages
         id: deployment
