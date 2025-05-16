@@ -1,6 +1,6 @@
 async function addSoftware() {
     const rowFiles = [
-        "software/Database.txt",
+        "https://raw.githubusercontent.com/istructe-digital-tools/softwareTable/main/software/Database.txt",
     ];
 
     const tableBody = document.getElementById("softwareTableBody");
@@ -14,7 +14,7 @@ async function addSoftware() {
 
         const fetchPromises = rowFiles.map(file => {
             const url = `${file}?v=${Date.now()}`;  // Cache busting
-            return fetch(url, { cache: "no-store" })  // Also disables cache explicitly
+            return fetch(url, { cache: "no-store" })  // Disable cache explicitly
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Failed to fetch ${file}: ${response.status}`);
@@ -42,4 +42,3 @@ async function addSoftware() {
         console.error("Error during software addition:", error);
     }
 }
-
