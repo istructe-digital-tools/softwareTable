@@ -1,6 +1,6 @@
 async function addSoftware() {
     const rowFiles = [
-        "software/Database.html",
+        "software/Database.txt",
     ];
 
     const tableBody = document.getElementById("softwareTableBody");
@@ -13,9 +13,8 @@ async function addSoftware() {
         console.log("Starting to load software rows...");
 
         const fetchPromises = rowFiles.map(file => {
-            // Add cache-busting query string
-            const url = `${file}?v=${Date.now()}`;
-            return fetch(url)
+            const url = `${file}?v=${Date.now()}`;  // Cache busting
+            return fetch(url, { cache: "no-store" })  // Also disables cache explicitly
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`Failed to fetch ${file}: ${response.status}`);
@@ -43,3 +42,4 @@ async function addSoftware() {
         console.error("Error during software addition:", error);
     }
 }
+

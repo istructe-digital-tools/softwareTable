@@ -33,7 +33,7 @@ const convertTooltips = (cell) => {
 
 // Adjusted path: if the script and CSV are in the same "software" directory
 const inputCsvFile = path.join(__dirname, 'Database.csv');
-const outputHtmlFile = path.join(__dirname, 'Database.html');
+const outputHtmlFile = path.join(__dirname, 'Database.txt');
 let htmlContent = '';
 
 // Function to parse CSV, handling commas inside quotes
