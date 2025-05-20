@@ -145,7 +145,7 @@ div.banner{
     position: absolute;
     z-index: 1;
     left: 25%;
-    bottom: calc(100% + 2px);
+    top: 0px;
     opacity: 0.5;
     transition: opacity 0.3s;
     font-size: 14px;
@@ -191,8 +191,11 @@ input[type="text" i], select {
 button {
     font-size: small;
     cursor: pointer; 
-    filter: sepia(1) saturate(5) contrast(1.1) brightness(0.8) invert(1);
     scale: 0.85;
+}
+
+button.selected {
+    filter: sepia(1) saturate(5) contrast(1.1) brightness(0.8) invert(1);
 }
 
 .icon {
