@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<br>
 	<button style="display: none;"></button>
 
-	<h4>Type of Tool   <button id="typeButton" onclick="hideType()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+	<h4>Type of Tool   <button id="typeButton" onclick="hideType()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
 <select id="softwareTypeDropdown" name="SoftwareType" data-filter-column="2" onchange="filterTable(); clearPlugIn();">
   <option value="">Any</option>
   <option value="Stand Alone">Stand Alone</option>
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     <div class="column">
 
-	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
 	<div class="tooltip">
 	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
 	        <label for="Analysis"> Structural Analysis (?)</label><br>
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Composites" name="Composites" data-filter="Yes" onclick="filterTable()">
         <label for="Composites"> Composites</label><br>
 
-        <h4>Design Codes   <button id="codesButton" onclick="hideCodes()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+        <h4>Design Codes   <button id="codesButton" onclick="hideCodes()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
         <input type="checkbox" id="Eurocodes" name="Eurocodes" data-filter="Yes" onclick="filterTable()">
         <label for="Eurocodes"> Eurocodes</label><br>
         <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <input type="checkbox" id="Grasshopper" name="Grasshopper" data-filter="Yes" onclick="filterTable()">
         <label for="Grasshopper"> Grasshopper</label><br>
 
-        <h4>System Requirements   <button id="systemButton" onclick="hideSystem()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+        <h4>System Requirements   <button id="systemButton" onclick="hideSystem()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
         <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
         <label for="No Internet Access Required"> No Internet Access Required</label><br><br>
 <label> Operating System:</label><br>
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 	<label for="Storage"> Maximum Storage</label>
         <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
 
-	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
+	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
 	<select id="priceDropdown" data-filter-column="30" onchange="filterTable()">
   		<option value="">Any</option>
   		<option value="Free">Free</option>
