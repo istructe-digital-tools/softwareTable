@@ -381,10 +381,15 @@ function addFeature() {
     if (!original) return;
 
     var clone = original.cloneNode(true); // true to deep clone (includes children)
-    original.id = ""; // Clear the ID to avoid duplicates
+    clone.innerHTML += "<button onClick='removeFeature(this)'> - </button>";
+    clone.id = ""; // Clear the ID to avoid duplicates
 
     // Insert after the original
     original.parentNode.insertBefore(clone, original.nextSibling);
+}
+
+function removeFeature(element) {
+    element.parentNode.remove();
 }
 
 function showWebPage() {

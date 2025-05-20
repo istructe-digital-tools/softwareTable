@@ -106,10 +106,12 @@ function changeButton(btn, array) {
 	if (btn.value === "true") {
 		array.forEach(hideColumn);
 		btn.innerHTML = "<img src='./icons/expand.svg' alt='Expand' class='icon'>";
+		btn.style = "filter: invert(0);";
 		btn.value = "false";
 	} else {
 		array.forEach(showColumn);
 		btn.innerHTML = "<img src='./icons/collapse.svg' alt='Collapse' class='icon'>";
+		btn.style = "";
 		btn.value = "true";
 	}
 }
