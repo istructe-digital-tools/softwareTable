@@ -1,0 +1,446 @@
+[
+  {
+    "value": "",
+    "label": "All Features"
+  },
+  {
+    "value": "Building Information Modelling",
+    "label": "Building Information Modelling"
+  },
+  {
+    "value": "Embodied Carbon Assessment",
+    "label": "Embodied Carbon Assessment"
+  },
+  {
+    "value": "Parametric Modelling",
+    "label": "Parametric Modelling"
+  },
+  {
+    "value": "Analysis;Tension / Compression Elements",
+    "label": "Analysis"
+  },
+  {
+    "value": "2D Analysis",
+    "label": "- 2D Analysis"
+  },
+  {
+    "value": "3D Analysis",
+    "label": "- 3D Analysis"
+  },
+  {
+    "value": "Composite Beam Analysis",
+    "label": "- Composite Beam Analysis"
+  },
+  {
+    "value": "Composite Section Analysis",
+    "label": "- Composite Section Analysis"
+  },
+  {
+    "value": "Construction Stage Analysis",
+    "label": "- Construction Stage Analysis"
+  },
+  {
+    "value": "Dynamic Analysis",
+    "label": "- Dynamic Analysis"
+  },
+  {
+    "value": "Finite Element Analysis",
+    "label": "- Finite Element Analysis"
+  },
+  {
+    "value": "Footfall Analysis",
+    "label": "- Footfall Analysis"
+  },
+  {
+    "value": "Global Buckling Analysis",
+    "label": "- Global Buckling Analysis"
+  },
+  {
+    "value": "Lateral Stability Analysis",
+    "label": "- Lateral Stability Analysis"
+  },
+  {
+    "value": "Local Buckling Analysis",
+    "label": "- Local Buckling Analysis"
+  },
+  {
+    "value": "Non-linear Analysis",
+    "label": "- Non-linear Analysis"
+  },
+  {
+    "value": "Response Spectrum Analysis",
+    "label": "- Response Spectrum Analysis"
+  },
+  {
+    "value": "Rigorous Analysis ",
+    "label": "- Rigorous Analysis"
+  },
+  {
+    "value": "Section Analysis",
+    "label": "- Section Analysis"
+  },
+  {
+    "value": "Static Analysis",
+    "label": "- Static Analysis"
+  },
+  {
+    "value": "Strut and Tie Analysis",
+    "label": "- Strut and Tie Analysis"
+  },
+  {
+    "value": "Tension / Compression Elements",
+    "label": "- Tension / Compression Elements"
+  },
+  {
+    "value": "Timber Analysis",
+    "label": "- Timber Analysis"
+  },
+  {
+    "value": "Vibration Design & Analysis",
+    "label": "- Vibration Design & Analysis"
+  },
+  {
+    "value": "Pile Lateral Stability;Pile Sinking;Slip Circles;Soil Structure Interaction",
+    "label": "Geotechnical Analysis"
+  },
+  {
+    "value": "Pile Lateral Stability",
+    "label": "- Pile Lateral Stability"
+  },
+  {
+    "value": "Pile Sinking",
+    "label": "- Pile Sinking"
+  },
+  {
+    "value": "Slip Circles",
+    "label": "- Slip Circles"
+  },
+  {
+    "value": "Soil Structure Interaction",
+    "label": "- Soil Structure Interaction"
+  },
+  {
+    "value": "Beams;Columns;Connections;Elements;Joist Floors;Loads;Retaining Walls;Slabs;Walls;Design for Fire",
+    "label": "Design"
+  },
+  {
+    "value": "Beams",
+    "label": "- Beams"
+  },
+  {
+    "value": "Columns",
+    "label": "- Columns"
+  },
+  {
+    "value": "Connections",
+    "label": "- Connections"
+  },
+  {
+    "value": "Elements",
+    "label": "- Elements"
+  },
+  {
+    "value": "Joist Floors",
+    "label": "- Joist Floors"
+  },
+  {
+    "value": "Loads",
+    "label": "- Loads"
+  },
+  {
+    "value": "Retaining Walls",
+    "label": "- Retaining Walls"
+  },
+  {
+    "value": "Slabs",
+    "label": "- Slabs"
+  },
+  {
+    "value": "Walls",
+    "label": "- Walls"
+  },
+  {
+    "value": "Design for Fire",
+    "label": "- Design for Fire"
+  },
+  {
+    "value": "Loads",
+    "label": "Calculation of Loads to Standards"
+  },
+  {
+    "value": "Seismic Loads",
+    "label": "- Seismic Loads"
+  },
+  {
+    "value": "Snow Loads",
+    "label": "- Snow Loads"
+  },
+  {
+    "value": "Wind Loads",
+    "label": "- Wind Loads"
+  },
+  {
+    "value": "Composite",
+    "label": "Design of Composite Elements"
+  },
+  {
+    "value": "Composite Beams",
+    "label": "- Composite Beams"
+  },
+  {
+    "value": "Composite Columns",
+    "label": "- Composite Columns"
+  },
+  {
+    "value": "Composite Decks and Slabs",
+    "label": "- Composite Decks and Slabs"
+  },
+  {
+    "value": "Concrete",
+    "label": "Design of Concrete Elements"
+  },
+  {
+    "value": "Concrete Beams",
+    "label": "- Concrete Beams"
+  },
+  {
+    "value": "Concrete Columns",
+    "label": "- Concrete Columns"
+  },
+  {
+    "value": "Concrete Core / Shear Walls",
+    "label": "- Concrete Core / Shear Walls"
+  },
+  {
+    "value": "Concrete Coupling Beams",
+    "label": "- Concrete Coupling Beams"
+  },
+  {
+    "value": "Concrete Cracking",
+    "label": "- Concrete Cracking"
+  },
+  {
+    "value": "Concrete Flat Slabs (1 Way)",
+    "label": "- Concrete Flat Slabs (1 Way)"
+  },
+  {
+    "value": "Concrete Flat Slabs (2 Way)",
+    "label": "- Concrete Flat Slabs (2 Way)"
+  },
+  {
+    "value": "Concrete Hollowcore Slabs",
+    "label": "- Concrete Hollowcore Slabs"
+  },
+  {
+    "value": "Concrete Joist Floors",
+    "label": "- Concrete Joist Floors"
+  },
+  {
+    "value": "Concrete Post Tensioning",
+    "label": "- Concrete Post Tensioning"
+  },
+  {
+    "value": "Concrete Reinforced Block Walls",
+    "label": "- Concrete Reinforced Block Walls"
+  },
+  {
+    "value": "Concrete Retaining Walls",
+    "label": "- Concrete Retaining Walls"
+  },
+  {
+    "value": "Concrete Ribbed Slabs",
+    "label": "- Concrete Ribbed Slabs"
+  },
+  {
+    "value": "Concrete Waffle Slabs",
+    "label": "- Concrete Waffle Slabs"
+  },
+  {
+    "value": "Concrete Walls",
+    "label": "- Concrete Walls"
+  },
+  {
+    "value": "Steel",
+    "label": "Design of Steel Elements"
+  },
+  {
+    "value": "Steel Beams",
+    "label": "- Steel Beams"
+  },
+  {
+    "value": "Steel Columns",
+    "label": "- Steel Columns"
+  },
+  {
+    "value": "Steel Joist Floors",
+    "label": "- Steel Joist Floors"
+  },
+  {
+    "value": "Timber",
+    "label": "Design of Timber Elements"
+  },
+  {
+    "value": "Timber Beams",
+    "label": "- Timber Beams"
+  },
+  {
+    "value": "Timber Columns",
+    "label": "- Timber Columns"
+  },
+  {
+    "value": "Timber Joist Floors",
+    "label": "- Timber Joist Floors"
+  },
+  {
+    "value": "Timber Joist Walls;Timber Stud Walls",
+    "label": "- Timber Stud Walls"
+  },
+  {
+    "value": "Timber Panel Walls",
+    "label": "- Timber Panel Walls"
+  },
+  {
+    "value": "Masonry",
+    "label": "Design of Masonry Elements"
+  },
+  {
+    "value": "Masonry Retaining Walls",
+    "label": "- Masonry Retaining Walls"
+  },
+  {
+    "value": "Masonry Walls",
+    "label": "- Masonry Walls"
+  },
+  {
+    "value": "Connections;Punching Shear",
+    "label": "Design of Connections"
+  },
+  {
+    "value": "Baseplate Connections",
+    "label": "- Baseplate Connections"
+  },
+  {
+    "value": "Concrete Anchors Connections",
+    "label": "- Concrete Anchors Connections"
+  },
+  {
+    "value": "Concrete Punching Shear",
+    "label": "- Concrete Punching Shear"
+  },
+  {
+    "value": "Corbel Connections",
+    "label": "- Corbel Connections"
+  },
+  {
+    "value": "Steel to Concrete Connections",
+    "label": "- Steel to Concrete Connections"
+  },
+  {
+    "value": "Steel to Steel Connections",
+    "label": "- Steel to Steel Connections"
+  },
+  {
+    "value": "Timber to Steel Connections",
+    "label": "- Timber to Steel Connections"
+  },
+  {
+    "value": "Timber to Timber Connections",
+    "label": "- Timber to Timber Connections"
+  },
+  {
+    "value": "Footings;Mat Foundations;Pile Caps;Piles",
+    "label": "Design of Foundations"
+  },
+  {
+    "value": "Footings",
+    "label": "- Footings"
+  },
+  {
+    "value": "Mat Foundations",
+    "label": "- Mat Foundations"
+  },
+  {
+    "value": "Pile Caps",
+    "label": "- Pile Caps"
+  },
+  {
+    "value": "Piles",
+    "label": "- Piles"
+  },
+  {
+    "value": "Sheet Piles",
+    "label": "- Sheet Piles"
+  },
+  {
+    "value": "Access Ramps;Aluminium Bars;Box Culverts;Bridges;Portal Frames;Staircases",
+    "label": "Structures"
+  },
+  {
+    "value": "Access Ramps",
+    "label": "- Access Ramps"
+  },
+  {
+    "value": "Aluminium Bars",
+    "label": "- Aluminium Bars"
+  },
+  {
+    "value": "Box Culverts",
+    "label": "- Box Culverts"
+  },
+  {
+    "value": "Bridges",
+    "label": "- Bridges"
+  },
+  {
+    "value": "Portal Frames",
+    "label": "- Portal Frames"
+  },
+  {
+    "value": "Staircases",
+    "label": "- Staircases"
+  },
+  {
+    "value": "CIS/2 Export;DXF Export;Export Material Quantities;IFC Export;IFC Import;PDF Export",
+    "label": "Export & Import Tools"
+  },
+  {
+    "value": "CIS/2 Export",
+    "label": "- CIS/2 Export"
+  },
+  {
+    "value": "DXF Export",
+    "label": "- DXF Export"
+  },
+  {
+    "value": "Export Material Quantities",
+    "label": "- Export Material Quantities"
+  },
+  {
+    "value": "IFC Export",
+    "label": "- IFC Export"
+  },
+  {
+    "value": "IFC Import",
+    "label": "- IFC Import"
+  },
+  {
+    "value": "PDF Export",
+    "label": "- PDF Export"
+  },
+  {
+    "value": "Detailed Plan / Section Drawings;Reinforcement Detailing / Sheets;Reinforcement 3D Modelling",
+    "label": "Detailing Tools"
+  },
+  {
+    "value": "Detailed Plan / Section Drawings",
+    "label": "- Detailed Plan / Section Drawings"
+  },
+  {
+    "value": "Reinforcement Detailing / Sheets",
+    "label": "- Reinforcement Detailing / Sheets"
+  },
+  {
+    "value": "Reinforcement 3D Modelling",
+    "label": "- Reinforcement 3D Modelling"
+  }
+]

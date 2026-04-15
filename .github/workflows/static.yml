@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -15,39 +15,14 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  convert_csv_to_html:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      - name: Run CSV to HTML script
-        run: node software/convertCsvToHtml.js
-
-      - name: Commit the generated TXT file
-        uses: EndBug/add-and-commit@v7
-        with:
-          author_name: 'github-actions[bot]'
-          author_email: 'github-actions[bot]@users.noreply.github.com'
-          message: 'Generate Database.txt from Database.csv'
-          add: 'software/Database.txt'
-
   deploy:
-    needs: convert_csv_to_html
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout latest code (with generated TXT)
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -55,7 +30,7 @@ jobs:
       - name: Upload site content
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Root of the repository
+          path: "."
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -1,405 +1,199 @@
-<!-- 
-    This tool is copyright © [2025] The Institution of Structural Engineers (IStructE). 
-    All rights reserved. Unauthorized use, reproduction, or distribution is prohibited. 
+<!--
+  Digital tools directory — copyright © The Institution of Structural Engineers (IStructE).
+  Data: software/Database.csv
 -->
-
-<html id="htmlContent">
+<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
-<script src="software.js"></script>
-<script src="scripts.js"></script>
-<script src="hideColumns.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", async function () {
-    console.log("DOMContentLoaded fired, calling addSoftware...");
-    await addSoftware(); // Wait for rows to be added
-    console.log("addSoftware completed, calling randomizeTableRows...");
-    randomizeTableRows(); // Randomize the table rows after they are added
-    replaceQuestionWithIcons();
-    hideMaterials();
-    hideInterfaces();
-});
-</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digital tools directory | IStructE</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="directory.js" defer></script>
 </head>
-
 <body>
-<div id="blur-overlay" style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(6px);
-    z-index: 1;
-"></div>
-<div id="disclaimer" class="disclaimer">
-  <p>
-    The information provided in this table has been compiled by the IStructE with support from our panels and software companies as a resource to help structural engineers find digital tools. Inclusion in this table does not constitute an endorsement of any product by the IStructE. Structural engineers should carry out their own due diligence to ensure any digital tools used are appropriate for their intended purpose and should verify that any outputs are accurate. Engineers should check the capabilities and features of any digital tools before using them.
-  </p>
-  <button onclick="showWebPage()">I Understand</button>
-</div>
+  <div id="blur-overlay" class="blur-overlay" aria-hidden="true"></div>
 
-<div class="filters" id="filters">
-<form id="filterForm" onsubmit="event.preventDefault();">
-    <div class="column">
-        <h4>Compliance and Certification <br>for Codified Design Checks</h4>
-	<div class="tooltip">
-  		<input type="checkbox" id="Certified by Qualified Engineer" name="Certified by Qualified Engineer" data-filter="Yes" onclick="filterTable()">
-  		<label for="Certified by Qualified Engineer"> Certified by Qualified Engineer (?)</label><br>
-  		<span class="tooltip-text">This includes chartered members of the IStructE, as well as professionals who are chartered or licensed with similar bodies and are well-versed in the relevant standards. Additionally, it encompasses academics who have contributed to the development of these codes and standards.<br/>Software in this table has been self-certified by the software developers. Structural engineers should review any software themselves before using it.
-  		</span>
-	</div>
-	<div class="tooltip">
-        <input type="checkbox" id="Full" name="Full" data-filter="Full" onclick="filterTable()">
-        <label for="Full"> Full Design Checks (?)</label><br>
-  		<span class="tooltip-text">Software in this table has been self-certified by the software developers. Structural engineers should review any software themselves to ensure that it does the full set of checks required for the purpose of the check they are doing.
-  		</span>
-	</div>
-	<div class="tooltip">
-        	<input type="checkbox" id="ISO 9001 Compliant" name="ISO 9001 Compliant" data-filter="Yes" onclick="filterTable()">
-        	<label for="ISO 9001 Compliant"> ISO 9001 Compliant (?)</label><br>
-  		<span class="tooltip-text">ISO 9001 is an international standard for quality management systems (QMS) that helps organizations ensure they consistently meet customer and regulatory requirements. It is based on principles like customer focus, leadership, process approach, and continuous improvement. Certification demonstrates a commitment to quality, efficiency, and risk management across various industries.
-  		</span>
-	</div>
-	<br>
-	<button style="display: none;"></button>
+  <div id="disclaimer" class="disclaimer">
+    <p>
+      The information provided here has been compiled by the IStructE with support from our panels and software companies as a resource to help structural engineers find digital tools. Inclusion does not constitute an endorsement of any product by the IStructE. Structural engineers should carry out their own due diligence to ensure any digital tools used are appropriate for their intended purpose and should verify that any outputs are accurate. Engineers should check the capabilities and features of any digital tools before using them.
+    </p>
+    <button type="button" class="btn btn--primary" onclick="showWebPage()">I understand</button>
+  </div>
 
-	<h4>Type of Tool   <button id="typeButton" onclick="hideType()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-<select id="softwareTypeDropdown" name="SoftwareType" data-filter-column="2" onchange="filterTable(); clearPlugIn();">
-  <option value="">Any</option>
-  <option value="Stand Alone">Stand Alone</option>
-  <option value="Plug In">Plug In</option>
-  <option value="Web App">Web App</option>
-  <option value="Spreadsheet">Spreadsheet</option>
-  <option value="Mobile App">Mobile App</option>
-</select>
-	<br/>
-	<br/>
-	<div id="pluginFor">
-		<label for="Secondary Software"> Show Plugs In For:</label><br>
-        	<input type="text" placeholder="Search.." id="Secondary Software" name="Secondary Software" data-filter="Secondary Software" oninput="filterTable()">
-	</div>
-
-        <br>
+  <section class="search-hero" aria-label="Search tools">
+    <div class="search-hero__inner">
+      <label class="sr-only" for="globalSearch">Search by name, developer, or capability</label>
+      <input
+        type="search"
+        id="globalSearch"
+        class="search-hero__input"
+        placeholder="Search tools, developers, or capabilities…"
+        autocomplete="off"
+      />
+      <div class="search-hero__meta">
+        <label class="sort-label" for="sortSelect">Sort by</label>
+        <select id="sortSelect" class="sort-select">
+          <option value="product-asc">Product (A–Z)</option>
+          <option value="product-desc">Product (Z–A)</option>
+          <option value="developer-asc">Developer (A–Z)</option>
+          <option value="developer-desc">Developer (Z–A)</option>
+          <option value="pricing-asc">Pricing structure</option>
+          <option value="storage-asc">Storage (lowest first)</option>
+        </select>
+        <span id="resultCount" class="result-count" aria-live="polite"></span>
+        <button type="button" id="resetFilters" class="btn btn--ghost btn--small">Clear filters</button>
+      </div>
     </div>
+  </section>
 
-    <div class="column">
+  <div class="layout">
+    <aside class="filters-panel" aria-label="Filters">
+      <form id="filterForm" class="filter-form" onsubmit="event.preventDefault()">
+        <details class="filter-section" open>
+          <summary>Compliance and certification</summary>
+          <div class="filter-section__body">
+            <div class="field tooltip">
+              <label class="checkbox-label">
+                <input type="checkbox" id="Certified by Qualified Engineer" name="Certified by Qualified Engineer" />
+                <span>Certified by qualified engineer</span>
+              </label>
+              <span class="tooltip-text">Includes chartered members of the IStructE and similarly chartered professionals. Software has been self-certified by developers; engineers should review before use.</span>
+            </div>
+            <div class="field tooltip">
+              <label class="checkbox-label">
+                <input type="checkbox" id="Full" name="Full" />
+                <span>Full design checks</span>
+              </label>
+              <span class="tooltip-text">Self-certified by developers. Engineers should confirm the software performs the full set of checks required for their purpose.</span>
+            </div>
+            <div class="field tooltip">
+              <label class="checkbox-label">
+                <input type="checkbox" id="ISO 9001 Compliant" name="ISO 9001 Compliant" />
+                <span>ISO 9001 compliant</span>
+              </label>
+              <span class="tooltip-text">International standard for quality management systems; certification indicates commitment to quality and continuous improvement.</span>
+            </div>
+          </div>
+        </details>
 
-	<h4>Components   <button id="componentsButton" onclick="hideComponents()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-	<div class="tooltip">
-	        <input type="checkbox" id="Analysis" name="Analysis" data-filter="Analysis" onclick="filterTable()">
-	        <label for="Analysis"> Structural Analysis (?)</label><br>
-		<span class="tooltip-text">Refers to the use of software and algorithms that can be used to analyse a structure. (Such as Finite Element Analysis)
-  		</span>
-	</div>
+        <details class="filter-section" open>
+          <summary>Type of tool</summary>
+          <div class="filter-section__body">
+            <label class="field-label" for="softwareTypeDropdown">Tool type</label>
+            <select id="softwareTypeDropdown" name="SoftwareType" class="field-control">
+              <option value="">Any</option>
+              <option value="Stand Alone">Stand alone</option>
+              <option value="Plug In">Plug-in</option>
+              <option value="Web App">Web app</option>
+              <option value="Spreadsheet">Spreadsheet</option>
+              <option value="Mobile App">Mobile app</option>
+            </select>
+            <div id="pluginFor" class="field">
+              <label class="field-label" for="Secondary Software">Plug-in works with</label>
+              <input type="search" class="field-control" placeholder="e.g. Revit, Grasshopper…" id="Secondary Software" name="Secondary Software" />
+            </div>
+          </div>
+        </details>
 
-	<div class="tooltip">
-        	<input type="checkbox" id="Design" name="Design" data-filter="Design" onclick="filterTable()">
-        	<label for="Design"> Design Calculations (?)</label><br>
-  		<span class="tooltip-text">Refers to the use of software and algorithms that automate design processes based on established codes and standards.
-  		</span>
-	</div>
-        <input type="checkbox" id="BIM" name="BIM" data-filter="BIM" onclick="filterTable()">
-        <label for="BIM"> Building Information Modeling (BIM)</label><br>
-        <input type="checkbox" id="parametric" name="parametric" data-filter="parametric" onclick="filterTable()">
-        <label for="parametric"> Parametric Modeling</label><br>
-        <input type="checkbox" id="Carbon" name="Carbon" data-filter="Carbon" onclick="filterTable()">
-        <label for="Carbon"> Embodied Carbon Assessment (ECA)</label><br>
-	<br>
-	<h4> Features  <button style="display: inline;" onclick="addFeature()">+</button></h4>
-<div id="featureSearch">
-<select data-filter-column="4" onchange="filterTable()">
-<option value="">All Features</option>
-<option value='Building Information Modelling'>Building Information Modelling</option>
-<option value='Embodied Carbon Assessment'>Embodied Carbon Assessment</option>
-<option value='Parametric Modelling'>Parametric Modelling</option>
-<option value='Analysis;Tension / Compression Elements'>Analysis</option>
-<option value='2D Analysis'> - 2D Analysis</option>
-<option value='3D Analysis'> - 3D Analysis</option>
-<option value='Composite Beam Analysis'> - Composite Beam Analysis</option>
-<option value='Composite Section Analysis'> - Composite Section Analysis</option>
-<option value='Construction Stage Analysis'> - Construction Stage Analysis</option>
-<option value='Dynamic Analysis'> - Dynamic Analysis</option>
-<option value='Finite Element Analysis'> - Finite Element Analysis</option>
-<option value='Footfall Analysis'> - Footfall Analysis</option>
-<option value='Global Buckling Analysis'> - Global Buckling Analysis</option>
-<option value='Lateral Stability Analysis'> - Lateral Stability Analysis</option>
-<option value='Local Buckling Analysis'> - Local Buckling Analysis</option>
-<option value='Non-linear Analysis'> - Non-linear Analysis</option>
-<option value='Response Spectrum Analysis'> - Response Spectrum Analysis</option>
-<option value='Rigorous Analysis '> - Rigorous Analysis </option>
-<option value='Section Analysis'> - Section Analysis</option>
-<option value='Static Analysis'> - Static Analysis</option>
-<option value='Strut and Tie Analysis'> - Strut and Tie Analysis</option>
-<option value='Tension / Compression Elements'> - Tension / Compression Elements</option>
-<option value='Timber Analysis'> - Timber Analysis</option>
-<option value='Vibration Design & Analysis'> - Vibration Design & Analysis</option>
-<option value='Pile Lateral Stability;Pile Sinking;Slip Circles;Soil Structure Interaction'>Geotechnical Analysis</option>
-<option value='Pile Lateral Stability'> - Pile Lateral Stability</option>
-<option value='Pile Sinking'> - Pile Sinking</option>
-<option value='Slip Circles'> - Slip Circles</option>
-<option value='Soil Structure Interaction'> - Soil Structure Interaction</option>
-<option value='Beams;Columns;Connections;Elements;Joist Floors;Loads;Retaining Walls;Slabs;Walls;Design for Fire'>Design</option>
-<option value='Beams'> - Beams</option>
-<option value='Columns'> - Columns</option>
-<option value='Connections'> - Connections</option>
-<option value='Elements'> - Elements</option>
-<option value='Joist Floors'> - Joist Floors</option>
-<option value='Loads'> - Loads</option>
-<option value='Retaining Walls'> - Retaining Walls</option>
-<option value='Slabs'> - Slabs</option>
-<option value='Walls'> - Walls</option>
-<option value='Design for Fire'> - Design for Fire</option>
-<option value='Loads'>Calculation of Loads to Standards</option>
-<option value='Seismic Loads'> - Seismic Loads</option>
-<option value='Snow Loads'> - Snow Loads</option>
-<option value='Wind Loads'> - Wind Loads</option>
-<option value='Composite'>Design of Composite Elements</option>
-<option value='Composite Beams'> - Composite Beams</option>
-<option value='Composite Columns'> - Composite Columns</option>
-<option value='Composite Decks and Slabs'> - Composite Decks and Slabs</option>
-<option value='Concrete'>Design of Concrete Elements</option>
-<option value='Concrete Beams'> - Concrete Beams</option>
-<option value='Concrete Columns'> - Concrete Columns</option>
-<option value='Concrete Core / Shear Walls'> - Concrete Core / Shear Walls</option>
-<option value='Concrete Coupling Beams'> - Concrete Coupling Beams</option>
-<option value='Concrete Cracking'> - Concrete Cracking</option>
-<option value='Concrete Flat Slabs (1 Way)'> - Concrete Flat Slabs (1 Way)</option>
-<option value='Concrete Flat Slabs (2 Way)'> - Concrete Flat Slabs (2 Way)</option>
-<option value='Concrete Hollowcore Slabs'> - Concrete Hollowcore Slabs</option>
-<option value='Concrete Joist Floors'> - Concrete Joist Floors</option>
-<option value='Concrete Post Tensioning'> - Concrete Post Tensioning</option>
-<option value='Concrete Reinforced Block Walls'> - Concrete Reinforced Block Walls</option>
-<option value='Concrete Retaining Walls'> - Concrete Retaining Walls</option>
-<option value='Concrete Ribbed Slabs'> - Concrete Ribbed Slabs</option>
-<option value='Concrete Waffle Slabs'> - Concrete Waffle Slabs</option>
-<option value='Concrete Walls'> - Concrete Walls</option>
-<option value='Steel'>Design of Steel Elements</option>
-<option value='Steel Beams'> - Steel Beams</option>
-<option value='Steel Columns'> - Steel Columns</option>
-<option value='Steel Joist Floors'> - Steel Joist Floors</option>
-<option value='Timber'>Design of Timber Elements</option>
-<option value='Timber Beams'> - Timber Beams</option>
-<option value='Timber Columns'> - Timber Columns</option>
-<option value='Timber Joist Floors'> - Timber Joist Floors</option>
-<option value='Timber Joist Walls;Timber Stud Walls'> - Timber Stud Walls</option>
-<option value='Timber Panel Walls'> - Timber Panel Walls</option>
-<option value='Masonry'>Design of Masonry Elements</option>
-<option value='Masonry Retaining Walls'> - Masonry Retaining Walls</option>
-<option value='Masonry Walls'> - Masonry Walls</option>
-<option value='Connections;Punching Shear'>Design of Connections</option>
-<option value='Baseplate Connections'> - Baseplate Connections</option>
-<option value='Concrete Anchors Connections'> - Concrete Anchors Connections</option>
-<option value='Concrete Punching Shear'> - Concrete Punching Shear</option>
-<option value='Corbel Connections'> - Corbel Connections</option>
-<option value='Steel to Concrete Connections'> - Steel to Concrete Connections</option>
-<option value='Steel to Steel Connections'> - Steel to Steel Connections</option>
-<option value='Timber to Steel Connections'> - Timber to Steel Connections</option>
-<option value='Timber to Timber Connections'> - Timber to Timber Connections</option>
-<option value='Footings;Mat Foundations;Pile Caps;Piles'>Design of Foundations</option>
-<option value='Footings'> - Footings</option>
-<option value='Mat Foundations'> - Mat Foundations</option>
-<option value='Pile Caps'> - Pile Caps</option>
-<option value='Piles'> - Piles</option>
-<option value='Sheet Piles'> - Sheet Piles</option>
-<option value='Access Ramps;Aluminium Bars;Box Culverts;Bridges;Portal Frames;Staircases'>Structures</option>
-<option value='Access Ramps'> - Access Ramps</option>
-<option value='Aluminium Bars'> - Aluminium Bars</option>
-<option value='Box Culverts'> - Box Culverts</option>
-<option value='Bridges'> - Bridges</option>
-<option value='Portal Frames'> - Portal Frames</option>
-<option value='Staircases'> - Staircases</option>
-<option value='CIS/2 Export;DXF Export;Export Material Quantities;IFC Export;IFC Import;PDF Export'>Export & Import Tools</option>
-<option value='CIS/2 Export'> - CIS/2 Export</option>
-<option value='DXF Export'> - DXF Export</option>
-<option value='Export Material Quantities'> - Export Material Quantities</option>
-<option value='IFC Export'> - IFC Export</option>
-<option value='IFC Import'> - IFC Import</option>
-<option value='PDF Export'> - PDF Export</option>
-<option value='Detailed Plan / Section Drawings;Reinforcement Detailing / Sheets;Reinforcement 3D Modelling'>Detailing Tools</option>
-<option value='Detailed Plan / Section Drawings'> - Detailed Plan / Section Drawings</option>
-<option value='Reinforcement Detailing / Sheets'> - Reinforcement Detailing / Sheets</option>
-<option value='Reinforcement 3D Modelling'> - Reinforcement 3D Modelling</option>
-</select>
-</div>
-        <br>
+        <details class="filter-section" open>
+          <summary>Components</summary>
+          <div class="filter-section__body">
+            <div class="field tooltip">
+              <label class="checkbox-label">
+                <input type="checkbox" id="Analysis" name="Analysis" />
+                <span>Structural analysis</span>
+              </label>
+              <span class="tooltip-text">Software and algorithms used to analyse a structure (including finite element analysis).</span>
+            </div>
+            <div class="field tooltip">
+              <label class="checkbox-label">
+                <input type="checkbox" id="Design" name="Design" />
+                <span>Design calculations</span>
+              </label>
+              <span class="tooltip-text">Automates design processes based on established codes and standards.</span>
+            </div>
+            <label class="checkbox-label field"><input type="checkbox" id="BIM" name="BIM" /> <span>Building information modelling (BIM)</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="parametric" name="parametric" /> <span>Parametric modelling</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="Carbon" name="Carbon" /> <span>Embodied carbon assessment (ECA)</span></label>
+          </div>
+        </details>
 
-    </div>
+        <details class="filter-section" open>
+          <summary>Features</summary>
+          <div class="filter-section__body">
+            <div id="featureSearch" class="feature-block">
+              <div class="feature-row">
+                <select class="feature-select field-control" aria-label="Feature filter"></select>
+              </div>
+              <button type="button" id="addFeatureFilter" class="btn btn--ghost btn--small">+ Add another feature filter</button>
+            </div>
+          </div>
+        </details>
 
-    <div class="column">     
-	<h4>Materials   <button id="materialButton" onclick="hideMaterials()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-        <input type="checkbox" id="Concrete" name="Concrete" data-filter="Yes" onclick="filterTable()">
-        <label for="Concrete"> Concrete</label><br>
-        <input type="checkbox" id="Masonry" name="Masonry" data-filter="Yes" onclick="filterTable()">
-        <label for="Masonry"> Masonry</label><br>
-        <input type="checkbox" id="Steel" name="Steel" data-filter="Yes" onclick="filterTable()">
-        <label for="Steel"> Steel</label><br>
-        <input type="checkbox" id="Timber" name="Timber" data-filter="Yes" onclick="filterTable()">
-        <label for="Timber"> Timber</label><br>
-        <input type="checkbox" id="Polymers" name="Polymers" data-filter="Yes" onclick="filterTable()">
-        <label for="Polymers"> Polymers</label><br>
-        <input type="checkbox" id="Composites" name="Composites" data-filter="Yes" onclick="filterTable()">
-        <label for="Composites"> Composites</label><br>
+        <details class="filter-section" open>
+          <summary>Materials</summary>
+          <div class="filter-section__body filter-grid">
+            <label class="checkbox-label"><input type="checkbox" id="Concrete" name="Concrete" /> <span>Concrete</span></label>
+            <label class="checkbox-label"><input type="checkbox" id="Masonry" name="Masonry" /> <span>Masonry</span></label>
+            <label class="checkbox-label"><input type="checkbox" id="Steel" name="Steel" /> <span>Steel</span></label>
+            <label class="checkbox-label"><input type="checkbox" id="Timber" name="Timber" /> <span>Timber</span></label>
+            <label class="checkbox-label"><input type="checkbox" id="Polymers" name="Polymers" /> <span>Polymers</span></label>
+            <label class="checkbox-label"><input type="checkbox" id="Composites" name="Composites" /> <span>Composites</span></label>
+          </div>
+        </details>
 
-        <h4>Design Codes   <button id="codesButton" onclick="hideCodes()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-        <input type="checkbox" id="Eurocodes" name="Eurocodes" data-filter="Yes" onclick="filterTable()">
-        <label for="Eurocodes"> Eurocodes</label><br>
-        <input type="checkbox" id="United Kingdom" name="United Kingdom" data-filter="Yes" onclick="filterTable()">
-        <label for="United Kingdom"> UK National Annex</label><br>
-        <input type="checkbox" id="British Standards" name="British Standards" data-filter="Yes" onclick="filterTable()">
-        <label for="British Standards"> British Standards</label><br>
-	<label for="Country"> Country:</label>
-        <input type="text" placeholder="Search.." id="Country" name="Country" data-filter="Country" oninput="filterTable()">
+        <details class="filter-section" open>
+          <summary>Design codes</summary>
+          <div class="filter-section__body">
+            <label class="checkbox-label field"><input type="checkbox" id="Eurocodes" name="Eurocodes" /> <span>Eurocodes</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="United Kingdom" name="United Kingdom" /> <span>UK national annex</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="British Standards" name="British Standards" /> <span>British Standards</span></label>
+            <label class="field-label" for="Country">National annexes / other codes (keywords)</label>
+            <input type="search" class="field-control" placeholder="e.g. Ireland, ACI…" id="Country" name="Country" />
+          </div>
+        </details>
 
-        <br>
-    </div>
+        <details class="filter-section" open>
+          <summary>Interfaces and system requirements</summary>
+          <div class="filter-section__body">
+            <p class="field-hint">Application interfaces</p>
+            <label class="checkbox-label field"><input type="checkbox" id="Python" name="Python" /> <span>Python</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="C#" name="C#" /> <span>C#</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="Grasshopper" name="Grasshopper" /> <span>Grasshopper</span></label>
+            <label class="checkbox-label field"><input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" /> <span>No internet access required</span></label>
+            <label class="field-label" for="osDropdown">Operating system</label>
+            <select id="osDropdown" class="field-control">
+              <option value="">Any</option>
+              <option value="Windows 7">Windows 7</option>
+              <option value="Windows 8.1">Windows 8.1</option>
+              <option value="Windows 10">Windows 10</option>
+              <option value="Windows 11">Windows 11</option>
+            </select>
+            <label class="field-label" for="RAM">Maximum RAM (GB)</label>
+            <input type="number" id="RAM" name="RAM" class="field-control field-control--narrow" value="64" min="0" step="1" />
+            <label class="field-label" for="Storage">Maximum storage (GB)</label>
+            <input type="number" id="Storage" name="Storage" class="field-control field-control--narrow" value="252" min="0" step="1" />
+          </div>
+        </details>
 
-    <div class="column">
-        <h4>Application Interfaces  <button id="interfacesButton" onclick="hideInterfaces()" type="checkbox" value="true" class="button"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-        <input type="checkbox" id="Python" name="Python" data-filter="Yes" onclick="filterTable()">
-        <label for="Python"> Python</label><br>
-        <input type="checkbox" id="C#" name="C#" data-filter="Yes" onclick="filterTable()">
-        <label for="C#"> C#</label><br>
-        <input type="checkbox" id="Grasshopper" name="Grasshopper" data-filter="Yes" onclick="filterTable()">
-        <label for="Grasshopper"> Grasshopper</label><br>
+        <details class="filter-section" open>
+          <summary>Pricing</summary>
+          <div class="filter-section__body">
+            <label class="field-label" for="priceDropdown">Pricing structure</label>
+            <select id="priceDropdown" class="field-control">
+              <option value="">Any</option>
+              <option value="Free">Free</option>
+              <option value="Paid">One-off payment</option>
+              <option value="Subscription">Subscription</option>
+            </select>
+          </div>
+        </details>
+      </form>
+    </aside>
 
-        <h4>System Requirements   <button id="systemButton" onclick="hideSystem()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-        <input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" data-filter="No" onclick="filterTable()">
-        <label for="No Internet Access Required"> No Internet Access Required</label><br><br>
-<label> Operating System:</label><br>
-	<select id="osDropdown" data-filter-column="24" onchange="filterTable()">
-  		<option value="">Any</option>
-  		<option value="Windows 7">Windows 7</option>
-  		<option value="Windows 8.1">Windows 8.1</option>
-  		<option value="Windows 10">Windows 10</option>
-  		<option value="Windows 11">Windows 11</option>
-	</select>
-	<br>
-
-	<br>
-        <label for="RAM"> Maximum RAM</label>
-        <input type="number" id="RAM" name="RAM" data-filter="RAM" value="64" oninput="filterTable()"><label for="RAM"> GB</label><br>
-	<label for="Storage"> Maximum Storage</label>
-        <input type="number" id="Storage" name="Storage" data-filter="Storage" value="252" oninput="filterTable()"><label for="Storage"> GB</label><br>
-
-	<h4>Pricing Structure   <button id="priceButton" onclick="hidePrice()" type="checkbox" value="true" class="button selected"><img src='./icons/collapse.svg' alt='Collapse' class='icon'></button></h4>
-	<select id="priceDropdown" data-filter-column="30" onchange="filterTable()">
-  		<option value="">Any</option>
-  		<option value="Free">Free</option>
-  		<option value="Paid">One of Payment</option>
-  		<option value="Subscription">Subscription License</option>
-	</select>
-	<br>
-    </div>
-</form>
-
-
-</div>
-
-<div class="table">
-<table id="softwareTable">
-    <colgroup>
-        <!-- General Information (8 columns) -->
-        <col style="width:2%">
-        <col style="width:3.5%">
-        <col style="width:2%">
-        <col style="width:2%">
-        <col style="width:3.5%">
-        <col style="width:2%">
-        <col style="width:2%">
-        <col style="width:2%">
-
-        <!-- Materials (6 columns) -->
-        <col style="width:1%">
-        <col style="width:1%">
-        <col style="width:1%">
-        <col style="width:1%">
-        <col style="width:1%">
-        <col style="width:1%">
-
-
-        <!-- Design Codes (6 columns) -->
-        <col style="width:1%">
-        <col style="width:2%">
-        <col style="width:2%">
-        <col style="width:2%">
-        <col style="width:2%">
-        <col style="width:3%">
-
-        <!-- APIs (4 columns) -->
-        <col style="width:1%">
-        <col style="width:1%">
-        <col style="width:1.5%">
-        <col style="width:1.5%">
-
-        <!-- System Requirements (6 columns) -->
-        <col style="width:2%">
-        <col style="width:1%">
-        <col style="width:1%">
-        <col style="width:2%">
-        <col style="width:2%">
-        <col style="width:2%">
-
-        <!-- Pricing (2 columns) -->
-        <col style="width:2%">
-        <col style="width:2%">
-    </colgroup>
-    
-    <thead>
-        <tr class="headers">
-            <th class="product" colspan="8" value="8">General Information</th>
-            <th class="material" colspan="6" value="6">Materials</th>
-            <th class="designCodes" colspan="6"  value="6">Design Codes</th>
-            <th class="apiCodes" colspan="4" value="4">Application Programming Interfaces</th>
-            <th class="systemReq" colspan="6" value="6">System Requirements</th>
-            <th class="cost" colspan="2"  value="2">Licenses</th>
-        </tr>
-        <tr>
-            <th class="product" onclick="sortTable(0)">Developer</th>
-            <th class="product" onclick="sortTable(1)">Product</th>
-            <th class="product" onclick="sortTable(2)">Type of Tool</th>
-            <th class="product" onclick="sortTable(3)">Components</th>
-            <th class="product" onclick="sortTable(4)">Features</th>
-            <th class="product" onclick="sortTable(5)">Codified Design Checks Certified by Qualified Engineer</th>
-            <th class="product" onclick="sortTable(6)">ISO 9001 Compliant</th>
-            <th class="product" onclick="sortTable(7)">Link to Guidance</th>
-
-            <th class="material" onclick="sortTable(8)">Concrete</th>
-            <th class="material" onclick="sortTable(9)">Masonry</th>
-            <th class="material" onclick="sortTable(10)">Steel</th>
-            <th class="material" onclick="sortTable(11)">Timber</th>
-            <th class="material" onclick="sortTable(12)">Polymers</th>
-            <th class="material" onclick="sortTable(13)">Composites</th>
-
-
-            <th class="designCodes" onclick="sortTable(14)">Eurocodes</th>
-            <th class="designCodes" onclick="sortTable(15)">UK National Annex</th>
-            <th class="designCodes" onclick="sortTable(16)">Other National Annexes</th>
-            <th class="designCodes" onclick="sortTable(17)">British Standards</th>
-            <th class="designCodes" onclick="sortTable(18)">Other Codes</th>
-            <th class="designCodes" onclick="sortTable(19)">Level of Structural Checks</th>
-
-            <th class="apiCodes" onclick="sortTable(20)">Python</th>
-            <th class="apiCodes" onclick="sortTable(21)">C#</th>
-            <th class="apiCodes" onclick="sortTable(22)">Grasshopper</th>
-            <th class="apiCodes" onclick="sortTable(23)">Other</th>
-
-            <th class="systemReq" onclick="sortTable(24)">Operating System</th>
-            <th class="systemReq" onclick="sortTable(25)">Processors</th>
-            <th class="systemReq" onclick="sortTable(26)">Memory (RAM)</th>
-            <th class="systemReq" onclick="sortTable(27)">Storage Requirements</th>
-            <th class="systemReq" onclick="sortTable(28)">Internet Access Required</th>
-            <th class="systemReq" onclick="sortTable(29)">Link to Full Specs</th>
-
-            <th class="cost" onclick="sortTable(30)">Pricing Structure</th>
-            <th class="cost" onclick="sortTable(31)">Secondary Software Requirements</th>
-        </tr>
-    </thead>
-<tbody id="softwareTableBody">
-</tbody>
-</table>
-</div>
-<a href="https://www.istructe.org">
-    <img class="logo" src="./icons/logo.svg" alt="IStructE Logo">
-</a>
-</body></html>
+    <main class="results" aria-label="Tool listings">
+      <div id="cardGrid" class="card-grid"></div>
+    </main>
+  </div>
+</body>
+</html>
