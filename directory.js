@@ -1,4 +1,4 @@
-/**
+ /**
  * Digital tools directory — loads software/Database.csv and renders filterable cards.
  * Copyright © The Institution of Structural Engineers (IStructE).
  */
@@ -486,6 +486,7 @@
             const strong = document.createElement("strong");
             strong.textContent = parsed.header;
             container.appendChild(strong);
+            container.appendChild(document.createElement("br"));
 
             if (parsed.lines && parsed.lines.length) {
                 parsed.lines.forEach((line) => {
@@ -532,140 +533,150 @@
       .map(([, label]) => label);
   }
 
-  function renderCards() {
-    const grid = document.getElementById("cardGrid");
-    if (!grid) return;
-    grid.textContent = "";
+    function renderCards() {
+        const grid = document.getElementById("cardGrid");
+        if (!grid) return;
+        grid.textContent = "";
 
-    const frag = document.createDocumentFragment();
+        const frag = document.createDocumentFragment();
 
-    filtered.forEach((row) => {
-      const card = document.createElement("article");
-      card.className = "tool-card";
+        filtered.forEach((row) => {
+            const card = document.createElement("article");
+            card.className = "tool-card";
 
-      const head = document.createElement("header");
-      head.className = "tool-card__head";
+            const head = document.createElement("header");
+            head.className = "tool-card__head";
 
-      const title = document.createElement("h3");
-      title.className = "tool-card__title";
-      const productRaw = row[COL.product] || "—";
-      if (isDashOrEmpty(productRaw)) title.textContent = "—";
-      else appendFormattedCell(title, productRaw);
+            const title = document.createElement("h3");
+            title.className = "tool-card__title";
+            const productRaw = row[COL.product] || "—";
+            if (isDashOrEmpty(productRaw)) title.textContent = "—";
+            else appendFormattedCell(title, productRaw);
 
-      const dev = document.createElement("p");
-      dev.className = "tool-card__developer";
-      dev.textContent = row[COL.developer] || "";
+            const dev = document.createElement("p");
+            dev.className = "tool-card__developer";
+            dev.textContent = row[COL.developer] || "";
 
-      head.appendChild(title);
-      head.appendChild(dev);
+            head.appendChild(title);
+            head.appendChild(dev);
 
-      const badges = document.createElement("div");
-      badges.className = "tool-card__badges";
-      const typeBadge = document.createElement("span");
-      typeBadge.className = "badge badge--type";
-      typeBadge.textContent = toBadgePlain(row[COL.productType] || "—");
-      badges.appendChild(typeBadge);
-      const priceBadge = document.createElement("span");
-      priceBadge.className = "badge badge--price";
-      priceBadge.textContent = toBadgePlain(row[COL.pricing] || "—");
-      badges.appendChild(priceBadge);
+            // 1. Create one single container for ALL badges
+            const badges = document.createElement("div");
+            badges.className = "tool-card__badges";
 
-      const tags = document.createElement("div");
-      tags.className = "tool-card__tags";
-      materialTags(row).forEach((label) => {
-        const t = document.createElement("span");
-        t.className = "tag";
-        t.textContent = label;
-        tags.appendChild(t);
-      });
+            // 2. Add the Product Type badge
+            const typeBadge = document.createElement("span");
+            typeBadge.className = "badge badge--type";
+            typeBadge.textContent = toBadgePlain(row[COL.productType] || "—");
+            badges.appendChild(typeBadge);
 
-      const summary = document.createElement("p");
-      summary.className = "tool-card__summary";
-      const compRaw = row[COL.components] || "";
-      const compPlain = toPlainText(compRaw);
-      if (compPlain.length > 220) {
-        summary.textContent = compPlain.slice(0, 217) + "…";
-      } else if (compRaw.trim()) {
-        appendFormattedCell(summary, compRaw);
-      }
+            // 3. Process and add all Pricing badges to that SAME container
+            const priceRaw = normalizeNewlineMarkers(row[COL.pricing] || "—");
+            const priceParts = priceRaw.split('\n').filter(p => p.trim() !== "");
 
-      const actions = document.createElement("div");
-      actions.className = "tool-card__actions";
-      const g = safeUrl(row[COL.linkGuidance]);
-      if (g) {
-        const a = document.createElement("a");
-        a.className = "btn btn--primary";
-        a.href = g;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = "Guidance";
-        actions.appendChild(a);
-      }
-      const sp = safeUrl(row[COL.linkSpecs]);
-      if (sp) {
-        const a2 = document.createElement("a");
-        a2.className = "btn btn--ghost";
-        a2.href = sp;
-        a2.target = "_blank";
-        a2.rel = "noopener noreferrer";
-        a2.textContent = "Specifications";
-        actions.appendChild(a2);
-      }
+            priceParts.forEach(part => {
+                const priceBadge = document.createElement("span");
+                priceBadge.className = "badge badge--price";
+                priceBadge.textContent = toBadgePlain(part);
+                badges.appendChild(priceBadge);
+            });
 
-      const details = document.createElement("details");
-      details.className = "tool-card__details";
-      const summ = document.createElement("summary");
-      summ.textContent = "Full details";
-      details.appendChild(summ);
+            const tags = document.createElement("div");
+            tags.className = "tool-card__tags";
+            materialTags(row).forEach((label) => {
+                const t = document.createElement("span");
+                t.className = "tag";
+                t.textContent = label;
+                tags.appendChild(t);
+            });
 
-      const dl = document.createElement("dl");
-      dl.className = "tool-card__dl";
-      const addRow = (dt, ddText) => {
-        if (!ddText || isDashOrEmpty(ddText)) return;
-        const dtEl = document.createElement("dt");
-        dtEl.textContent = dt;
-        const ddEl = document.createElement("dd");
-        ddEl.className = "tool-card__dd-rich";
-        appendFormattedCell(ddEl, ddText);
-        dl.appendChild(dtEl);
-        dl.appendChild(ddEl);
-      };
+            const summary = document.createElement("p");
+            summary.className = "tool-card__summary";
+            const compRaw = row[COL.components] || "";
+            const compPlain = toPlainText(compRaw);
+            if (compPlain.length > 220) {
+                summary.textContent = compPlain.slice(0, 217) + "…";
+            } else if (compRaw.trim()) {
+                appendFormattedCell(summary, compRaw);
+            }
 
-      addRow("Features", row[COL.features]);
-      addRow("Components", row[COL.components]);
-      addRow("Codified checks (qualified engineer)", row[COL.codifiedCert]);
-      addRow("ISO 9001", row[COL.iso9001]);
-      addRow("Structural check level", row[COL.checkLevel]);
-      addRow("Eurocodes", row[COL.eurocodes]);
-      addRow("UK National Annex", row[COL.ukNa]);
-      addRow("Other national annexes", row[COL.otherNa]);
-      addRow("British Standards", row[COL.britishStd]);
-      addRow("Other codes", row[COL.otherCodes]);
-      addRow("Operating system", row[COL.os]);
-      addRow("Processors", row[COL.processors]);
-      addRow("Memory (RAM)", row[COL.ram]);
-      addRow("Storage", row[COL.storage]);
-      addRow("Internet access", row[COL.internet]);
-      addRow("Python", row[COL.python]);
-      addRow("C#", row[COL.csharp]);
-      addRow("Grasshopper", row[COL.grasshopper]);
-      addRow("Other interfaces", row[COL.otherApi]);
-      addRow("Secondary software", row[COL.secondary]);
+            const actions = document.createElement("div");
+            actions.className = "tool-card__actions";
+            const g = safeUrl(row[COL.linkGuidance]);
+            if (g) {
+                const a = document.createElement("a");
+                a.className = "btn btn--primary";
+                a.href = g;
+                a.target = "_blank";
+                a.rel = "noopener noreferrer";
+                a.textContent = "Guidance";
+                actions.appendChild(a);
+            }
+            const sp = safeUrl(row[COL.linkSpecs]);
+            if (sp) {
+                const a2 = document.createElement("a");
+                a2.className = "btn btn--ghost";
+                a2.href = sp;
+                a2.target = "_blank";
+                a2.rel = "noopener noreferrer";
+                a2.textContent = "Specifications";
+                actions.appendChild(a2);
+            }
 
-      details.appendChild(dl);
+            const details = document.createElement("details");
+            details.className = "tool-card__details";
+            const summ = document.createElement("summary");
+            summ.textContent = "Full details";
+            details.appendChild(summ);
 
-      card.appendChild(head);
-      card.appendChild(badges);
-      if (tags.childElementCount) card.appendChild(tags);
-      card.appendChild(summary);
-      card.appendChild(actions);
-      card.appendChild(details);
+            const dl = document.createElement("dl");
+            dl.className = "tool-card__dl";
+            const addRow = (dt, ddText) => {
+                if (!ddText || isDashOrEmpty(ddText)) return;
+                const dtEl = document.createElement("dt");
+                dtEl.textContent = dt;
+                const ddEl = document.createElement("dd");
+                ddEl.className = "tool-card__dd-rich";
+                appendFormattedCell(ddEl, ddText);
+                dl.appendChild(dtEl);
+                dl.appendChild(ddEl);
+            };
 
-      frag.appendChild(card);
-    });
+            addRow("Features", row[COL.features]);
+            addRow("Components", row[COL.components]);
+            addRow("Codified checks (qualified engineer)", row[COL.codifiedCert]);
+            addRow("ISO 9001", row[COL.iso9001]);
+            addRow("Structural check level", row[COL.checkLevel]);
+            addRow("Eurocodes", row[COL.eurocodes]);
+            addRow("UK National Annex", row[COL.ukNa]);
+            addRow("Other national annexes", row[COL.otherNa]);
+            addRow("British Standards", row[COL.britishStd]);
+            addRow("Other codes", row[COL.otherCodes]);
+            addRow("Operating system", row[COL.os]);
+            addRow("Processors", row[COL.processors]);
+            addRow("Memory (RAM)", row[COL.ram]);
+            addRow("Storage", row[COL.storage]);
+            addRow("Internet access", row[COL.internet]);
+            addRow("Python", row[COL.python]);
+            addRow("C#", row[COL.csharp]);
+            addRow("Grasshopper", row[COL.grasshopper]);
+            addRow("Other interfaces", row[COL.otherApi]);
+            addRow("Secondary software", row[COL.secondary]);
 
-    grid.appendChild(frag);
-  }
+            details.appendChild(dl);
+
+            card.appendChild(head);
+            card.appendChild(badges); // All badges are in here
+            if (tags.childElementCount) card.appendChild(tags);
+            card.appendChild(summary);
+            card.appendChild(actions);
+            card.appendChild(details);
+
+            frag.appendChild(card);
+        });
+
+        grid.appendChild(frag);
+    }
 
   function updateCount() {
     const el = document.getElementById("resultCount");
