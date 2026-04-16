@@ -48,147 +48,153 @@
 
   <div class="layout">
     <aside class="filters-panel" aria-label="Filters">
-      <form id="filterForm" class="filter-form" onsubmit="event.preventDefault()">
-        <details class="filter-section" open>
-          <summary>Compliance and certification</summary>
-          <div class="filter-section__body">
-            <div class="field tooltip">
-              <label class="checkbox-label">
-                <input type="checkbox" id="Certified by Qualified Engineer" name="Certified by Qualified Engineer" />
-                <span>Certified by qualified engineer</span>
-              </label>
-              <span class="tooltip-text">Includes chartered members of the IStructE and similarly chartered professionals. Software has been self-certified by developers; engineers should review before use.</span>
-            </div>
-            <div class="field tooltip">
-              <label class="checkbox-label">
-                <input type="checkbox" id="Full" name="Full" />
-                <span>Full design checks</span>
-              </label>
-              <span class="tooltip-text">Self-certified by developers. Engineers should confirm the software performs the full set of checks required for their purpose.</span>
-            </div>
-            <div class="field tooltip">
-              <label class="checkbox-label">
-                <input type="checkbox" id="ISO 9001 Compliant" name="ISO 9001 Compliant" />
-                <span>ISO 9001 compliant</span>
-              </label>
-              <span class="tooltip-text">International standard for quality management systems; certification indicates commitment to quality and continuous improvement.</span>
-            </div>
-          </div>
-        </details>
+        <form id="filterForm" class="filter-form" onsubmit="event.preventDefault()">
+            <details class="filter-section" open>
+                <summary>Compliance and certification</summary>
+                <div class="filter-section__body">
+                    <div class="field tooltip">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="Certified by Qualified Engineer" name="Certified by Qualified Engineer" />
+                            <span>Certified by qualified engineer</span>
+                        </label>
+                        <span class="tooltip-text">Includes chartered members of the IStructE and similarly chartered professionals. Software has been self-certified by developers; engineers should review before use.</span>
+                    </div>
+                    <div class="field tooltip">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="Full" name="Full" />
+                            <span>Full design checks</span>
+                        </label>
+                        <span class="tooltip-text">Self-certified by developers. Engineers should confirm the software performs the full set of checks required for their purpose.</span>
+                    </div>
+                    <div class="field tooltip">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="ISO 9001 Compliant" name="ISO 9001 Compliant" />
+                            <span>ISO 9001 compliant</span>
+                        </label>
+                        <span class="tooltip-text">International standard for quality management systems; certification indicates commitment to quality and continuous improvement.</span>
+                    </div>
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Type of tool</summary>
-          <div class="filter-section__body">
-            <label class="field-label" for="softwareTypeDropdown">Tool type</label>
-            <select id="softwareTypeDropdown" name="SoftwareType" class="field-control">
-              <option value="">Any</option>
-              <option value="Stand Alone">Stand alone</option>
-              <option value="Plug In">Plug-in</option>
-              <option value="Web App">Web app</option>
-              <option value="Spreadsheet">Spreadsheet</option>
-              <option value="Mobile App">Mobile app</option>
-            </select>
-            <div id="pluginFor" class="field">
-              <label class="field-label" for="Secondary Software">Plug-in works with</label>
-              <input type="search" class="field-control" placeholder="e.g. Revit, Grasshopper…" id="Secondary Software" name="Secondary Software" />
-            </div>
-          </div>
-        </details>
+            <details class="filter-section" open>
+                <summary>Type of tool</summary>
+                <div class="filter-section__body">
+                    <label class="field-label" for="softwareTypeDropdown">Tool type</label>
+                    <select id="softwareTypeDropdown" name="SoftwareType" class="field-control">
+                        <option value="">Any</option>
+                        <option value="Stand Alone">Stand alone</option>
+                        <option value="Plug In">Plug-in</option>
+                        <option value="Web App">Web app</option>
+                        <option value="Spreadsheet">Spreadsheet</option>
+                        <option value="Mobile App">Mobile app</option>
+                    </select>
+                    <div id="pluginFor" class="field">
+                        <label class="field-label" for="Secondary Software">Plug-in works with</label>
+                        <input type="search" class="field-control" placeholder="e.g. Revit, Grasshopper…" id="Secondary Software" name="Secondary Software" />
+                    </div>
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Components</summary>
-          <div class="filter-section__body">
-            <div class="field tooltip">
-              <label class="checkbox-label">
-                <input type="checkbox" id="Analysis" name="Analysis" />
-                <span>Structural analysis</span>
-              </label>
-              <span class="tooltip-text">Software and algorithms used to analyse a structure (including finite element analysis).</span>
-            </div>
-            <div class="field tooltip">
-              <label class="checkbox-label">
-                <input type="checkbox" id="Design" name="Design" />
-                <span>Design calculations</span>
-              </label>
-              <span class="tooltip-text">Automates design processes based on established codes and standards.</span>
-            </div>
-            <label class="checkbox-label field"><input type="checkbox" id="BIM" name="BIM" /> <span>Building information modelling (BIM)</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="parametric" name="parametric" /> <span>Parametric modelling</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="Carbon" name="Carbon" /> <span>Embodied carbon assessment (ECA)</span></label>
-          </div>
-        </details>
+            <details class="filter-section" open>
+                <summary>Components</summary>
+                <div class="filter-section__body">
+                    <div class="field tooltip">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="Analysis" name="Analysis" />
+                            <span>Structural analysis</span>
+                        </label>
+                        <span class="tooltip-text">Software and algorithms used to analyse a structure (including finite element analysis).</span>
+                    </div>
+                    <div class="field tooltip">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="Design" name="Design" />
+                            <span>Design calculations</span>
+                        </label>
+                        <span class="tooltip-text">Automates design processes based on established codes and standards.</span>
+                    </div>
+                    <label class="checkbox-label field"><input type="checkbox" id="BIM" name="BIM" /> <span>Building information modelling (BIM)</span></label>
+                    <label class="checkbox-label field"><input type="checkbox" id="parametric" name="parametric" /> <span>Parametric modelling</span></label>
+                    <label class="checkbox-label field"><input type="checkbox" id="Carbon" name="Carbon" /> <span>Embodied carbon assessment (ECA)</span></label>
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Features</summary>
-          <div class="filter-section__body">
-            <div id="featureSearch" class="feature-block">
-              <div class="feature-row">
-                <select class="feature-select field-control" aria-label="Feature filter"></select>
-              </div>
-              <button type="button" id="addFeatureFilter" class="btn btn--ghost btn--small">+ Add another feature filter</button>
-            </div>
-          </div>
-        </details>
+            <details class="filter-section" open>
+                <summary>Features</summary>
+                <div class="filter-section__body">
+                    <div id="featureSearch" class="feature-block">
+                        <div class="feature-row">
+                            <select class="feature-select field-control" aria-label="Feature filter"></select>
+                        </div>
+                        <button type="button" id="addFeatureFilter" class="btn btn--ghost btn--small">+ Add another feature filter</button>
+                    </div>
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Materials</summary>
-          <div class="filter-section__body filter-grid">
-            <label class="checkbox-label"><input type="checkbox" id="Concrete" name="Concrete" /> <span>Concrete</span></label>
-            <label class="checkbox-label"><input type="checkbox" id="Masonry" name="Masonry" /> <span>Masonry</span></label>
-            <label class="checkbox-label"><input type="checkbox" id="Steel" name="Steel" /> <span>Steel</span></label>
-            <label class="checkbox-label"><input type="checkbox" id="Timber" name="Timber" /> <span>Timber</span></label>
-            <label class="checkbox-label"><input type="checkbox" id="Polymers" name="Polymers" /> <span>Polymers</span></label>
-            <label class="checkbox-label"><input type="checkbox" id="Composites" name="Composites" /> <span>Composites</span></label>
-          </div>
-        </details>
+            <details class="filter-section" open>
+                <summary>Materials</summary>
+                <div class="filter-section__body filter-grid">
+                    <label class="checkbox-label"><input type="checkbox" id="Concrete" name="Concrete" /> <span>Concrete</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="Masonry" name="Masonry" /> <span>Masonry</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="Steel" name="Steel" /> <span>Steel</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="Timber" name="Timber" /> <span>Timber</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="Polymers" name="Polymers" /> <span>Polymers</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="Composites" name="Composites" /> <span>Composites</span></label>
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Design codes</summary>
-          <div class="filter-section__body">
-            <label class="checkbox-label field"><input type="checkbox" id="Eurocodes" name="Eurocodes" /> <span>Eurocodes</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="United Kingdom" name="United Kingdom" /> <span>UK national annex</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="British Standards" name="British Standards" /> <span>British Standards</span></label>
-            <label class="field-label" for="Country">National annexes / other codes (keywords)</label>
-            <input type="search" class="field-control" placeholder="e.g. Ireland, ACI…" id="Country" name="Country" />
-          </div>
-        </details>
+            <details class="filter-section" open>
+                <summary>Design codes</summary>
+                <div class="filter-section__body">
+                    <label class="checkbox-label field"><input type="checkbox" id="Eurocodes" name="Eurocodes" /> <span>Eurocodes</span></label>
+                    <label class="checkbox-label field"><input type="checkbox" id="United Kingdom" name="United Kingdom" /> <span>UK national annex</span></label>
+                    <label class="checkbox-label field"><input type="checkbox" id="British Standards" name="British Standards" /> <span>British Standards</span></label>
+                    <label class="field-label" for="Country">National annexes / other codes (keywords)</label>
+                    <input type="search" class="field-control" placeholder="e.g. Ireland, ACI…" id="Country" name="Country" />
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Interfaces and system requirements</summary>
-          <div class="filter-section__body">
-            <p class="field-hint">Application interfaces</p>
-            <label class="checkbox-label field"><input type="checkbox" id="Python" name="Python" /> <span>Python</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="C#" name="C#" /> <span>C#</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="Grasshopper" name="Grasshopper" /> <span>Grasshopper</span></label>
-            <label class="checkbox-label field"><input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" /> <span>No internet access required</span></label>
-            <label class="field-label" for="osDropdown">Operating system</label>
-            <select id="osDropdown" class="field-control">
-              <option value="">Any</option>
-              <option value="Windows 7">Windows 7</option>
-              <option value="Windows 8.1">Windows 8.1</option>
-              <option value="Windows 10">Windows 10</option>
-              <option value="Windows 11">Windows 11</option>
-            </select>
-            <label class="field-label" for="RAM">Maximum RAM (GB)</label>
-            <input type="number" id="RAM" name="RAM" class="field-control field-control--narrow" value="64" min="0" step="1" />
-            <label class="field-label" for="Storage">Maximum storage (GB)</label>
-            <input type="number" id="Storage" name="Storage" class="field-control field-control--narrow" value="252" min="0" step="1" />
-          </div>
-        </details>
+            <details class="filter-section" open>
+                <summary>System requirements</summary>
+                <div class="filter-section__body">
+                    <label class="checkbox-label field"><input type="checkbox" id="No Internet Access Required" name="No Internet Access Required" /> <span>No internet access required</span></label>
+                    <label class="field-label" for="osDropdown">Operating system</label>
+                    <select id="osDropdown" class="field-control">
+                        <option value="">Any</option>
+                        <option value="Windows 7">Windows 7</option>
+                        <option value="Windows 8.1">Windows 8.1</option>
+                        <option value="Windows 10">Windows 10</option>
+                        <option value="Windows 11">Windows 11</option>
+                    </select>
+                    <label class="field-label" for="RAM">Maximum RAM (GB)</label>
+                    <input type="number" id="RAM" name="RAM" class="field-control field-control--narrow" value="64" min="0" step="1" />
+                    <label class="field-label" for="Storage">Maximum storage (GB)</label>
+                    <input type="number" id="Storage" name="Storage" class="field-control field-control--narrow" value="252" min="0" step="1" />
+                </div>
+            </details>
 
-        <details class="filter-section" open>
-          <summary>Pricing</summary>
-          <div class="filter-section__body">
-            <label class="field-label" for="priceDropdown">Pricing structure</label>
-            <select id="priceDropdown" class="field-control">
-              <option value="">Any</option>
-              <option value="Free">Free</option>
-              <option value="Paid">One-off payment</option>
-              <option value="Subscription">Subscription</option>
-            </select>
-          </div>
-        </details>
-      </form>
+            <details class="filter-section" open>
+                <summary>Interfaces</summary>
+                <div class="filter-section__body">
+                    <p class="field-hint">Application interfaces</p>
+                    <label class="checkbox-label field"><input type="checkbox" id="Python" name="Python" /> <span>Python</span></label>
+                    <label class="checkbox-label field"><input type="checkbox" id="C#" name="C#" /> <span>C#</span></label>
+                    <label class="checkbox-label field"><input type="checkbox" id="Grasshopper" name="Grasshopper" /> <span>Grasshopper</span></label>
+                </div>
+            </details>
+
+            <details class="filter-section" open>
+                <summary>Pricing</summary>
+                <div class="filter-section__body">
+                    <label class="field-label" for="priceDropdown">Pricing structure</label>
+                    <select id="priceDropdown" class="field-control">
+                        <option value="">Any</option>
+                        <option value="Free">Free</option>
+                        <option value="Paid">One-off payment</option>
+                        <option value="Subscription">Subscription</option>
+                    </select>
+                </div>
+            </details>
+        </form>
     </aside>
 
     <main class="results" aria-label="Tool listings">
