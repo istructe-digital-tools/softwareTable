@@ -447,17 +447,71 @@
     return { header: header || "—", lines };
   }
 
-  function appendPlainLines(container, text) {
-    const t = stripHtmlTags(text).trim();
-    if (!t) return;
-    const parts = t.split(/\n+/);
-    parts.forEach((line, idx) => {
-      if (idx > 0) container.appendChild(document.createElement("br"));
-      container.appendChild(document.createTextNode(line.trim()));
-    });
-  }
+    /**
+       * Helper to append text that might contain HTML links.
+       * It parses <a> tags and creates actual DOM nodes.
+       */
+    function appendTextWithLinks(container, text) {
+        const linkRegex = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1[^>]*?>(.*?)<\/a>/gi;
+        let lastIdx = 0;
+        let match;
 
-  /** Renders formatted description into container (safe DOM, no innerHTML). */
+        while ((match = linkRegex.exec(text)) !== null) {
+            // Append text before the link
+            if (match.index > lastIdx) {
+                container.appendChild(document.createTextNode(text.slice(lastIdx, match.index)));
+            }
+
+            // Create the anchor element
+            const a = document.createElement("a");
+            a.href = match[2];
+            a.textContent = match[3];
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            // Optional: add a class for styling if needed
+            a.style.color = "var(--color-primary, #007bff)";
+            a.style.textDecoration = "underline";
+
+            container.appendChild(a);
+            lastIdx = linkRegex.lastIndex;
+        }
+
+        // Append remaining text
+        if (lastIdx < text.length) {
+            container.appendChild(document.createTextNode(text.slice(lastIdx)));
+        }
+    }
+
+    function appendPlainLines(container, text) {
+        if (!text) return;
+
+        // Split by newlines to respect the formatting
+        const parts = text.split(/\n+/);
+
+        parts.forEach((line, idx) => {
+            if (idx > 0) container.appendChild(document.createElement("br"));
+
+            const trimmedLine = line.trim();
+
+            // Check if the line contains what looks like an HTML tag
+            if (trimmedLine.includes("<a") && trimmedLine.includes("</a>")) {
+                // Create a temporary span to hold the parsed HTML
+                const tempSpan = document.createElement("span");
+                // We use innerHTML here ONLY on the specific line from the CSV 
+                // to turn the <a> string into a real clickable element
+                tempSpan.innerHTML = trimmedLine;
+
+                // Append the parsed nodes to the container
+                while (tempSpan.firstChild) {
+                    container.appendChild(tempSpan.firstChild);
+                }
+            } else {
+                // If no link, just append as safe text
+                container.appendChild(document.createTextNode(trimmedLine));
+            }
+        });
+    }
+    /** Renders formatted description into container (safe DOM). */
     function appendFormattedCell(container, raw) {
         let s = normalizeNewlineMarkers(String(raw || ""));
         let i = 0;
@@ -478,7 +532,6 @@
             const inner = s.slice(open + 1, close);
             const parsed = parseBracketInner(inner);
 
-            // --- NEW LOGIC: Add line break before the block if container isn't empty ---
             if (container.childNodes.length > 0) {
                 container.appendChild(document.createElement("br"));
             }
@@ -491,12 +544,12 @@
             if (parsed.lines && parsed.lines.length) {
                 parsed.lines.forEach((line) => {
                     container.appendChild(document.createElement("br"));
-                    container.appendChild(document.createTextNode(line));
+                    // Use link-aware appender for list items too
+                    appendTextWithLinks(container, line);
                 });
             }
 
             i = close + 1;
-            // Skip the immediate newline after a bracket if it exists to avoid double-spacing
             if (s[i] === "\n") i++;
         }
     }
@@ -727,7 +780,7 @@
     const first = wrap.querySelector(".feature-select");
     if (!first) return;
     const clone = document.createElement("select");
-    clone.className = "feature-select";
+    clone.className = "feature-select field-control";
     clone.setAttribute("aria-label", "Feature filter");
     fillFeatureSelect(clone);
     clone.value = "";

@@ -20,7 +20,7 @@
     "label": "Parametric Modelling"
   },
   {
-    "value": "Analysis;Tension / Compression Elements",
+    "value": "Analysis;Tension / Compression Element Analysis",
     "label": "Analysis"
   },
   {
@@ -92,8 +92,8 @@
     "label": "- Strut and Tie Analysis"
   },
   {
-    "value": "Tension / Compression Elements",
-    "label": "- Tension / Compression Elements"
+    "value": "Tension / Compression Element Analysis",
+    "label": "- Tension / Compression Element Analysis"
   },
   {
     "value": "Timber Analysis",
