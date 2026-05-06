@@ -1,0 +1,228 @@
+{
+  "id": "27b33216fba0",
+  "developer": "Trimble",
+  "product": "Tekla Tedds",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://www.tekla.com/in/products/tekla-tedds",
+    "specifications": "https://support.tekla.com/doc/tekla-tedds/2025/ins_tekla_tedds_hardware_requirements"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": true,
+    "fullDesignChecks": true,
+    "iso9001Compliant": true
+  },
+  "components": {
+    "structuralAnalysis": false,
+    "geotechnicalAnalysis": false,
+    "designCalculations": true,
+    "buildingInformationModelling": false,
+    "parametricModelling": false,
+    "embodiedCarbonAssessment": false
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": true,
+    "composites": true,
+    "polymers": false
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": false,
+        "exportMaterialQuantities": false,
+        "ifcExport": false,
+        "ifcImport": false,
+        "pdfExport": false
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": true
+    },
+    "parametricModelling": false,
+    "analysis": {
+      "analysis2d": true,
+      "analysis3d": false,
+      "compositeBeamAnalysis": false,
+      "compositeSectionAnalysis": false,
+      "constructionStageAnalysis": false,
+      "dynamicAnalysis": false,
+      "finiteElementAnalysis": false,
+      "footfallAnalysis": false,
+      "globalBucklingAnalysis": false,
+      "lateralStabilityAnalysis": false,
+      "localBucklingAnalysis": false,
+      "nonLinearAnalysis": false,
+      "responseSpectrumAnalysis": false,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": false,
+      "staticAnalysis": false,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": false,
+      "timberAnalysis": false,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": false,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": false
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": true,
+        "snowLoads": true,
+        "windLoads": true
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": true,
+        "concreteColumns": true,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": false,
+        "concreteCracking": false,
+        "concreteFlatSlabs1Way": false,
+        "concreteFlatSlabs2Way": false,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": true,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": false
+      },
+      "designOfSteelElements": {
+        "steelBeams": true,
+        "steelColumns": true,
+        "steelJoistFloors": true
+      },
+      "designOfTimberElements": {
+        "timberBeams": true,
+        "timberColumns": true,
+        "timberJoistFloors": true,
+        "timberStudWalls": true,
+        "timberPanelWalls": true
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": true,
+        "masonryWalls": true
+      },
+      "designOfConnections": {
+        "baseplateConnections": true,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": false,
+        "corbelConnections": true,
+        "steelToConcreteConnections": true,
+        "steelToSteelConnections": true,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": true
+      },
+      "designOfFoundations": {
+        "footings": true,
+        "matFoundations": false,
+        "pileCaps": true,
+        "piles": true,
+        "sheetPiles": true
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": false,
+      "staircases": true
+    }
+  },
+  "featuresFlat": [
+    "2D Analysis",
+    "Baseplate Connections",
+    "Carbon Factor Library",
+    "Concrete Beams",
+    "Concrete Columns",
+    "Concrete Retaining Walls",
+    "Corbel Connections",
+    "Footings",
+    "Masonry Retaining Walls",
+    "Masonry Walls",
+    "Pile Caps",
+    "Piles",
+    "Seismic Loads",
+    "Sheet Piles",
+    "Snow Loads",
+    "Staircases",
+    "Steel Beams",
+    "Steel Columns",
+    "Steel Joist Floors",
+    "Steel to Concrete Connections",
+    "Steel to Steel Connections",
+    "Timber Beams",
+    "Timber Columns",
+    "Timber Joist Floors",
+    "Timber Panel Walls",
+    "Timber Stud Walls",
+    "Timber to Timber Connections",
+    "Wind Loads"
+  ],
+  "designCodes": {
+    "eurocodes": true,
+    "ukNationalAnnex": true,
+    "otherNationalAnnexes": [
+      "Ireland",
+      "Singapore",
+      "Malaysia",
+      "Finland",
+      "Sweden",
+      "Norway"
+    ],
+    "britishStandards": true,
+    "otherCodes": [
+      "United States (ACI, AISC)",
+      "India (IS)",
+      "Austrialia (AS)",
+      "Canada (CSA)"
+    ]
+  },
+  "levelOfStructuralChecks": "Full",
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11"
+    ],
+    "processors": "Intel i5 +",
+    "maximumRam": "2 GB",
+    "maximumStorage": "1 GB",
+    "internetAccessRequired": "Yes"
+  },
+  "interfaces": {
+    "python": true,
+    "csharp": true,
+    "grasshopper": true,
+    "other": false
+  },
+  "pricing": {
+    "pricingStructure": "Subscription",
+    "raw": [
+      "Subscription"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone"
+  }
+}

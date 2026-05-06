@@ -1,0 +1,253 @@
+{
+  "id": "f9bbd78a13a4",
+  "developer": "SOFiSTiK AG",
+  "product": "3D-FEM",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://docs.sofistik.com/2025/en/fea/index.html",
+    "specifications": "https://www.sofistik.com/en/"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": true,
+    "fullDesignChecks": false,
+    "iso9001Compliant": false
+  },
+  "components": {
+    "structuralAnalysis": true,
+    "geotechnicalAnalysis": true,
+    "designCalculations": true,
+    "buildingInformationModelling": false,
+    "parametricModelling": true,
+    "embodiedCarbonAssessment": true
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": true,
+    "composites": true,
+    "polymers": true
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": true,
+        "exportMaterialQuantities": true,
+        "ifcExport": true,
+        "ifcImport": true,
+        "pdfExport": true
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": true,
+    "analysis": {
+      "analysis2d": true,
+      "analysis3d": true,
+      "compositeBeamAnalysis": true,
+      "compositeSectionAnalysis": true,
+      "constructionStageAnalysis": true,
+      "dynamicAnalysis": true,
+      "finiteElementAnalysis": true,
+      "footfallAnalysis": true,
+      "globalBucklingAnalysis": true,
+      "lateralStabilityAnalysis": true,
+      "localBucklingAnalysis": true,
+      "nonLinearAnalysis": true,
+      "responseSpectrumAnalysis": true,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": true,
+      "staticAnalysis": true,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": true,
+      "timberAnalysis": true,
+      "vibrationDesignAndAnalysis": true
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": true,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": true
+    },
+    "design": {
+      "designForFire": true,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": true,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": true,
+        "compositeColumns": true,
+        "compositeDecksAndSlabs": true
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": true,
+        "concreteColumns": true,
+        "concreteCoreShearWalls": true,
+        "concreteCouplingBeams": false,
+        "concreteCracking": true,
+        "concreteFlatSlabs1Way": true,
+        "concreteFlatSlabs2Way": true,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": true,
+        "concreteReinforcedBlockWalls": true,
+        "concreteRetainingWalls": true,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": true
+      },
+      "designOfSteelElements": {
+        "steelBeams": true,
+        "steelColumns": true,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": false,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": true,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": false,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": true,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": true,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": true,
+      "portalFrames": true,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "2D Analysis",
+    "3D Analysis",
+    "Bridges",
+    "Composite Beam Analysis",
+    "Composite Beams",
+    "Composite Columns",
+    "Composite Decks and Slabs",
+    "Composite Section Analysis",
+    "Concrete Beams",
+    "Concrete Columns",
+    "Concrete Core / Shear Walls",
+    "Concrete Cracking",
+    "Concrete Flat Slabs (1 Way)",
+    "Concrete Flat Slabs (2 Way)",
+    "Concrete Post Tensioning",
+    "Concrete Punching Shear",
+    "Concrete Reinforced Block Walls",
+    "Concrete Retaining Walls",
+    "Concrete Walls",
+    "Construction Stage Analysis",
+    "Design for Fire",
+    "DXF Export",
+    "Dynamic Analysis",
+    "Export Material Quantities",
+    "Finite Element Analysis",
+    "Footfall Analysis",
+    "Footings",
+    "Global Buckling Analysis",
+    "IFC Export",
+    "IFC Import",
+    "Lateral Stability Analysis",
+    "Local Buckling Analysis",
+    "Non-linear Analysis",
+    "Parametric Modelling",
+    "PDF Export",
+    "Pile Lateral Stability",
+    "Piles",
+    "Portal Frames",
+    "Response Spectrum Analysis",
+    "Section Analysis",
+    "Seismic Loads",
+    "Soil Structure Interaction",
+    "Static Analysis",
+    "Steel Beams",
+    "Steel Columns",
+    "Tension / Compression Element Analysis",
+    "Timber Analysis",
+    "Vibration Design & Analysis"
+  ],
+  "designCodes": {
+    "eurocodes": true,
+    "ukNationalAnnex": true,
+    "otherNationalAnnexes": [
+      "France",
+      "Belgium",
+      "Germany",
+      "Austria",
+      "Netherlands",
+      "Italy",
+      "Switzerland"
+    ],
+    "britishStandards": true,
+    "otherCodes": [
+      "United States (ACI, AASHTO)"
+    ]
+  },
+  "levelOfStructuralChecks": "Partial (Design and checks according to program documentation)",
+  "systemRequirements": {
+    "noInternetAccessRequired": true,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11"
+    ],
+    "processors": "2.0+ GHz",
+    "maximumRam": "6 GB",
+    "maximumStorage": "1.5 GB",
+    "internetAccessRequired": "No (Just for updates or up-to date online documentation)"
+  },
+  "interfaces": {
+    "python": true,
+    "csharp": true,
+    "grasshopper": true,
+    "other": [
+      "C++",
+      "VBA Macros",
+      "Dynamo",
+      "Excel",
+      "AutoCAD"
+    ]
+  },
+  "pricing": {
+    "pricingStructure": "Subscription",
+    "raw": [
+      "Paid",
+      "Subscription"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone"
+  }
+}

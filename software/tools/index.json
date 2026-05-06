@@ -1,0 +1,565 @@
+{
+  "generatedAt": "2026-05-06T21:26:39.111Z",
+  "tools": [
+    {
+      "id": "e4b4f973960e",
+      "file": "software/tools/andr-stephan-epic-grasshopper.json",
+      "developer": "André Stephan",
+      "product": "EPiC Grasshopper",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "f26d3d4d5236",
+      "file": "software/tools/ansys-inc-ansys-mechanical.json",
+      "developer": "Ansys Inc",
+      "product": "Ansys Mechanical",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "1f8b8eff8ce0",
+      "file": "software/tools/autodesk-advance-steel.json",
+      "developer": "Autodesk",
+      "product": "Advance Steel",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "bdf0197f22ad",
+      "file": "software/tools/autodesk-infraworks.json",
+      "developer": "Autodesk",
+      "product": "Infraworks",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "c69ff25abc3f",
+      "file": "software/tools/autodesk-revit.json",
+      "developer": "Autodesk",
+      "product": "Revit",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "ec802cca8f44",
+      "file": "software/tools/autodesk-robot-structural-analysis.json",
+      "developer": "Autodesk",
+      "product": "Robot Structural Analysis",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "ab04d4646b2e",
+      "file": "software/tools/autodesk-structural-bridge-design.json",
+      "developer": "Autodesk",
+      "product": "Structural Bridge Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "0599dce844c5",
+      "file": "software/tools/bhom-bhom.json",
+      "developer": "BHoM",
+      "product": "BHoM",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "4a65b3fb762d",
+      "file": "software/tools/building-transparency-ec3-tool.json",
+      "developer": "Building Transparency",
+      "product": "EC3 Tool",
+      "toolType": "Web App"
+    },
+    {
+      "id": "d40a96ef825b",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-bim-modelling-for-building-de.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "BIM Modelling for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "112c7d01b64a",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-building-design-suite.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Building Design Suite",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "52a9bc3e4c32",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-concrete-slab-and-wall-design.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Concrete Slab & Wall Designer for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "640e50f06cd8",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-connection-designer-for-build.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Connection Designer for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "f50b6d6f4015",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-dynamic-analysis-and-vibratio.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Dynamic Analysis & Vibration Desgin for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "992cd8fdb41d",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-finite-element-analysis-for-b.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Finite Element Analysis for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "47d307cd4e40",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-finite-element-analysis-for-p.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Finite Element Analysis for/#PowerPad MasterSeries Lite Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "feb487e376ca",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-masterbeam-composite-beam-des.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "MasterBeam: Composite Beam Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "b27daa33d9c7",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-masterkey-connections-design.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "MasterKey: Connections Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "bf8cb33575b7",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-masterkey-masonry-design.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "MasterKey: Masonry Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "0272cbe78382",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-masterkey-pile-cap-design.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "MasterKey: Pile Cap Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "604a76a47ce7",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-masterkey-retaining-walls-des.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "MasterKey: Retaining Walls Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "1f49969cfd38",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-masterport-plus.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "MasterPort Plus",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "37e20a82ea81",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-member-designer-for-building-.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Member Designer for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "b4d57cdcd77d",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-member-designer-for-powerpad-.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Member Designer for/#PowerPad MasterSeries Lite Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "c6d39d20285e",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-pile-cap-designer-for-buildin.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Pile Cap Designer for/#Building Design Suite",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "9028050d0708",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-composite-beam-desi.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Composite Beam Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "be9d41447118",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-concrete-beam-desig.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Concrete Beam Designer",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "d6ca992b6840",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-connection-designer.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Connection Designer",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "bdaa248e22c5",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-masonry-design.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Masonry Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "174727c18e8c",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-masterport.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - MasterPort",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "4f47db774be1",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-pile-cap-desginer.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Pile Cap Desginer",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "3684af29298a",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-retaining-walls-des.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Retaining Walls Design",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "c57f20476dfe",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-steel-beam-designer.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Steel Beam Designer",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "e9b7d2dd291b",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-power-pad-timber-beam-designe.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "Power Pad - Timber Beam Designer",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "bcb4dcd30f06",
+      "file": "software/tools/civil-and-structural-computer-services-candscs-ltd-powerpad-masterseries-lite-su.json",
+      "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+      "product": "PowerPad - MasterSeries Lite Suite",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "1413ed50f62c",
+      "file": "software/tools/clt-toolbox-clt-toolbox.json",
+      "developer": "CLT Toolbox",
+      "product": "CLT Toolbox",
+      "toolType": "Web App"
+    },
+    {
+      "id": "cf549dc669b4",
+      "file": "software/tools/cype-cype-3d.json",
+      "developer": "CYPE",
+      "product": "CYPE 3D",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "9e3ea5abaedd",
+      "file": "software/tools/cype-cype-connect.json",
+      "developer": "CYPE",
+      "product": "CYPE Connect",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "e42f51bd8a28",
+      "file": "software/tools/cype-cypecad.json",
+      "developer": "CYPE",
+      "product": "CYPECAD",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "8ea8321ecc2c",
+      "file": "software/tools/cype-strubim-box-culverts.json",
+      "developer": "CYPE",
+      "product": "StruBIM Box Culverts",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "70aa0a993d91",
+      "file": "software/tools/cype-strubim-cantilever-walls.json",
+      "developer": "CYPE",
+      "product": "StruBIM Cantilever Walls",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "cc386b287844",
+      "file": "software/tools/cype-strubim-embedded-walls.json",
+      "developer": "CYPE",
+      "product": "StruBIM Embedded Walls",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "90a8e91c11d1",
+      "file": "software/tools/cype-strubim-shear-walls.json",
+      "developer": "CYPE",
+      "product": "StruBIM Shear Walls",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "e24968907ae6",
+      "file": "software/tools/cype-strubim-steel.json",
+      "developer": "CYPE",
+      "product": "StruBIM Steel",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "e3dd2e1ed191",
+      "file": "software/tools/elliott-wood-istructe-the-structural-carbon-tool.json",
+      "developer": "Elliott Wood / IStructE",
+      "product": "The Structural Carbon Tool",
+      "toolType": "Spreadsheet"
+    },
+    {
+      "id": "d1e3571cff97",
+      "file": "software/tools/ethz-sc-bombyx.json",
+      "developer": "ETHZ_SC",
+      "product": "Bombyx",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "1b905b44d60c",
+      "file": "software/tools/finite-element-analysis-ltd-lusas.json",
+      "developer": "Finite Element Analysis Ltd.",
+      "product": "LUSAS",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "487af4434280",
+      "file": "software/tools/foundaxis-llc-foundaxis.json",
+      "developer": "Foundaxis LLC",
+      "product": "Foundaxis",
+      "toolType": "Web App"
+    },
+    {
+      "id": "01061f0cae73",
+      "file": "software/tools/hawkins-brown-h-bert.json",
+      "developer": "Hawkins\\Brown",
+      "product": "H\\BERT",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "57d45cf5f183",
+      "file": "software/tools/karamba-3d-karamba3d.json",
+      "developer": "Karamba 3D",
+      "product": "Karamba3D",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "fb668ddb980e",
+      "file": "software/tools/kierantimberlake-building-transparency-tallylca.json",
+      "developer": "KieranTimberlake / Building Transparency",
+      "product": "tallyLCA",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "a94f8fcd7a07",
+      "file": "software/tools/oasys-oasys-adc.json",
+      "developer": "Oasys",
+      "product": "Oasys ADC",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "008e15e845b1",
+      "file": "software/tools/oasys-oasys-adsec.json",
+      "developer": "Oasys",
+      "product": "Oasys AdSec",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "dcc968d0fb91",
+      "file": "software/tools/oasys-oasys-compos.json",
+      "developer": "Oasys",
+      "product": "Oasys Compos",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "cf7104ad7944",
+      "file": "software/tools/oasys-oasys-gsa.json",
+      "developer": "Oasys",
+      "product": "Oasys GSA",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "165479e975dd",
+      "file": "software/tools/one-click-lca-one-click-lca.json",
+      "developer": "One Click LCA",
+      "product": "One Click LCA",
+      "toolType": "Web App"
+    },
+    {
+      "id": "617459fc2fad",
+      "file": "software/tools/one-click-lca-one-click-lca-planetary.json",
+      "developer": "One Click LCA",
+      "product": "One Click LCA Planetary",
+      "toolType": "Web App"
+    },
+    {
+      "id": "928c64a30082",
+      "file": "software/tools/pathways-cardinal-lca.json",
+      "developer": "Pathways",
+      "product": "Cardinal LCA",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "b60b7c129858",
+      "file": "software/tools/robert-mcneel-and-associates-rhino.json",
+      "developer": "Robert McNeel & Associates",
+      "product": "Rhino",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "dec10bfae776",
+      "file": "software/tools/skyciv-beam.json",
+      "developer": "SkyCiv",
+      "product": "Beam",
+      "toolType": "Web App"
+    },
+    {
+      "id": "1f3f9bbd26e9",
+      "file": "software/tools/skyciv-beam-shell-fea.json",
+      "developer": "SkyCiv",
+      "product": "Beam Shell FEA",
+      "toolType": "Web App"
+    },
+    {
+      "id": "e22234eb73e6",
+      "file": "software/tools/skyciv-foundation-design.json",
+      "developer": "SkyCiv",
+      "product": "Foundation Design",
+      "toolType": "Web App"
+    },
+    {
+      "id": "cb182cdbcde3",
+      "file": "software/tools/skyciv-load-generator.json",
+      "developer": "SkyCiv",
+      "product": "Load Generator",
+      "toolType": "Web App"
+    },
+    {
+      "id": "ab5266136dfc",
+      "file": "software/tools/skyciv-retaining-wall.json",
+      "developer": "SkyCiv",
+      "product": "Retaining Wall",
+      "toolType": "Web App"
+    },
+    {
+      "id": "a005a99f3a7e",
+      "file": "software/tools/skyciv-section-builder.json",
+      "developer": "SkyCiv",
+      "product": "Section Builder",
+      "toolType": "Web App"
+    },
+    {
+      "id": "bcd37492f2cb",
+      "file": "software/tools/skyciv-structural-3d.json",
+      "developer": "SkyCiv",
+      "product": "Structural 3D",
+      "toolType": "Web App"
+    },
+    {
+      "id": "f9bbd78a13a4",
+      "file": "software/tools/sofistik-ag-3d-fem.json",
+      "developer": "SOFiSTiK AG",
+      "product": "3D-FEM",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "4b100a186c4f",
+      "file": "software/tools/sofistik-ag-3d-fem-plug-in-for-autocad.json",
+      "developer": "SOFiSTiK AG",
+      "product": "3D-FEM Plug In for AutoCAD",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "2b3614edbff1",
+      "file": "software/tools/sofistik-ag-3d-fem-plug-in-for-revit.json",
+      "developer": "SOFiSTiK AG",
+      "product": "3D-FEM Plug In for Revit",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "ea86aabd9b71",
+      "file": "software/tools/sofistik-ag-3d-fem-plug-in-for-rhino.json",
+      "developer": "SOFiSTiK AG",
+      "product": "3D-FEM Plug In for Rhino",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "9555f2eaa830",
+      "file": "software/tools/sofistik-ag-analytical-model-generator.json",
+      "developer": "SOFiSTiK AG",
+      "product": "Analytical Model Generator",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "380c30a7f602",
+      "file": "software/tools/sofistik-ag-reinforcement.json",
+      "developer": "SOFiSTiK AG",
+      "product": "Reinforcement",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "87a66eb79376",
+      "file": "software/tools/sofistik-ag-sofistik-bridge-infrastructure-modeler.json",
+      "developer": "SOFiSTiK AG",
+      "product": "SOFiSTiK Bridge+ Infrastructure Modeler",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "a853bcaef805",
+      "file": "software/tools/structx-structx-com.json",
+      "developer": "Structx",
+      "product": "structx.com",
+      "toolType": "Spreadsheet"
+    },
+    {
+      "id": "4d934277016a",
+      "file": "software/tools/structx-structx-com-2.json",
+      "developer": "Structx",
+      "product": "structx.com",
+      "toolType": "Web App"
+    },
+    {
+      "id": "a0738debe7c4",
+      "file": "software/tools/the-concrete-centre-concrete-centre-spreadsheets.json",
+      "developer": "The Concrete Centre",
+      "product": "Concrete Centre Spreadsheets",
+      "toolType": "Spreadsheet"
+    },
+    {
+      "id": "efdeff27a594",
+      "file": "software/tools/thornton-tomasetti-beacon.json",
+      "developer": "Thornton Tomasetti",
+      "product": "Beacon",
+      "toolType": "Plug In"
+    },
+    {
+      "id": "b01a3df1e6ac",
+      "file": "software/tools/trimble-tekla-structural-designer.json",
+      "developer": "Trimble",
+      "product": "Tekla Structural Designer",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "27b33216fba0",
+      "file": "software/tools/trimble-tekla-tedds.json",
+      "developer": "Trimble",
+      "product": "Tekla Tedds",
+      "toolType": "Stand Alone"
+    },
+    {
+      "id": "a3e829ceae5f",
+      "file": "software/tools/whitby-wood-ace-column-designer.json",
+      "developer": "Whitby Wood",
+      "product": "ACE Column Designer",
+      "toolType": "Stand Alone"
+    }
+  ]
+}

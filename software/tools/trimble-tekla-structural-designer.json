@@ -1,0 +1,250 @@
+{
+  "id": "b01a3df1e6ac",
+  "developer": "Trimble",
+  "product": "Tekla Structural Designer",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://www.tekla.com/in/products/tekla-structural-designer",
+    "specifications": "https://support.tekla.com/doc/tekla-structural-designer/2025/ins_tekla_structural_designer_hardware_recommendations"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": true,
+    "fullDesignChecks": true,
+    "iso9001Compliant": true
+  },
+  "components": {
+    "structuralAnalysis": true,
+    "geotechnicalAnalysis": false,
+    "designCalculations": true,
+    "buildingInformationModelling": false,
+    "parametricModelling": false,
+    "embodiedCarbonAssessment": true
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": false,
+    "composites": true,
+    "polymers": false
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": true,
+        "exportMaterialQuantities": true,
+        "ifcExport": true,
+        "ifcImport": true,
+        "pdfExport": true
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": true,
+        "reinforcementDetailingSheets": true,
+        "reinforcement3dModelling": true
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": true,
+    "analysis": {
+      "analysis2d": true,
+      "analysis3d": true,
+      "compositeBeamAnalysis": true,
+      "compositeSectionAnalysis": true,
+      "constructionStageAnalysis": true,
+      "dynamicAnalysis": true,
+      "finiteElementAnalysis": true,
+      "footfallAnalysis": true,
+      "globalBucklingAnalysis": true,
+      "lateralStabilityAnalysis": true,
+      "localBucklingAnalysis": true,
+      "nonLinearAnalysis": true,
+      "responseSpectrumAnalysis": true,
+      "rigorousAnalysis": true,
+      "sectionAnalysis": false,
+      "staticAnalysis": true,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": true,
+      "timberAnalysis": true,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": false,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": false
+    },
+    "design": {
+      "designForFire": true,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": true,
+        "snowLoads": true,
+        "windLoads": true
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": true,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": true,
+        "concreteColumns": true,
+        "concreteCoreShearWalls": true,
+        "concreteCouplingBeams": false,
+        "concreteCracking": true,
+        "concreteFlatSlabs1Way": true,
+        "concreteFlatSlabs2Way": true,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": true
+      },
+      "designOfSteelElements": {
+        "steelBeams": true,
+        "steelColumns": true,
+        "steelJoistFloors": true
+      },
+      "designOfTimberElements": {
+        "timberBeams": true,
+        "timberColumns": true,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": true,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": true,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": true,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": true,
+        "matFoundations": true,
+        "pileCaps": true,
+        "piles": true,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": true,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "2D Analysis",
+    "3D Analysis",
+    "Baseplate Connections",
+    "Composite Beam Analysis",
+    "Composite Beams",
+    "Composite Section Analysis",
+    "Concrete Beams",
+    "Concrete Columns",
+    "Concrete Core / Shear Walls",
+    "Concrete Cracking",
+    "Concrete Flat Slabs (1 Way)",
+    "Concrete Flat Slabs (2 Way)",
+    "Concrete Punching Shear",
+    "Concrete Walls",
+    "Construction Stage Analysis",
+    "Design for Fire",
+    "Detailed Plan / Section Drawings",
+    "DXF Export",
+    "Dynamic Analysis",
+    "Export Material Quantities",
+    "Finite Element Analysis",
+    "Footfall Analysis",
+    "Footings",
+    "Global Buckling Analysis",
+    "IFC Export",
+    "IFC Import",
+    "Lateral Stability Analysis",
+    "Local Buckling Analysis",
+    "Mat Foundations",
+    "Non-linear Analysis",
+    "Parametric Modelling",
+    "PDF Export",
+    "Pile Caps",
+    "Piles",
+    "Portal Frames",
+    "Reinforcement 3D Modelling",
+    "Reinforcement Detailing / Sheets",
+    "Response Spectrum Analysis",
+    "Rigorous Analysis",
+    "Seismic Loads",
+    "Snow Loads",
+    "Static Analysis",
+    "Steel Beams",
+    "Steel Columns",
+    "Steel Joist Floors",
+    "Steel to Steel Connections",
+    "Tension / Compression Element Analysis",
+    "Timber Analysis",
+    "Timber Beams",
+    "Timber Columns",
+    "Wind Loads"
+  ],
+  "designCodes": {
+    "eurocodes": true,
+    "ukNationalAnnex": true,
+    "otherNationalAnnexes": [
+      "Ireland",
+      "Singapore",
+      "Malaysia",
+      "Finland",
+      "Sweden",
+      "Norway"
+    ],
+    "britishStandards": true,
+    "otherCodes": [
+      "United States (ACI, AISC)",
+      "India (IS)",
+      "Austrialia (AS)"
+    ]
+  },
+  "levelOfStructuralChecks": "Full",
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11"
+    ],
+    "processors": "Intel i5 +",
+    "maximumRam": "32 GB",
+    "maximumStorage": "1 GB",
+    "internetAccessRequired": "Yes"
+  },
+  "interfaces": {
+    "python": true,
+    "csharp": true,
+    "grasshopper": true,
+    "other": false
+  },
+  "pricing": {
+    "pricingStructure": "Subscription",
+    "raw": [
+      "Subscription"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone"
+  }
+}

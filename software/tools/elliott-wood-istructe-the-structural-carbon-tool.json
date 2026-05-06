@@ -1,0 +1,190 @@
+{
+  "id": "e3dd2e1ed191",
+  "developer": "Elliott Wood / IStructE",
+  "product": "The Structural Carbon Tool",
+  "toolType": "Spreadsheet",
+  "links": {
+    "guidance": "https://www.istructe.org/resources/guidance/the-structural-carbon-tool/",
+    "specifications": "https://www.istructe.org/resources/guidance/the-structural-carbon-tool/"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": false,
+    "fullDesignChecks": false,
+    "iso9001Compliant": true
+  },
+  "components": {
+    "structuralAnalysis": false,
+    "geotechnicalAnalysis": false,
+    "designCalculations": false,
+    "buildingInformationModelling": false,
+    "parametricModelling": false,
+    "embodiedCarbonAssessment": true
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": true,
+    "composites": true,
+    "polymers": false
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": false,
+        "exportMaterialQuantities": false,
+        "ifcExport": false,
+        "ifcImport": false,
+        "pdfExport": false
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": true
+    },
+    "parametricModelling": false,
+    "analysis": {
+      "analysis2d": false,
+      "analysis3d": false,
+      "compositeBeamAnalysis": false,
+      "compositeSectionAnalysis": false,
+      "constructionStageAnalysis": false,
+      "dynamicAnalysis": false,
+      "finiteElementAnalysis": false,
+      "footfallAnalysis": false,
+      "globalBucklingAnalysis": false,
+      "lateralStabilityAnalysis": false,
+      "localBucklingAnalysis": false,
+      "nonLinearAnalysis": false,
+      "responseSpectrumAnalysis": false,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": false,
+      "staticAnalysis": false,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": false,
+      "timberAnalysis": false,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": false,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": false
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": false,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": false,
+        "concreteColumns": false,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": false,
+        "concreteCracking": false,
+        "concreteFlatSlabs1Way": false,
+        "concreteFlatSlabs2Way": false,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": false
+      },
+      "designOfSteelElements": {
+        "steelBeams": false,
+        "steelColumns": false,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": false,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": false,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": false,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": false,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": false,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": false,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "Carbon Factor Library"
+  ],
+  "designCodes": {
+    "eurocodes": false,
+    "ukNationalAnnex": false,
+    "otherNationalAnnexes": [],
+    "britishStandards": false,
+    "otherCodes": []
+  },
+  "levelOfStructuralChecks": false,
+  "systemRequirements": {
+    "noInternetAccessRequired": true,
+    "operatingSystem": false,
+    "processors": false,
+    "maximumRam": "0 GB",
+    "maximumStorage": "0 GB",
+    "internetAccessRequired": "No"
+  },
+  "interfaces": {
+    "python": false,
+    "csharp": false,
+    "grasshopper": false,
+    "other": [
+      "VBA Macros"
+    ]
+  },
+  "pricing": {
+    "pricingStructure": "Free",
+    "raw": [
+      "Free"
+    ]
+  },
+  "secondarySoftwareRequirements": [
+    "Excel 2016 +"
+  ],
+  "raw": {
+    "productTypeCsv": "Spreadsheet"
+  }
+}

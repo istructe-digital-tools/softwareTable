@@ -1,0 +1,215 @@
+{
+  "id": "f26d3d4d5236",
+  "developer": "Ansys Inc",
+  "product": "Ansys Mechanical",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://www.ansys.com/structures",
+    "specifications": "https://www.ansys.com/products/structures/ansys-mechanical"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": false,
+    "fullDesignChecks": false,
+    "iso9001Compliant": true
+  },
+  "components": {
+    "structuralAnalysis": true,
+    "geotechnicalAnalysis": true,
+    "designCalculations": false,
+    "buildingInformationModelling": false,
+    "parametricModelling": false,
+    "embodiedCarbonAssessment": false
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": true,
+    "composites": true,
+    "polymers": true
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": false,
+        "exportMaterialQuantities": false,
+        "ifcExport": false,
+        "ifcImport": false,
+        "pdfExport": false
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": true,
+    "analysis": {
+      "analysis2d": true,
+      "analysis3d": true,
+      "compositeBeamAnalysis": true,
+      "compositeSectionAnalysis": true,
+      "constructionStageAnalysis": true,
+      "dynamicAnalysis": true,
+      "finiteElementAnalysis": true,
+      "footfallAnalysis": true,
+      "globalBucklingAnalysis": true,
+      "lateralStabilityAnalysis": true,
+      "localBucklingAnalysis": true,
+      "nonLinearAnalysis": true,
+      "responseSpectrumAnalysis": true,
+      "rigorousAnalysis": true,
+      "sectionAnalysis": true,
+      "staticAnalysis": true,
+      "strutAndTieAnalysis": true,
+      "tensionCompressionElementAnalysis": true,
+      "timberAnalysis": true,
+      "vibrationDesignAndAnalysis": true
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": true,
+      "pileSinking": true,
+      "slipCircles": true,
+      "soilStructureInteraction": true
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": false,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": false,
+        "concreteColumns": false,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": false,
+        "concreteCracking": false,
+        "concreteFlatSlabs1Way": false,
+        "concreteFlatSlabs2Way": false,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": false
+      },
+      "designOfSteelElements": {
+        "steelBeams": false,
+        "steelColumns": false,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": false,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": false,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": false,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": false,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": false,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": false,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "2D Analysis",
+    "3D Analysis",
+    "Composite Beam Analysis",
+    "Composite Section Analysis",
+    "Construction Stage Analysis",
+    "Dynamic Analysis",
+    "Finite Element Analysis",
+    "Footfall Analysis",
+    "Global Buckling Analysis",
+    "Lateral Stability Analysis",
+    "Local Buckling Analysis",
+    "Non-linear Analysis",
+    "Parametric Modelling",
+    "Pile Lateral Stability",
+    "Pile Sinking",
+    "Response Spectrum Analysis",
+    "Rigorous Analysis",
+    "Section Analysis",
+    "Slip Circles",
+    "Soil Structure Interaction",
+    "Static Analysis",
+    "Strut and Tie Analysis",
+    "Tension / Compression Element Analysis",
+    "Timber Analysis",
+    "Vibration Design & Analysis"
+  ],
+  "designCodes": {
+    "eurocodes": false,
+    "ukNationalAnnex": false,
+    "otherNationalAnnexes": [],
+    "britishStandards": false,
+    "otherCodes": []
+  },
+  "levelOfStructuralChecks": false,
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11",
+      "Linux"
+    ],
+    "processors": "CPU;GPU",
+    "maximumRam": "16 GB",
+    "maximumStorage": "1 TB",
+    "internetAccessRequired": "Yes"
+  },
+  "interfaces": {
+    "python": true,
+    "csharp": false,
+    "grasshopper": false,
+    "other": false
+  },
+  "pricing": {
+    "pricingStructure": "Subscription",
+    "raw": [
+      "Paid",
+      "Subscription"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone/#Web App"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "id": "9e3ea5abaedd",
+  "developer": "CYPE",
+  "product": "CYPE Connect",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://info.cype.com/en/product/cype-connect/",
+    "specifications": "https://learning.cype.com/en/faq/cype-minimum-requirements/"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": true,
+    "fullDesignChecks": true,
+    "iso9001Compliant": false
+  },
+  "components": {
+    "structuralAnalysis": true,
+    "geotechnicalAnalysis": false,
+    "designCalculations": true,
+    "buildingInformationModelling": true,
+    "parametricModelling": false,
+    "embodiedCarbonAssessment": false
+  },
+  "materials": {
+    "concrete": false,
+    "steel": true,
+    "timber": true,
+    "masonry": false,
+    "composites": false,
+    "polymers": false
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": true,
+        "exportMaterialQuantities": true,
+        "ifcExport": true,
+        "ifcImport": true,
+        "pdfExport": true
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": true,
+        "reinforcementDetailingSheets": true,
+        "reinforcement3dModelling": true
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": false,
+    "analysis": {
+      "analysis2d": false,
+      "analysis3d": true,
+      "compositeBeamAnalysis": false,
+      "compositeSectionAnalysis": false,
+      "constructionStageAnalysis": false,
+      "dynamicAnalysis": false,
+      "finiteElementAnalysis": true,
+      "footfallAnalysis": false,
+      "globalBucklingAnalysis": false,
+      "lateralStabilityAnalysis": false,
+      "localBucklingAnalysis": true,
+      "nonLinearAnalysis": true,
+      "responseSpectrumAnalysis": false,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": true,
+      "staticAnalysis": true,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": false,
+      "timberAnalysis": false,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": false,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": false
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": false,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": false,
+        "concreteColumns": false,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": false,
+        "concreteCracking": false,
+        "concreteFlatSlabs1Way": false,
+        "concreteFlatSlabs2Way": false,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": false
+      },
+      "designOfSteelElements": {
+        "steelBeams": false,
+        "steelColumns": false,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": true,
+        "concreteAnchorsConnections": true,
+        "concretePunchingShear": false,
+        "corbelConnections": false,
+        "steelToConcreteConnections": true,
+        "steelToSteelConnections": true,
+        "timberToSteelConnections": true,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": false,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": false,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": false,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "3D Analysis",
+    "Baseplate Connections",
+    "Concrete Anchors Connections",
+    "Detailed Plan / Section Drawings",
+    "DXF Export",
+    "Export Material Quantities",
+    "Finite Element Analysis",
+    "IFC Export",
+    "IFC Import",
+    "Local Buckling Analysis",
+    "Non-linear Analysis",
+    "PDF Export",
+    "Reinforcement 3D Modelling",
+    "Reinforcement Detailing / Sheets",
+    "Section Analysis",
+    "Static Analysis",
+    "Steel to Concrete Connections",
+    "Steel to Steel Connections",
+    "Timber to Steel Connections"
+  ],
+  "designCodes": {
+    "eurocodes": true,
+    "ukNationalAnnex": false,
+    "otherNationalAnnexes": [
+      "Other (CYPE provide a full list of codes available at <a href=https://info.cype.com/en/design-codes-implemented/>https://info.cype.com/en/design-codes-implemented/</a>)"
+    ],
+    "britishStandards": true,
+    "otherCodes": [
+      "Other (CYPE provide a full list of codes available at <a href=https://info.cype.com/en/design-codes-implemented/>https://info.cype.com/en/design-codes-implemented/</a>)"
+    ]
+  },
+  "levelOfStructuralChecks": "Partial (Checks are made according to the standard selected when starting a project. The full list of available standards can be found at the following link: <a href=https://info.cype.com/en/design-codes-implemented/>https://info.cype.com/en/design-codes-implemented/ </a>)",
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows Servers (2016, 2019, 2022)",
+      "Windows 10",
+      "Windows 11"
+    ],
+    "processors": "Intel Celeron/#Intel i3, i5, i7 or i9/#AMD X2/#AMD A8/A10 or FX series/#AMD Ryzen and Threadripper",
+    "maximumRam": "8 GB",
+    "maximumStorage": "23.6 GB",
+    "internetAccessRequired": "Yes"
+  },
+  "interfaces": {
+    "python": false,
+    "csharp": false,
+    "grasshopper": false,
+    "other": false
+  },
+  "pricing": {
+    "pricingStructure": "One-off Payment",
+    "raw": [
+      "Paid"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone"
+  }
+}

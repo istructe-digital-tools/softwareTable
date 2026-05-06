@@ -1,0 +1,195 @@
+{
+  "id": "b60b7c129858",
+  "developer": "Robert McNeel & Associates",
+  "product": "Rhino",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://www.rhino3d.com/learn/?query=kind:%20jump_start&modal=null",
+    "specifications": "https://www.rhino3d.com/8/system-requirements/"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": false,
+    "fullDesignChecks": false,
+    "iso9001Compliant": false
+  },
+  "components": {
+    "structuralAnalysis": false,
+    "geotechnicalAnalysis": false,
+    "designCalculations": false,
+    "buildingInformationModelling": true,
+    "parametricModelling": true,
+    "embodiedCarbonAssessment": false
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": true,
+    "composites": true,
+    "polymers": true
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": false,
+        "exportMaterialQuantities": false,
+        "ifcExport": false,
+        "ifcImport": false,
+        "pdfExport": false
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": true,
+    "analysis": {
+      "analysis2d": false,
+      "analysis3d": false,
+      "compositeBeamAnalysis": false,
+      "compositeSectionAnalysis": false,
+      "constructionStageAnalysis": false,
+      "dynamicAnalysis": false,
+      "finiteElementAnalysis": false,
+      "footfallAnalysis": false,
+      "globalBucklingAnalysis": false,
+      "lateralStabilityAnalysis": false,
+      "localBucklingAnalysis": false,
+      "nonLinearAnalysis": false,
+      "responseSpectrumAnalysis": false,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": false,
+      "staticAnalysis": false,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": false,
+      "timberAnalysis": false,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": false,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": false
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": false,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": false,
+        "concreteColumns": false,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": false,
+        "concreteCracking": false,
+        "concreteFlatSlabs1Way": false,
+        "concreteFlatSlabs2Way": false,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": false
+      },
+      "designOfSteelElements": {
+        "steelBeams": false,
+        "steelColumns": false,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": false,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": false,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": false,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": false,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": false,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": false,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "Parametric Modelling"
+  ],
+  "designCodes": {
+    "eurocodes": false,
+    "ukNationalAnnex": false,
+    "otherNationalAnnexes": [],
+    "britishStandards": false,
+    "otherCodes": []
+  },
+  "levelOfStructuralChecks": false,
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11",
+      "MacOS 12.4",
+      "MacOS 13",
+      "MacOS 14",
+      "MacOS 15"
+    ],
+    "processors": "Intel, AMD, or Apple Processor (Not ARM)",
+    "maximumRam": "8 GB",
+    "maximumStorage": "10 GB",
+    "internetAccessRequired": "Yes (For license validation)"
+  },
+  "interfaces": {
+    "python": true,
+    "csharp": true,
+    "grasshopper": true,
+    "other": [
+      "C++"
+    ]
+  },
+  "pricing": {
+    "pricingStructure": "One-off Payment",
+    "raw": [
+      "Paid"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone"
+  }
+}

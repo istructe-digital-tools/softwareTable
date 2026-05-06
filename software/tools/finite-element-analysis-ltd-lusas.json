@@ -1,0 +1,255 @@
+{
+  "id": "1b905b44d60c",
+  "developer": "Finite Element Analysis Ltd.",
+  "product": "LUSAS",
+  "toolType": "Stand Alone",
+  "links": {
+    "guidance": "https://www.lusas.com/user_area/index.html",
+    "specifications": "https://www.lusas.com/pcspec.html"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": true,
+    "fullDesignChecks": true,
+    "iso9001Compliant": false
+  },
+  "components": {
+    "structuralAnalysis": true,
+    "geotechnicalAnalysis": true,
+    "designCalculations": true,
+    "buildingInformationModelling": false,
+    "parametricModelling": true,
+    "embodiedCarbonAssessment": true
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": true,
+    "composites": true,
+    "polymers": true
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": true,
+        "exportMaterialQuantities": true,
+        "ifcExport": true,
+        "ifcImport": true,
+        "pdfExport": false
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": true,
+    "analysis": {
+      "analysis2d": true,
+      "analysis3d": true,
+      "compositeBeamAnalysis": true,
+      "compositeSectionAnalysis": false,
+      "constructionStageAnalysis": true,
+      "dynamicAnalysis": true,
+      "finiteElementAnalysis": true,
+      "footfallAnalysis": true,
+      "globalBucklingAnalysis": true,
+      "lateralStabilityAnalysis": true,
+      "localBucklingAnalysis": true,
+      "nonLinearAnalysis": true,
+      "responseSpectrumAnalysis": true,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": false,
+      "staticAnalysis": true,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": false,
+      "timberAnalysis": false,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": true,
+      "pileSinking": true,
+      "slipCircles": true,
+      "soilStructureInteraction": true
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": false,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": true,
+        "concreteColumns": true,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": true,
+        "concreteCracking": true,
+        "concreteFlatSlabs1Way": true,
+        "concreteFlatSlabs2Way": true,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": true
+      },
+      "designOfSteelElements": {
+        "steelBeams": true,
+        "steelColumns": true,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": false,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": false,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": false,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": false,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": false,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": true,
+      "portalFrames": false,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [
+    "2D Analysis",
+    "3D Analysis",
+    "Bridges",
+    "Composite Beam Analysis",
+    "Concrete Beams",
+    "Concrete Columns",
+    "Concrete Coupling Beams",
+    "Concrete Cracking",
+    "Concrete Flat Slabs (1 Way)",
+    "Concrete Flat Slabs (2 Way)",
+    "Concrete Walls",
+    "Construction Stage Analysis",
+    "DXF Export",
+    "Dynamic Analysis",
+    "Export Material Quantities",
+    "Finite Element Analysis",
+    "Footfall Analysis",
+    "Global Buckling Analysis",
+    "IFC Export",
+    "IFC Import",
+    "Lateral Stability Analysis",
+    "Local Buckling Analysis",
+    "Non-linear Analysis",
+    "Parametric Modelling",
+    "Pile Lateral Stability",
+    "Pile Sinking",
+    "Response Spectrum Analysis",
+    "Slip Circles",
+    "Soil Structure Interaction",
+    "Static Analysis",
+    "Steel Beams",
+    "Steel Columns"
+  ],
+  "designCodes": {
+    "eurocodes": true,
+    "ukNationalAnnex": true,
+    "otherNationalAnnexes": [
+      "Austria",
+      "Belgium",
+      "Bulgaria",
+      "Cyprus",
+      "Czech Republic",
+      "Denmark",
+      "Finland",
+      "France",
+      "Germany",
+      "Greece",
+      "Greenland",
+      "Ireland",
+      "Italy",
+      "Netherlands",
+      "Poland",
+      "Romania",
+      "Slovakia",
+      "Spain",
+      "Sweden"
+    ],
+    "britishStandards": true,
+    "otherCodes": [
+      "United States (AASHTO, ACI, AISC)",
+      "Australia (AS)",
+      "Canada (CSA)",
+      "China (GB)",
+      "India (IRC)",
+      "Saudia Arabia (MOMRA)",
+      "New Zealand (NZS, NZTA)",
+      "South Africa (SABS)",
+      "Singapore (SS)"
+    ]
+  },
+  "levelOfStructuralChecks": "Full",
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11"
+    ],
+    "processors": "Core i5 +",
+    "maximumRam": "8 GB",
+    "maximumStorage": "80 GB",
+    "internetAccessRequired": "Yes (for network licenses)/#No (for standalone licenses)"
+  },
+  "interfaces": {
+    "python": true,
+    "csharp": true,
+    "grasshopper": true,
+    "other": [
+      "VBS",
+      "C++",
+      "Java",
+      "Powershell"
+    ]
+  },
+  "pricing": {
+    "pricingStructure": "Subscription",
+    "raw": [
+      "Subscription"
+    ]
+  },
+  "secondarySoftwareRequirements": false,
+  "raw": {
+    "productTypeCsv": "Stand Alone"
+  }
+}

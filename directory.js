@@ -6,124 +6,46 @@
 (function () {
   "use strict";
 
-  const CSV_PATH = "software/Database.csv";
-
-  const COL = {
-    developer: "Developer",
-    product: "Product",
-    productType: "Product Type",
-    components: "Components",
-    features: "Features",
-    codifiedCert: "Codified Design Checks Certified By Qualified Engineer",
-    iso9001: "ISO 9001 Compliant",
-    linkGuidance: "Link to Guidance",
-    concrete: "Concrete",
-    masonry: "Masonry",
-    steel: "Steel",
-    timber: "Timber",
-    polymers: "Polymers",
-    composites: "Composites",
-    eurocodes: "Eurocodes",
-    ukNa: "UK National Annex",
-    otherNa: "Other National Annexes",
-    britishStd: "British Standards",
-    otherCodes: "Other Codes",
-    checkLevel: "Level of Structural Checks",
-    python: "Python",
-    csharp: "C#",
-    grasshopper: "Grasshopper",
-    otherApi: "Other",
-    os: "Operating System",
-    processors: "Processors",
-    ram: "Memory (RAM)",
-    storage: "Storage Requirements",
-    internet: "Internet Access Required",
-    linkSpecs: "Link to Full Specs",
-    pricing: "Pricing Structure",
-    secondary: "Secondary Software Requirements",
-  };
+  const TOOLS_INDEX_PATH = "software/tools/index.json";
 
   /** Checkbox id → { field, expect } where row[field].toLowerCase() must include expect */
   const CHECKBOX_MAP = {
-    "certified by qualified engineer": {
-      field: COL.codifiedCert,
-      expect: "yes",
-    },
-    full: { field: COL.checkLevel, expect: "full" },
-    "iso 9001 compliant": { field: COL.iso9001, expect: "yes" },
-    analysis: { field: COL.components, expect: "analysis" },
-    design: { field: COL.components, expect: "design" },
-    bim: { field: COL.components, expect: "bim" },
-    parametric: { field: COL.components, expect: "parametric" },
-    carbon: { field: COL.components, expect: "carbon" },
-    concrete: { field: COL.concrete, expect: "yes" },
-    masonry: { field: COL.masonry, expect: "yes" },
-    steel: { field: COL.steel, expect: "yes" },
-    timber: { field: COL.timber, expect: "yes" },
-    polymers: { field: COL.polymers, expect: "yes" },
-    composites: { field: COL.composites, expect: "yes" },
-    eurocodes: { field: COL.eurocodes, expect: "yes" },
-    "united kingdom": { field: COL.ukNa, expect: "yes" },
-    "british standards": { field: COL.britishStd, expect: "yes" },
-    python: { field: COL.python, expect: "yes" },
-    "c#": { field: COL.csharp, expect: "yes" },
-    grasshopper: { field: COL.grasshopper, expect: "yes" },
-    "no internet access required": { field: COL.internet, expect: "no" },
+    "certified by qualified engineer": { type: "bool", path: "complianceAndCertification.certifiedByQualifiedEngineer" },
+    full: { type: "bool", path: "complianceAndCertification.fullDesignChecks" },
+    "iso 9001 compliant": { type: "bool", path: "complianceAndCertification.iso9001Compliant" },
+
+    concrete: { type: "bool", path: "materials.concrete" },
+    masonry: { type: "bool", path: "materials.masonry" },
+    steel: { type: "bool", path: "materials.steel" },
+    timber: { type: "bool", path: "materials.timber" },
+    polymers: { type: "bool", path: "materials.polymers" },
+    composites: { type: "bool", path: "materials.composites" },
+
+    eurocodes: { type: "bool", path: "designCodes.eurocodes" },
+    "united kingdom": { type: "bool", path: "designCodes.ukNationalAnnex" },
+    "british standards": { type: "bool", path: "designCodes.britishStandards" },
+
+    python: { type: "bool", path: "interfaces.python" },
+    "c#": { type: "bool", path: "interfaces.csharp" },
+    grasshopper: { type: "bool", path: "interfaces.grasshopper" },
+
+    "no internet access required": { type: "bool", path: "systemRequirements.noInternetAccessRequired" },
   };
 
   let allRows = [];
   let filtered = [];
-  /** @type {{value:string,label:string}[]} */
-  let featureOptionList = [];
+  /** @type {{version:number,type:string,nodes:any[]}|null} */
+  let featureTree = null;
 
-  function normalizeCsvText(data) {
-    return data.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n").replace(/\r/g, "\n");
-  }
-
-  function parseCSV(data) {
-    const rows = [];
-    let row = [];
-    let insideQuotes = false;
-    let currentCell = "";
-    const text = normalizeCsvText(data);
-
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i];
-      if (char === '"') {
-        insideQuotes = !insideQuotes;
-      } else if (char === "," && !insideQuotes) {
-        row.push(currentCell.trim());
-        currentCell = "";
-      } else if (char === "\n" && !insideQuotes) {
-        row.push(currentCell.trim());
-        if (row.length > 1 || (row.length === 1 && row[0] !== "")) {
-          rows.push(row);
-        }
-        row = [];
-        currentCell = "";
-      } else {
-        currentCell += char;
-      }
+  function getByPath(obj, dottedPath) {
+    if (!obj || !dottedPath) return undefined;
+    const parts = dottedPath.split(".");
+    let cur = obj;
+    for (const p of parts) {
+      if (cur == null) return undefined;
+      cur = cur[p];
     }
-    if (currentCell.length > 0 || row.length > 0) {
-      row.push(currentCell.trim());
-      if (row.length > 1 || (row.length === 1 && row[0] !== "")) {
-        rows.push(row);
-      }
-    }
-    return rows;
-  }
-
-  function rowsToObjects(parsed) {
-    if (!parsed.length) return [];
-    const headers = parsed[0];
-    return parsed.slice(1).map((cells) => {
-      const obj = {};
-      headers.forEach((h, i) => {
-        obj[h] = cells[i] != null ? cells[i] : "";
-      });
-      return obj;
-    });
+    return cur;
   }
 
   function extractNumericValue(text) {
@@ -137,10 +59,6 @@
     return value;
   }
 
-  function cellLower(row, field) {
-    return String(row[field] ?? "").toLowerCase().trim();
-  }
-
   function isDashOrEmpty(s) {
     const t = String(s).toLowerCase().trim();
     return t === "" || t === "-" || t === "any";
@@ -150,23 +68,25 @@
     for (const f of filters) {
       if (f.type === "multisearch") {
         const words = f.searchText.toLowerCase().split(/\s+/).filter(Boolean);
-        const values = f.fields.map((field) => cellLower(row, field));
+        const values = f.fields.map((field) =>
+          String(getByPath(row, field) ?? "").toLowerCase().trim()
+        );
         const allBlank = values.every((v) => isDashOrEmpty(v));
         const hasMatch = words.every((word) =>
           values.some((v) => !isDashOrEmpty(v) && v.includes(word))
         );
         if (!hasMatch && !allBlank) return false;
       } else if (f.type === "anymatch") {
-        const text = cellLower(row, f.field);
+        const text = String(getByPath(row, f.field) ?? "").toLowerCase().trim();
         if (isDashOrEmpty(text)) continue;
         const ok = f.keywords.some((kw) => text.includes(kw));
         if (!ok) return false;
       } else if (f.type === "includes") {
-        const text = cellLower(row, f.field);
+        const text = String(getByPath(row, f.field) ?? "").toLowerCase().trim();
         if (isDashOrEmpty(text)) continue;
         if (!text.includes(f.expect)) return false;
       } else if (f.type === "searchwords") {
-        const text = cellLower(row, f.field);
+        const text = String(getByPath(row, f.field) ?? "").toLowerCase().trim();
         if (isDashOrEmpty(text)) continue;
         const searchWords = f.searchText.split(/\s+/).filter(Boolean);
         const cellWords = text.split(/\s+/);
@@ -178,10 +98,18 @@
           return false;
         }
       } else if (f.type === "numbermax") {
-        const text = cellLower(row, f.field);
+        const text = String(getByPath(row, f.field) ?? "").toLowerCase().trim();
         if (isDashOrEmpty(text)) continue;
         const num = extractNumericValue(text);
         if (isNaN(num) || num > f.maxValue) return false;
+      } else if (f.type === "boolpath") {
+        const v = Boolean(getByPath(row, f.path));
+        if (!v) return false;
+      } else if (f.type === "featureOrComponentRequirement") {
+        const set = new Set((row.featuresFlat || []).map((x) => String(x).toLowerCase()));
+        const featureOk = (f.featureValues || []).some((v) => set.has(String(v).toLowerCase()));
+        const componentOk = Boolean(f.componentPath) && Boolean(getByPath(row, f.componentPath));
+        if (!featureOk && !componentOk) return false;
       }
     }
     return true;
@@ -204,14 +132,14 @@
 
     form.querySelectorAll("input[type=checkbox]").forEach((input) => {
       if (!input.checked) return;
+      // Feature checkboxes use data-feature and should not go through CHECKBOX_MAP
+      if (input.dataset && input.dataset.feature) return;
       const id = input.id.toLowerCase();
       const spec = CHECKBOX_MAP[id];
       if (spec) {
-        filters.push({
-          type: "includes",
-          field: spec.field,
-          expect: spec.expect,
-        });
+        if (spec.type === "bool") {
+          filters.push({ type: "boolpath", path: spec.path });
+        }
       }
     });
 
@@ -219,7 +147,7 @@
     if (typeSel && typeSel.value.trim()) {
       filters.push({
         type: "includes",
-        field: COL.productType,
+        field: "toolType",
         expect: typeSel.value.toLowerCase().trim(),
       });
     }
@@ -228,7 +156,7 @@
     if (osSel && osSel.value.trim()) {
       filters.push({
         type: "includes",
-        field: COL.os,
+        field: "systemRequirements.operatingSystem",
         expect: osSel.value.toLowerCase().trim(),
       });
     }
@@ -237,34 +165,54 @@
     if (priceSel && priceSel.value.trim()) {
       filters.push({
         type: "includes",
-        field: COL.pricing,
+        field: "pricing.pricingStructure",
         expect: priceSel.value.toLowerCase().trim(),
       });
     }
 
-    form.querySelectorAll(".feature-select").forEach((select) => {
-      const v = select.value.trim().toLowerCase();
-      if (!v) return;
-      if (v.includes(";")) {
-        filters.push({
-          type: "anymatch",
-          field: COL.features,
-          keywords: v.split(";").map((s) => s.trim().toLowerCase()),
-        });
-      } else {
-        filters.push({
-          type: "includes",
-          field: COL.features,
-          expect: v,
-        });
+    const selectedLeaf = new Set(
+      Array.from(form.querySelectorAll('input[type="checkbox"][data-feature]:checked'))
+        .map((i) => i.dataset.feature)
+        .filter(Boolean)
+    );
+
+    // Leaf selections become AND requirements
+    form.querySelectorAll('input[type="checkbox"][data-feature]:checked').forEach((i) => {
+      const feature = i.dataset.feature;
+      if (!feature) return;
+      filters.push({
+        type: "featureOrComponentRequirement",
+        featureValues: [feature],
+        componentPath: i.dataset.componentPath || null,
+      });
+    });
+
+    // Category selections:
+    // - If any descendant leaf is selected, the category selection is overridden (ignored).
+    // - Otherwise, include (componentPath OR any descendant leaf features).
+    form.querySelectorAll('input[type="checkbox"][data-feature-group]:checked').forEach((i) => {
+      let groupLeaf = [];
+      try {
+        groupLeaf = JSON.parse(i.dataset.featureGroupValues || "[]");
+      } catch {
+        groupLeaf = [];
       }
+      const hasSelectedChild = Array.isArray(groupLeaf) && groupLeaf.some((v) => selectedLeaf.has(v));
+      if (hasSelectedChild) return;
+
+      const cp = i.dataset.componentPath || null;
+      filters.push({
+        type: "featureOrComponentRequirement",
+        featureValues: Array.isArray(groupLeaf) ? groupLeaf.filter(Boolean) : [],
+        componentPath: cp,
+      });
     });
 
     const secondary = document.getElementById("Secondary Software");
     if (secondary && secondary.value.trim()) {
       filters.push({
         type: "searchwords",
-        field: COL.secondary,
+        field: "secondarySoftwareRequirements",
         searchText: secondary.value.toLowerCase().trim(),
       });
     }
@@ -273,7 +221,7 @@
     if (country && country.value.trim()) {
       filters.push({
         type: "multisearch",
-        fields: [COL.otherNa, COL.otherCodes],
+        fields: ["designCodes.otherNationalAnnexes", "designCodes.otherCodes"],
         searchText: country.value.toLowerCase().trim(),
       });
     }
@@ -282,7 +230,7 @@
     if (ram && ram.value.trim() !== "") {
       filters.push({
         type: "numbermax",
-        field: COL.ram,
+        field: "systemRequirements.maximumRam",
         maxValue: parseFloat(ram.value),
       });
     }
@@ -291,7 +239,7 @@
     if (storage && storage.value.trim() !== "") {
       filters.push({
         type: "numbermax",
-        field: COL.storage,
+        field: "systemRequirements.maximumStorage",
         maxValue: parseFloat(storage.value),
       });
     }
@@ -301,11 +249,11 @@
 
   function passesGlobal(row, words) {
     const blob = [
-      row[COL.developer],
-      row[COL.product],
-      row[COL.productType],
-      row[COL.components],
-      row[COL.features],
+      row.developer,
+      row.product,
+      row.toolType,
+      JSON.stringify(row.components || {}),
+      (row.featuresFlat || []).join(" "),
     ]
       .join(" ")
       .toLowerCase();
@@ -333,8 +281,8 @@
     const mode = sel ? sel.value : "product-asc";
 
     const cmp = (a, b, field, num) => {
-      const va = String(a[field] ?? "").toLowerCase().trim();
-      const vb = String(b[field] ?? "").toLowerCase().trim();
+      const va = String(getByPath(a, field) ?? "").toLowerCase().trim();
+      const vb = String(getByPath(b, field) ?? "").toLowerCase().trim();
       if (va === "-" && !num) return 1;
       if (vb === "-" && !num) return -1;
       if (num) {
@@ -349,23 +297,23 @@
       let r = 0;
       switch (mode) {
         case "product-desc":
-          r = cmp(a, b, COL.product, false);
+          r = cmp(a, b, "product", false);
           return -r;
         case "developer-asc":
-          r = cmp(a, b, COL.developer, false);
+          r = cmp(a, b, "developer", false);
           return r;
         case "developer-desc":
-          r = cmp(a, b, COL.developer, false);
+          r = cmp(a, b, "developer", false);
           return -r;
         case "pricing-asc":
-          r = cmp(a, b, COL.pricing, false);
+          r = cmp(a, b, "pricing.pricingStructure", false);
           return r;
         case "storage-asc":
-          r = cmp(a, b, COL.storage, true);
+          r = cmp(a, b, "systemRequirements.maximumStorage", true);
           return r;
         case "product-asc":
         default:
-          r = cmp(a, b, COL.product, false);
+          r = cmp(a, b, "product", false);
           return r;
       }
     });
@@ -574,15 +522,15 @@
 
   function materialTags(row) {
     const pairs = [
-      [COL.concrete, "Concrete"],
-      [COL.masonry, "Masonry"],
-      [COL.steel, "Steel"],
-      [COL.timber, "Timber"],
-      [COL.polymers, "Polymers"],
-      [COL.composites, "Composites"],
+      ["materials.concrete", "Concrete"],
+      ["materials.masonry", "Masonry"],
+      ["materials.steel", "Steel"],
+      ["materials.timber", "Timber"],
+      ["materials.polymers", "Polymers"],
+      ["materials.composites", "Composites"],
     ];
     return pairs
-      .filter(([field]) => cellLower(row, field) === "yes")
+      .filter(([field]) => Boolean(getByPath(row, field)))
       .map(([, label]) => label);
   }
 
@@ -602,13 +550,13 @@
 
             const title = document.createElement("h3");
             title.className = "tool-card__title";
-            const productRaw = row[COL.product] || "—";
+            const productRaw = row.product || "—";
             if (isDashOrEmpty(productRaw)) title.textContent = "—";
-            else appendFormattedCell(title, productRaw);
+            else title.textContent = String(productRaw);
 
             const dev = document.createElement("p");
             dev.className = "tool-card__developer";
-            dev.textContent = row[COL.developer] || "";
+            dev.textContent = row.developer || "";
 
             head.appendChild(title);
             head.appendChild(dev);
@@ -620,12 +568,14 @@
             // 2. Add the Product Type badge
             const typeBadge = document.createElement("span");
             typeBadge.className = "badge badge--type";
-            typeBadge.textContent = toBadgePlain(row[COL.productType] || "—");
+            typeBadge.textContent = toBadgePlain(row.toolType || "—");
             badges.appendChild(typeBadge);
 
             // 3. Process and add all Pricing badges to that SAME container
-            const priceRaw = normalizeNewlineMarkers(row[COL.pricing] || "—");
-            const priceParts = priceRaw.split('\n').filter(p => p.trim() !== "");
+            const priceRaw = Array.isArray(row.pricing && row.pricing.raw)
+              ? row.pricing.raw.join("\n")
+              : (row.pricing && row.pricing.pricingStructure) || "—";
+            const priceParts = String(priceRaw).split('\n').filter(p => p.trim() !== "");
 
             priceParts.forEach(part => {
                 const priceBadge = document.createElement("span");
@@ -636,6 +586,12 @@
 
             const tags = document.createElement("div");
             tags.className = "tool-card__tags";
+
+            const toProperCase = (str) =>
+                str
+                    .replace(/([a-z])([A-Z])/g, "$1 $2")
+                    .replace(/\b\w/g, (c) => c.toUpperCase());
+
             materialTags(row).forEach((label) => {
                 const t = document.createElement("span");
                 t.className = "tag";
@@ -643,19 +599,18 @@
                 tags.appendChild(t);
             });
 
-            const summary = document.createElement("p");
-            summary.className = "tool-card__summary";
-            const compRaw = row[COL.components] || "";
-            const compPlain = toPlainText(compRaw);
-            if (compPlain.length > 220) {
-                summary.textContent = compPlain.slice(0, 217) + "…";
-            } else if (compRaw.trim()) {
-                appendFormattedCell(summary, compRaw);
-            }
+            Object.entries(row.components || {})
+                .filter(([, v]) => Boolean(v))
+                .forEach(([k]) => {
+                    const t = document.createElement("span");
+                    t.className = "tag";
+                    t.textContent = toProperCase(k);
+                    tags.appendChild(t);
+                });
 
             const actions = document.createElement("div");
             actions.className = "tool-card__actions";
-            const g = safeUrl(row[COL.linkGuidance]);
+            const g = safeUrl(row.links && row.links.guidance);
             if (g) {
                 const a = document.createElement("a");
                 a.className = "btn btn--primary";
@@ -665,7 +620,7 @@
                 a.textContent = "Guidance";
                 actions.appendChild(a);
             }
-            const sp = safeUrl(row[COL.linkSpecs]);
+            const sp = safeUrl(row.links && row.links.specifications);
             if (sp) {
                 const a2 = document.createElement("a");
                 a2.className = "btn btn--ghost";
@@ -690,38 +645,45 @@
                 dtEl.textContent = dt;
                 const ddEl = document.createElement("dd");
                 ddEl.className = "tool-card__dd-rich";
-                appendFormattedCell(ddEl, ddText);
+                // Some JSON values contain <a href="...">...</a> (from the original dataset).
+                // Render those links as real anchors (safe parsing limited to <a>).
+                appendPlainLines(ddEl, normalizeNewlineMarkers(String(ddText)));
                 dl.appendChild(dtEl);
                 dl.appendChild(ddEl);
             };
 
-            addRow("Features", row[COL.features]);
-            addRow("Components", row[COL.components]);
-            addRow("Codified checks (qualified engineer)", row[COL.codifiedCert]);
-            addRow("ISO 9001", row[COL.iso9001]);
-            addRow("Structural check level", row[COL.checkLevel]);
-            addRow("Eurocodes", row[COL.eurocodes]);
-            addRow("UK National Annex", row[COL.ukNa]);
-            addRow("Other national annexes", row[COL.otherNa]);
-            addRow("British Standards", row[COL.britishStd]);
-            addRow("Other codes", row[COL.otherCodes]);
-            addRow("Operating system", row[COL.os]);
-            addRow("Processors", row[COL.processors]);
-            addRow("Memory (RAM)", row[COL.ram]);
-            addRow("Storage", row[COL.storage]);
-            addRow("Internet access", row[COL.internet]);
-            addRow("Python", row[COL.python]);
-            addRow("C#", row[COL.csharp]);
-            addRow("Grasshopper", row[COL.grasshopper]);
-            addRow("Other interfaces", row[COL.otherApi]);
-            addRow("Secondary software", row[COL.secondary]);
+            addRow("Features", Array.isArray(row.featuresFlat) ? row.featuresFlat.join(",\n") : "");
+            addRow(
+                "Components",
+                Object.entries(row.components || {})
+                    .filter(([, v]) => v)
+                    .map(([k]) => toProperCase(k))
+                    .join(",\r\n")
+            );
+            addRow("Certified by qualified engineer", String(row.complianceAndCertification && row.complianceAndCertification.certifiedByQualifiedEngineer));
+            addRow("ISO 9001", String(row.complianceAndCertification && row.complianceAndCertification.iso9001Compliant));
+            addRow("Structural check level", row.levelOfStructuralChecks || "");
+            addRow("Eurocodes", String(row.designCodes && row.designCodes.eurocodes));
+            addRow("UK National Annex", String(row.designCodes && row.designCodes.ukNationalAnnex));
+            addRow("Other national annexes", Array.isArray(row.designCodes && row.designCodes.otherNationalAnnexes) ? row.designCodes.otherNationalAnnexes.join(",\n") : "");
+            addRow("British Standards", String(row.designCodes && row.designCodes.britishStandards));
+            addRow("Other codes", Array.isArray(row.designCodes && row.designCodes.otherCodes) ? row.designCodes.otherCodes.join(",\n") : "");
+            addRow("Operating system", Array.isArray(row.systemRequirements && row.systemRequirements.operatingSystem) ? row.systemRequirements.operatingSystem.join(",\n") : "");
+            addRow("Processors", row.systemRequirements && row.systemRequirements.processors);
+            addRow("Memory (RAM)", row.systemRequirements && row.systemRequirements.maximumRam);
+            addRow("Storage", row.systemRequirements && row.systemRequirements.maximumStorage);
+            addRow("Internet access", row.systemRequirements && row.systemRequirements.internetAccessRequired);
+            addRow("Python", String(row.interfaces && row.interfaces.python));
+            addRow("C#", String(row.interfaces && row.interfaces.csharp));
+            addRow("Grasshopper", String(row.interfaces && row.interfaces.grasshopper));
+            addRow("Other interfaces", Array.isArray(row.interfaces && row.interfaces.other) ? row.interfaces.other.join(",\n") : "");
+            addRow("Secondary software", Array.isArray(row.secondarySoftwareRequirements) ? row.secondarySoftwareRequirements.join(",\n") : "");
 
             details.appendChild(dl);
 
             card.appendChild(head);
             card.appendChild(badges); // All badges are in here
             if (tags.childElementCount) card.appendChild(tags);
-            card.appendChild(summary);
             card.appendChild(actions);
             card.appendChild(details);
 
@@ -756,60 +718,159 @@
     }
   }
 
-  function fillFeatureSelect(selectEl) {
-    selectEl.textContent = "";
-    featureOptionList.forEach((o) => {
-      const op = document.createElement("option");
-      op.value = o.value;
-      op.textContent = o.label;
-      selectEl.appendChild(op);
-    });
-  }
-
   async function loadFeatureOptionList() {
     const url = `software/feature-filter-options.json?v=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) throw new Error("Could not load feature filter list");
-    featureOptionList = await res.json();
-    document.querySelectorAll(".feature-select").forEach(fillFeatureSelect);
+    featureTree = await res.json();
+    renderFeatureAccordion();
   }
 
-  function addFeatureSelect() {
-    const wrap = document.getElementById("featureSearch");
-    if (!wrap) return;
-    const first = wrap.querySelector(".feature-select");
-    if (!first) return;
-    const clone = document.createElement("select");
-    clone.className = "feature-select field-control";
-    clone.setAttribute("aria-label", "Feature filter");
-    fillFeatureSelect(clone);
-    clone.value = "";
-    const rm = document.createElement("button");
-    rm.type = "button";
-    rm.className = "btn-remove-feature";
-    rm.setAttribute("aria-label", "Remove feature filter");
-    rm.textContent = "×";
-    rm.addEventListener("click", () => {
-      clone.parentElement.remove();
-      applyFilters();
-    });
-    const row = document.createElement("div");
-    row.className = "feature-row";
-    row.appendChild(clone);
-    row.appendChild(rm);
-    const addBtn = document.getElementById("addFeatureFilter");
-    if (addBtn) wrap.insertBefore(row, addBtn);
-    else wrap.appendChild(row);
-    clone.addEventListener("change", applyFilters);
+  function renderFeatureAccordion() {
+    const host = document.getElementById("featureAccordion");
+    if (!host) return;
+    host.textContent = "";
+    if (!featureTree || !Array.isArray(featureTree.nodes)) return;
+
+    const CATEGORY_COMPONENT_PATH = {
+      analysis: "components.structuralAnalysis",
+      design: "components.designCalculations",
+      "building-information-modelling": "components.buildingInformationModelling",
+      "parametric-modelling": "components.parametricModelling",
+      "embodied-carbon-assessment": "components.embodiedCarbonAssessment",
+      "geotechnical-analysis": "components.geotechnicalAnalysis",
+    };
+
+    const LEAF_COMPONENT_PATH = {
+      "Parametric Modelling": "components.parametricModelling",
+    };
+
+    const makeLeaf = (node) => {
+      const box = document.createElement("div");
+      box.className = "feature-acc__group feature-acc__group--leaf";
+
+      const wrap = document.createElement("label");
+      wrap.className = "checkbox-label feature-acc__leaf feature-acc__leaf--card";
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.dataset.feature = node.value;
+      const leafCp = LEAF_COMPONENT_PATH[node.value];
+      if (leafCp) input.dataset.componentPath = leafCp;
+      input.addEventListener("change", applyFilters);
+      const span = document.createElement("span");
+      span.textContent = node.label;
+      wrap.appendChild(input);
+      wrap.appendChild(span);
+      box.appendChild(wrap);
+      return box;
+    };
+
+    const collectLeafValues = (node) => {
+      const out = [];
+      const walk = (n) => {
+        const kids = Array.isArray(n.children) ? n.children : null;
+        if (!kids || !kids.length) {
+          if (n && n.value) out.push(n.value);
+          return;
+        }
+        kids.forEach(walk);
+      };
+      walk(node);
+      return out;
+    };
+
+    const makeNode = (node, depth) => {
+      const hasChildren = Array.isArray(node.children) && node.children.length;
+      if (!hasChildren && node.value) return makeLeaf(node);
+
+      const details = document.createElement("details");
+      details.className = "feature-acc__group";
+      if (depth === 0) details.open = false;
+      const summary = document.createElement("summary");
+      const summaryInner = document.createElement("div");
+      summaryInner.className = "feature-acc__summary";
+
+      const clearDescendants = () => {
+        // Uncheck all nested feature checkboxes and close nested groups
+        details
+          .querySelectorAll('input[type="checkbox"][data-feature], input[type="checkbox"][data-feature-group]')
+          .forEach((cb) => {
+            if (cb !== input) cb.checked = false;
+          });
+        details.querySelectorAll("details.feature-acc__group").forEach((d) => {
+          if (d !== details) d.open = false;
+        });
+      };
+
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.dataset.featureGroup = "1";
+      const leafValues = collectLeafValues(node);
+      input.dataset.featureGroupValues = JSON.stringify(leafValues);
+      const cp = CATEGORY_COMPONENT_PATH[node.id];
+      if (cp) input.dataset.componentPath = cp;
+      input.addEventListener("click", (e) => e.stopPropagation());
+      input.addEventListener("change", () => {
+        // Visibility is driven by the parent checkbox state
+        details.open = Boolean(input.checked);
+        if (!input.checked) clearDescendants();
+        applyFilters();
+      });
+
+      const span = document.createElement("span");
+      span.textContent = node.label;
+      span.className = "feature-acc__summary-text";
+      // Clicking the text toggles the checkbox and therefore visibility.
+      span.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        input.checked = !input.checked;
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      // Prevent native <summary> toggle; open/close is checkbox-driven
+      summary.addEventListener("click", (e) => {
+        // allow checkbox itself to work normally
+        if (e.target === input) return;
+        e.preventDefault();
+      });
+
+      const row = document.createElement("div");
+      row.className = "feature-acc__summary-row";
+      row.appendChild(input);
+      row.appendChild(span);
+
+      summaryInner.appendChild(row);
+      summary.appendChild(summaryInner);
+
+      const body = document.createElement("div");
+      body.className = "feature-acc__body";
+      if (depth > 0) body.classList.add("feature-acc__child");
+
+      (node.children || []).forEach((child) => body.appendChild(makeNode(child, depth + 1)));
+      details.appendChild(summary);
+      details.appendChild(body);
+      return details;
+    };
+
+    featureTree.nodes.forEach((n) => host.appendChild(makeNode(n, 0)));
   }
 
-  async function loadCsv() {
-    const url = `${CSV_PATH}?v=${Date.now()}`;
-    const res = await fetch(url, { cache: "no-store" });
-    if (!res.ok) throw new Error(`Could not load ${CSV_PATH}: ${res.status}`);
-    const text = await res.text();
-    const parsed = parseCSV(text);
-    allRows = rowsToObjects(parsed);
+  async function loadTools() {
+    const indexUrl = `${TOOLS_INDEX_PATH}?v=${Date.now()}`;
+    const indexRes = await fetch(indexUrl, { cache: "no-store" });
+    if (!indexRes.ok) throw new Error(`Could not load ${TOOLS_INDEX_PATH}: ${indexRes.status}`);
+    const index = await indexRes.json();
+    const list = Array.isArray(index.tools) ? index.tools : [];
+
+    const tools = await Promise.all(
+      list.map(async (t) => {
+        const res = await fetch(`${t.file}?v=${Date.now()}`, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Could not load tool JSON: ${t.file}`);
+        return await res.json();
+      })
+    );
+    allRows = tools;
     filtered = allRows.slice();
     sortFiltered();
     renderCards();
@@ -840,17 +901,32 @@
     const sortSel = document.getElementById("sortSelect");
     if (sortSel) sortSel.addEventListener("change", applyFilters);
 
-    const addFeat = document.getElementById("addFeatureFilter");
-    if (addFeat) addFeat.addEventListener("click", addFeatureSelect);
+    const toggleAll = document.getElementById("toggleAllDetails");
+    if (toggleAll) {
+      toggleAll.addEventListener("click", () => {
+        const all = Array.from(document.querySelectorAll(".tool-card__details"));
+        if (!all.length) return;
+        const shouldOpen = all.some((d) => !d.open);
+        all.forEach((d) => (d.open = shouldOpen));
+        toggleAll.textContent = shouldOpen ? "Collapse all" : "Expand all";
+      });
+    }
 
     const reset = document.getElementById("resetFilters");
     if (reset) {
       reset.addEventListener("click", (e) => {
         e.preventDefault();
         form.reset();
-        document.querySelectorAll("#featureSearch .feature-row").forEach((row, i) => {
-          if (i > 0) row.remove();
-        });
+        form
+          .querySelectorAll('input[type="checkbox"][data-feature]')
+          .forEach((i) => (i.checked = false));
+        form
+          .querySelectorAll('input[type="checkbox"][data-feature-group]')
+          .forEach((i) => (i.checked = false));
+        const ram = document.getElementById("RAM");
+        if (ram) ram.value = "";
+        const storage = document.getElementById("Storage");
+        if (storage) storage.value = "";
         updatePluginVisibility();
         applyFilters();
       });
@@ -874,7 +950,7 @@
       console.error(e);
     }
     try {
-      await loadCsv();
+      await loadTools();
     } catch (e) {
       console.error(e);
       const grid = document.getElementById("cardGrid");

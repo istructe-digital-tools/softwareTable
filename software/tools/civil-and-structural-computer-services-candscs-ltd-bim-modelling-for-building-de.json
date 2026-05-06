@@ -1,0 +1,190 @@
+{
+  "id": "d40a96ef825b",
+  "developer": "Civil & Structural Computer Services (C&SCS) Ltd",
+  "product": "BIM Modelling for Building Design Suite",
+  "toolType": "Plug In",
+  "links": {
+    "guidance": "https://www.masterseries.com/products/masterseries-building-design-suite",
+    "specifications": "https://files.masterseries.com/documents/MasterSeriesHardware.pdf"
+  },
+  "complianceAndCertification": {
+    "certifiedByQualifiedEngineer": false,
+    "fullDesignChecks": false,
+    "iso9001Compliant": false
+  },
+  "components": {
+    "structuralAnalysis": false,
+    "geotechnicalAnalysis": false,
+    "designCalculations": false,
+    "buildingInformationModelling": true,
+    "parametricModelling": false,
+    "embodiedCarbonAssessment": false
+  },
+  "materials": {
+    "concrete": true,
+    "steel": true,
+    "timber": true,
+    "masonry": false,
+    "composites": true,
+    "polymers": false
+  },
+  "features": {
+    "buildingInformationModelling": {
+      "exportAndImportTools": {
+        "cis2Export": false,
+        "dxfExport": false,
+        "exportMaterialQuantities": false,
+        "ifcExport": false,
+        "ifcImport": false,
+        "pdfExport": false
+      },
+      "detailingTools": {
+        "detailedPlanSectionDrawings": false,
+        "reinforcementDetailingSheets": false,
+        "reinforcement3dModelling": false
+      }
+    },
+    "embodiedCarbonAssessment": {
+      "carbonFactorLibrary": false
+    },
+    "parametricModelling": false,
+    "analysis": {
+      "analysis2d": false,
+      "analysis3d": false,
+      "compositeBeamAnalysis": false,
+      "compositeSectionAnalysis": false,
+      "constructionStageAnalysis": false,
+      "dynamicAnalysis": false,
+      "finiteElementAnalysis": false,
+      "footfallAnalysis": false,
+      "globalBucklingAnalysis": false,
+      "lateralStabilityAnalysis": false,
+      "localBucklingAnalysis": false,
+      "nonLinearAnalysis": false,
+      "responseSpectrumAnalysis": false,
+      "rigorousAnalysis": false,
+      "sectionAnalysis": false,
+      "staticAnalysis": false,
+      "strutAndTieAnalysis": false,
+      "tensionCompressionElementAnalysis": false,
+      "timberAnalysis": false,
+      "vibrationDesignAndAnalysis": false
+    },
+    "geotechnicalAnalysis": {
+      "pileLateralStability": false,
+      "pileSinking": false,
+      "slipCircles": false,
+      "soilStructureInteraction": false
+    },
+    "design": {
+      "designForFire": false,
+      "calculationOfLoadsToStandards": {
+        "seismicLoads": false,
+        "snowLoads": false,
+        "windLoads": false
+      },
+      "designOfCompositeElements": {
+        "compositeBeams": false,
+        "compositeColumns": false,
+        "compositeDecksAndSlabs": false
+      },
+      "designOfConcreteElements": {
+        "concreteBeams": false,
+        "concreteColumns": false,
+        "concreteCoreShearWalls": false,
+        "concreteCouplingBeams": false,
+        "concreteCracking": false,
+        "concreteFlatSlabs1Way": false,
+        "concreteFlatSlabs2Way": false,
+        "concreteHollowcoreSlabs": false,
+        "concreteJoistFloors": false,
+        "concretePostTensioning": false,
+        "concreteReinforcedBlockWalls": false,
+        "concreteRetainingWalls": false,
+        "concreteRibbedSlabs": false,
+        "concreteWaffleSlabs": false,
+        "concreteWalls": false
+      },
+      "designOfSteelElements": {
+        "steelBeams": false,
+        "steelColumns": false,
+        "steelJoistFloors": false
+      },
+      "designOfTimberElements": {
+        "timberBeams": false,
+        "timberColumns": false,
+        "timberJoistFloors": false,
+        "timberStudWalls": false,
+        "timberPanelWalls": false
+      },
+      "designOfMasonryElements": {
+        "masonryRetainingWalls": false,
+        "masonryWalls": false
+      },
+      "designOfConnections": {
+        "baseplateConnections": false,
+        "concreteAnchorsConnections": false,
+        "concretePunchingShear": false,
+        "corbelConnections": false,
+        "steelToConcreteConnections": false,
+        "steelToSteelConnections": false,
+        "timberToSteelConnections": false,
+        "timberToTimberConnections": false
+      },
+      "designOfFoundations": {
+        "footings": false,
+        "matFoundations": false,
+        "pileCaps": false,
+        "piles": false,
+        "sheetPiles": false
+      }
+    },
+    "structureTypes": {
+      "accessRamps": false,
+      "aluminiumBars": false,
+      "boxCulverts": false,
+      "bridges": false,
+      "portalFrames": false,
+      "staircases": false
+    }
+  },
+  "featuresFlat": [],
+  "designCodes": {
+    "eurocodes": false,
+    "ukNationalAnnex": false,
+    "otherNationalAnnexes": [],
+    "britishStandards": false,
+    "otherCodes": []
+  },
+  "levelOfStructuralChecks": false,
+  "systemRequirements": {
+    "noInternetAccessRequired": false,
+    "operatingSystem": [
+      "Windows 10",
+      "Windows 11"
+    ],
+    "processors": false,
+    "maximumRam": "0 GB",
+    "maximumStorage": "0 GB",
+    "internetAccessRequired": "Yes (Cloud licence needs constant internet access/Softlock licence: the license server must have internet access at least once every 14 days)"
+  },
+  "interfaces": {
+    "python": false,
+    "csharp": false,
+    "grasshopper": false,
+    "other": false
+  },
+  "pricing": {
+    "pricingStructure": "Subscription",
+    "raw": [
+      "Paid",
+      "Subscription"
+    ]
+  },
+  "secondarySoftwareRequirements": [
+    "Building Design Suite"
+  ],
+  "raw": {
+    "productTypeCsv": "Plug In"
+  }
+}

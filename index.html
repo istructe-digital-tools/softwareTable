@@ -41,6 +41,7 @@
           <option value="storage-asc">Storage (lowest first)</option>
         </select>
         <span id="resultCount" class="result-count" aria-live="polite"></span>
+        <button type="button" id="toggleAllDetails" class="btn btn--ghost btn--small">Expand all</button>
         <button type="button" id="resetFilters" class="btn btn--ghost btn--small">Clear filters</button>
       </div>
     </div>
@@ -96,37 +97,9 @@
             </details>
 
             <details class="filter-section" open>
-                <summary>Components</summary>
-                <div class="filter-section__body">
-                    <div class="field tooltip">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="Analysis" name="Analysis" />
-                            <span>Structural analysis</span>
-                        </label>
-                        <span class="tooltip-text">Software and algorithms used to analyse a structure (including finite element analysis).</span>
-                    </div>
-                    <div class="field tooltip">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="Design" name="Design" />
-                            <span>Design calculations</span>
-                        </label>
-                        <span class="tooltip-text">Automates design processes based on established codes and standards.</span>
-                    </div>
-                    <label class="checkbox-label field"><input type="checkbox" id="BIM" name="BIM" /> <span>Building information modelling (BIM)</span></label>
-                    <label class="checkbox-label field"><input type="checkbox" id="parametric" name="parametric" /> <span>Parametric modelling</span></label>
-                    <label class="checkbox-label field"><input type="checkbox" id="Carbon" name="Carbon" /> <span>Embodied carbon assessment (ECA)</span></label>
-                </div>
-            </details>
-
-            <details class="filter-section" open>
                 <summary>Features</summary>
                 <div class="filter-section__body">
-                    <div id="featureSearch" class="feature-block">
-                        <div class="feature-row">
-                            <select class="feature-select field-control" aria-label="Feature filter"></select>
-                        </div>
-                        <button type="button" id="addFeatureFilter" class="btn btn--ghost btn--small">+ Add another feature filter</button>
-                    </div>
+                    <div id="featureAccordion" class="feature-accordion" aria-label="Feature filters"></div>
                 </div>
             </details>
 
